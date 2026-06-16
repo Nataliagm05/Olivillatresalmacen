@@ -72,6 +72,7 @@
             height: 12px;
             background-color: #5a4878;
         }
+
         @media (max-width: 768px) {
             .topbar {
                 flex-direction: column;
@@ -98,6 +99,7 @@
                 display: none;
             }
         }
+
         /* ========== NAVBAR ========== */
         .navbar-custom {
             background-color: #4a3b68 !important;
@@ -258,7 +260,7 @@
 
 
         /* ========== FIN NAVBAR ========== */
-/* ========== CABECERA PROVEEDOR ========== */
+        /* ========== CABECERA PROVEEDOR ========== */
         .proveedor-hero {
             background: linear-gradient(135deg, #35284f 0%, #4a3b68 60%, #5e3d7a 100%);
             padding: 4px 0 24px;
@@ -363,131 +365,100 @@
                 gap: 20px;
             }
         }
-        /* ========== RESTO DE ESTILOS (sin cambios) ========== */
-        .container-custom {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
+
+        .intro-box {
+            background: #fff;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
         }
 
-        .titulo-proveedor {
+        .intro-box i {
+            font-size: 3rem;
             color: #b53987;
-            margin-bottom: 30px;
-            font-size: 2.3rem;
-            font-weight: bold;
-            border-left: 6px solid #4a3b68;
+            margin-bottom: 15px;
+        }
+
+        .categoria-card {
+            background: #fff;
+            border-radius: 18px;
+            padding: 30px;
+            text-align: center;
+            height: 100%;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
+            transition: .3s;
+        }
+
+        .categoria-card:hover {
+            transform: translateY(-8px);
+        }
+
+        .categoria-card i {
+            font-size: 2.2rem;
+            color: #b53987;
+            margin-bottom: 15px;
+        }
+
+        .categoria-card span {
+            color: #b53987;
+            font-weight: 600;
+        }
+
+        .buscador-catalogo {
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+
+        .catalogo-seccion {
+            margin-bottom: 60px;
+        }
+
+        .catalogo-seccion h2 {
+            color: #4a3b68;
+            margin-bottom: 25px;
+            border-left: 5px solid #b53987;
             padding-left: 15px;
         }
 
-        .seccion-carrusel {
-            margin-bottom: 50px;
-        }
-
-        .carousel-inner {
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(74, 59, 104, 0.15);
-            background-color: #4a3b68;
-        }
-
-        .carousel-item img {
-            width: 100%;
-            height: auto;
-            max-height: 500px;
-            object-fit: contain;
-            background-color: #4a3b68;
-        }
-
-        .carousel-caption {
-            background: rgba(74, 59, 104, 0.8);
-            border-radius: 8px;
-            padding: 15px;
-        }
-
-        .seccion-productos h2 {
-            color: #4a3b68;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        .card-producto {
-            border: 2px solid rgba(74, 59, 104, 0.1);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            background: #ffffff;
+        .card-producto-simple {
+            background: #fff;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
             height: 100%;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+            transition: .3s;
         }
 
-        .card-producto:hover {
+        .card-producto-simple:hover {
             transform: translateY(-5px);
-            border-color: #b53987;
-            box-shadow: 0 8px 16px rgba(181, 57, 135, 0.15);
         }
 
-        .card-producto img {
-            height: 200px;
-            object-fit: contain;
-            padding: 15px;
-            background: #f8f9fa;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
+        .card-producto-simple i {
+            font-size: 2rem;
+            color: #b53987;
+            margin-bottom: 15px;
         }
 
-        .card-producto .card-title {
+        .card-producto-simple h5 {
             color: #4a3b68;
-            font-weight: bold;
+            font-weight: 600;
         }
 
-        .btn-producto {
-            background-color: #4a3b68;
-            color: white;
-            border: none;
-            transition: background-color 0.2s;
+        .ventaja-box {
+            background: #fff;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
         }
 
-        .btn-producto:hover {
-            background-color: #b52a7c;
-            color: white;
-        }
-
-        .aviso-mas-articulos {
-            margin-top: 40px;
-            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
-            border-radius: 12px;
-            padding: 30px 35px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 15px rgba(74, 59, 104, 0.25);
-        }
-
-        .aviso-mas-articulos .aviso-icono {
-            font-size: 2.8rem;
-            color: #f386cc;
-            flex-shrink: 0;
-        }
-
-        .aviso-mas-articulos h4 {
-            margin: 0 0 6px 0;
-            font-size: 1.3rem;
-            font-weight: bold;
-        }
-
-        .aviso-mas-articulos p {
-            margin: 0;
-            font-size: 0.97rem;
-            color: #dcd6e8;
-        }
-
-        .aviso-mas-articulos a {
-            color: #f386cc;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .aviso-mas-articulos a:hover {
-            text-decoration: underline;
+        .ventaja-box i {
+            font-size: 2rem;
+            color: #b53987;
+            margin-bottom: 15px;
         }
 
         /* ========== FOOTER ========== */
@@ -651,7 +622,7 @@
             </div>
         </div>
     </nav>
- <!-- ===== CABECERA PROVEEDOR ===== -->
+    <!-- ===== CABECERA PROVEEDOR ===== -->
     <div class="proveedor-hero">
         <div class="container">
             <div class="proveedor-breadcrumb">
@@ -663,258 +634,323 @@
             </div>
         </div>
     </div>
+    <section class="intro-ferreteria">
+
+        <div class="intro-box">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h1>Ferretería Profesional</h1>
+
+            <p>
+                Disponemos de una amplia gama de herramientas,
+                accesorios, fijaciones y consumibles para
+                construcción, impermeabilización y reformas.
+            </p>
+
+        </div>
+
+    </section>
+
+
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <div class="container-custom">
 
-        <div class="container-custom">
+        <!-- INTRO -->
+        <section class="intro-ferreteria">
 
-            <h1 class="titulo-proveedor">
-                Productos de Brochas
-            </h1>
-            <section class="seccion-productos">
-                <h2>Catálogo Completo de Brochas</h2>
+            <div class="intro-box">
 
+                <i class="fa-solid fa-screwdriver-wrench"></i>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Brocha Canaria 75 mm</h5>
-                        </div>
-                    </div>
-                </div>
+                <h1>Ferretería Profesional</h1>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Brocha 30 mm</h5>
-                        </div>
-                    </div>
-                </div>
+                <p>
+                    Disponemos de una amplia selección de herramientas,
+                    accesorios, fijaciones, consumibles y materiales auxiliares
+                    para construcción, impermeabilización, reformas y obra nueva.
+                </p>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Brocha 24 mm</h5>
-                        </div>
-                    </div>
-                </div>
+            </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Brocha 18 mm</h5>
-                        </div>
+        </section>
+
+        <!-- CATEGORÍAS -->
+        <section class="mb-5">
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="categoria-card">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h3>Brochas</h3>
+                        <p>Brochas para pintura, imprimaciones y tratamientos.</p>
+                        <span>5 referencias</span>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Brocha 12 mm</h5>
-                        </div>
-                    </div>
-                </div>
-                <h1 class="titulo-proveedor">
-                    Productos de Discos
-                </h1>
-                <h2>Catálogo Completo de Discos</h2>
-
-
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Discos Hierro 230</h5>
-                        </div>
+                <div class="col-md-4">
+                    <div class="categoria-card">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h3>Discos</h3>
+                        <p>Discos de corte para hierro y piedra.</p>
+                        <span>4 referencias</span>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Discos de Piedra 230</h5>
-                        </div>
+                <div class="col-md-4">
+                    <div class="categoria-card">
+                        <i class="fa-solid fa-toolbox"></i>
+                        <h3>Accesorios</h3>
+                        <p>Fijaciones, cintas, cánulas y consumibles.</p>
+                        <span>Más de 20 referencias</span>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Discos de Hierro 115</h5>
-                        </div>
+            </div>
+
+        </section>
+
+        <!-- BROCHAS -->
+        <section class="catalogo-seccion">
+
+            <h2>Brochas</h2>
+
+            <div class="row g-4">
+
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha Canaria</h5>
+                        <p>75 mm</p>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Discos de Piedra 115</h5>
-                        </div>
-                    </div>
-                </div>
-                <h1 class="titulo-proveedor">
-                    Productos Varios
-                </h1>
-                <h2>Tamiz</h2>
-
-
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Tamiz Taco Químico 12 mm x 60 mm</h5>
-                        </div>
-                    </div>
-                </div>
-                <h2>Cánulas</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cánula Mezcladora para Taco Químico</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cánulas para Sacos</h5>
-                        </div>
-                    </div>
-                </div>
-                <h2>Pistólas</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Pistóla Silicona</h5>
-                        </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>30 mm</p>
                     </div>
                 </div>
 
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Pistóla Metálica Poliuretano</h5>
-                        </div>
-                    </div>
-                </div>
-                <h2>Tacos</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Taco Clavo C-8</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Taco Golpeo 6 cm x 35 mm</h5>
-                        </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>24 mm</p>
                     </div>
                 </div>
 
-                <h2>Bandas</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Banda Butílica</h5>
-                            <p>
-                                <li>
-                                    10 cm
-                                </li>
-                                <li>
-                                    20 cm
-                                </li>
-                                <li>
-                                    30 cm
-                                </li>
-                            </p>
-                        </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>18 mm</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-4 col-sm-6">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>12 mm</p>
                     </div>
                 </div>
 
-                <h2>Arandelas</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Arandelas con Neopreno</h5>
-                        </div>
+            </div>
+
+        </section>
+
+        <!-- DISCOS -->
+        <section class="catalogo-seccion">
+
+            <h2>Discos</h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-3">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Hierro</h5>
+                        <p>230 mm</p>
                     </div>
                 </div>
 
-                <h2>Tornillos</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Tornillos Auto-Taladrantes</h5>
-                        </div>
+                <div class="col-md-3">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Piedra</h5>
+                        <p>230 mm</p>
                     </div>
                 </div>
 
-                <h2>Cintas</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cinta de Aluminio. Rollo de 45 m x 48 mm </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cinta de Carrocero</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Cinta Americana</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Precinto</h5>
-                        </div>
+                <div class="col-md-3">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Hierro</h5>
+                        <p>115 mm</p>
                     </div>
                 </div>
 
-                <h2>Recambios</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Recambio Polvo Trazador</h5>
-                        </div>
+                <div class="col-md-3">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Piedra</h5>
+                        <p>115 mm</p>
                     </div>
                 </div>
 
-                <h2>Fisación</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Fisación Drentex</h5>
-                        </div>
+            </div>
+
+        </section>
+
+        <!-- PRODUCTOS VARIOS -->
+        <section class="catalogo-seccion">
+
+            <h2>Accesorios y Complementos</h2>
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Taco Químico</h5>
+                        <p>Tamiz 12 x 60 mm</p>
                     </div>
                 </div>
-                <h2>Rollos</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Rollos de cartón</h5>
-                            <p>
-                                <li>
-                                    0.9 x 0.45
-                                </li>
-                                <li>
-                                    0.9 x 25
-                                </li>
-                                <li>
-                                    100 x 1
-                                </li>
-                            </p>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Cánula</h5>
+                        <p>Cánula Mezcladora para Taco Químico</p>
                     </div>
                 </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Cánula</h5>
+                        <p>Cánulas para Sacos</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Tacos</h5>
+                        <p>Taco Clavo C-8</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Tacos</h5>
+                        <p>Taco Golpeo 6 cm x 35 mm</p>
+                    </div>
+                </div>
+
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Pistola Silicona</h5>
+                        <p>Aplicación profesional</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <h5>Pistola Poliuretano</h5>
+                        <p>Metálica profesional</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-link"></i>
+                        <h5>Banda Butílica</h5>
+                        <p>10 cm · 20 cm · 30 cm</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-circle"></i>
+                        <h5>Arandelas Neopreno</h5>
+                        <p>Varios formatos</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Tornillos Autotaladrantes</h5>
+                        <p>Diversas medidas</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Cintas</h5>
+                        <p>Cinta de Aluminio. Rollo de 45 m x 48 mm</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Cintas</h5>
+                        <p>Cinta de Carrocero</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Cintas</h5>
+                        <p>Cinta Americana</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Precinto</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Recambios</h5>
+                        <p>Recambio Polvo Trazador</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Fijación</h5>
+                        <p>Fijación Drentex</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Fijación</h5>
+                        <p>Fijación Drentex</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Rollos</h5>
+                        <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
+                    </div>
+                </div>
+                                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Rollos</h5>
+                        <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
+                    </div>
+                </div>
+
+
 
 
                 <h2>Plásticos</h2>
@@ -977,31 +1013,104 @@
                     </div>
                 </div>
 
-                <div class="aviso-mas-articulos">
-                    <div class="aviso-icono">
-                        <i class="fa-solid fa-boxes-stacking"></i>
-                    </div>
-                    <div>
-                        <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                        <p>Este catálogo muestra una selección de nuestros productos más habituales en tienda, pero
-                            disponemos de <strong>muchos más artículos</strong> en catálogo que te podemos pedir
-                            directamente. Consúltanos sin compromiso y te asesoramos sobre el producto más adecuado para
-                            tu proyecto.</p>
-                        <p class="mt-2">
-                            <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                            <i class="fa-solid fa-envelope me-1"></i> <a
-                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                        </p>
+        </section>
+
+        <!-- VENTAJAS -->
+        <section class="mt-5">
+
+            <div class="row g-4">
+
+                <div class="col-md-4">
+                    <div class="ventaja-box">
+                        <i class="fa-solid fa-boxes-stacked"></i>
+                        <h5>Stock Habitual</h5>
                     </div>
                 </div>
 
-            </section>
+                <div class="col-md-4">
+                    <div class="ventaja-box">
+                        <i class="fa-solid fa-truck-fast"></i>
+                        <h5>Suministro Rápido</h5>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="ventaja-box">
+                        <i class="fa-solid fa-user-gear"></i>
+                        <h5>Asesoramiento Técnico</h5>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- AVISO -->
+        <div class="aviso-mas-articulos mt-5">
+
+            <div class="aviso-icono">
+                <i class="fa-solid fa-boxes-stacking"></i>
+            </div>
+
+            <div>
+
+                <h4>
+                    ¿No encuentras lo que buscas?
+                </h4>
+
+                <p>
+                    Disponemos de muchos más artículos de ferretería
+                    bajo pedido. Consúltanos sin compromiso y te
+                    ayudaremos a encontrar la solución más adecuada.
+                </p>
+
+                <p class="mt-2">
+
+                    <i class="fa-solid fa-phone me-1"></i>
+                    <strong>925 23 34 54</strong>
+
+                    &nbsp;|&nbsp;
+
+                    <i class="fa-solid fa-envelope me-1"></i>
+
+                    <a href="mailto:almacen@olivillatres.com">
+                        almacen@olivillatres.com
+                    </a>
+
+                </p>
+
+            </div>
 
         </div>
 
     </div>
 
-     <!-- ===== FOOTER ===== -->
+    </div>
+    <div class="row g-4 mt-5">
+
+        <div class="col-md-4">
+            <div class="ventaja-box">
+                <i class="fa-solid fa-boxes-stacked"></i>
+                <h5>Stock habitual</h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="ventaja-box">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h5>Suministro rápido</h5>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="ventaja-box">
+                <i class="fa-solid fa-user-gear"></i>
+                <h5>Asesoramiento técnico</h5>
+            </div>
+        </div>
+
+    </div>
+    <!-- ===== FOOTER ===== -->
     <footer class="footer-main">
         <div class="container">
             <div class="row g-4 pb-4">
