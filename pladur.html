@@ -60,6 +60,32 @@
             height: 12px;
             background-color: #5a4878;
         }
+        @media (max-width: 768px) {
+            .topbar {
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                gap: 8px;
+                padding: 10px;
+            }
+
+            .topbar-divider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .topbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .topbar-divider {
+                display: none;
+            }
+        }
 
         /* ========== NAVBAR ========== */
         .navbar-custom {
