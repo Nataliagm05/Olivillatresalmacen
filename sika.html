@@ -60,6 +60,7 @@
             height: 12px;
             background-color: #5a4878;
         }
+
         @media (max-width: 768px) {
             .topbar {
                 flex-direction: column;
@@ -86,6 +87,7 @@
                 display: none;
             }
         }
+
         /* ========== NAVBAR ========== */
         .navbar-custom {
             background-color: #4a3b68 !important;
@@ -415,7 +417,7 @@
 
         /* ========== CATÁLOGO ========== */
         .seccion-catalogo {
-            padding: 0 0 60px;
+            margin:20px;
         }
 
         .catalogo-heading {
@@ -590,6 +592,7 @@
             align-items: flex-start;
             gap: 24px;
             box-shadow: 0 8px 30px rgba(74, 59, 104, 0.25);
+            margin-bottom: 60px;
         }
 
         .aviso-mas-articulos .aviso-icono {
@@ -795,11 +798,6 @@
                 <span>›</span>
                 Sika
             </div>
-            <div class="proveedor-logo-wrap">
-                <img src="https://sika.scene7.com/is/content/sika/Sika_ClaimU_pos_rgb" alt="Logo Sika">
-            </div>
-            <h1>Productos Sika</h1>
-            <p>Impermeabilizantes, adhesivos, morteros y soluciones para construcción y rehabilitación</p>
         </div>
     </div>
 
@@ -807,7 +805,7 @@
     <main class="container" style="flex: 1;">
         <h1 class="titulo-proveedor">
             <img src="https://sika.scene7.com/is/content/sika/Sika_ClaimU_pos_rgb" alt="Logo Ursa"
-                style="height: 50px; width: auto; vertical-align: middle; margin-right: 12px;">
+                style="height: 100px; width: auto; vertical-align: middle; margin-right: 12px;">
             Productos de Sika
         </h1>
         <!-- CARRUSEL -->
@@ -1762,15 +1760,15 @@
 
                 <div class="col">
                     <div class="card-producto">
-                        <div class="img-wrap"><img
-                                src=""
-                                alt="SikaTop 209 Plus ES"></div>
+                        <div class="img-wrap"><img src="" alt="SikaTop 209 Plus ES"></div>
                         <div class="card-body">
                             <h5 class="card-title">SikaTop 209 Plus ES</h5>
                             <p class="card-desc">
-                                <span class="card-desc-short">SikaTop®-209 Plus ES es un morteros de impermeabilización, flexible y de 2 componentes, a base de materiales cementosos suplementarios, con áridos y aditivos seleccionados.</span>
+                                <span class="card-desc-short">SikaTop®-209 Plus ES es un morteros de impermeabilización,
+                                    flexible y de 2 componentes, a base de materiales cementosos suplementarios, con
+                                    áridos y aditivos seleccionados.</span>
                             </p>
-                                                        <div class="specs-wrap card-desc-extra">
+                            <div class="specs-wrap card-desc-extra">
                                 <span class="spec-badge">Gris</span>
                                 <span class="spec-badge">Lote 32 kg</span>
                             </div>
@@ -1780,25 +1778,25 @@
 
             </div>
 
-            <!-- AVISO MÁS ARTÍCULOS -->
-            <div class="aviso-mas-articulos">
-                <div class="aviso-icono">
-                    <i class="fa-solid fa-boxes-stacking"></i>
-                </div>
-                <div>
-                    <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                    <p>Este catálogo muestra una selección de nuestros productos Sika más habituales en tienda, pero
-                        disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
-                        sin compromiso.</p>
-                    <p class="mt-2">
-                        <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                        <i class="fa-solid fa-envelope me-1"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </p>
-                </div>
-            </div>
-        </section>
 
+        </section>
+        <!-- AVISO MÁS ARTÍCULOS -->
+        <div class="aviso-mas-articulos">
+            <div class="aviso-icono">
+                <i class="fa-solid fa-boxes-stacking"></i>
+            </div>
+            <div>
+                <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
+                <p>Este catálogo muestra una selección de nuestros productos Sika más habituales en tienda, pero
+                    disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
+                    sin compromiso.</p>
+                <p class="mt-2">
+                    <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
+                    <i class="fa-solid fa-envelope me-1"></i>
+                    <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
+                </p>
+            </div>
+        </div>
     </main>
 
     <!-- ===== FOOTER ===== -->
@@ -1807,7 +1805,7 @@
             <div class="row g-4 pb-4">
                 <div class="col-lg-4 col-md-6 footer-brand">
                     <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:55px; filter:brightness(0) invert(1); opacity:0.85; margin-bottom:10px;">
+                        style="height:80px; margin-bottom:10px;">
                     <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
                         Asesoramiento técnico especializado.</p>
                 </div>

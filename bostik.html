@@ -60,7 +60,8 @@
             height: 12px;
             background-color: #5a4878;
         }
-                @media (max-width: 768px) {
+
+        @media (max-width: 768px) {
             .topbar {
                 flex-direction: column;
                 justify-content: center;
@@ -426,7 +427,7 @@
 
         /* ========== SECCIÓN CATÁLOGO ========== */
         .seccion-catalogo {
-            padding: 0 0 60px;
+            margin: 20px;
         }
 
         .catalogo-heading {
@@ -582,6 +583,7 @@
             align-items: flex-start;
             gap: 24px;
             box-shadow: 0 8px 30px rgba(74, 59, 104, 0.25);
+            margin-bottom: 60px;
         }
 
         .aviso-mas-articulos .aviso-icono {
@@ -793,8 +795,8 @@
     <!-- ===== CONTENIDO ===== -->
     <main class="container" style="padding-top: 0; flex: 1;">
         <h1 class="titulo-proveedor">
-            <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/images/Logos/Bostik_Logo_Header.svg" alt="Logo Bostik"
-                style="height: 50px; width: auto; vertical-align: middle; margin-right: 12px;">
+            <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/images/Logos/Bostik_Logo_Header.svg"
+                alt="Logo Bostik" style="height: 100px; width: auto; vertical-align: middle; margin-right: 12px;">
             Productos de Bostik
         </h1>
         <!-- CARRUSEL -->
@@ -1129,25 +1131,25 @@
 
             </div>
 
-            <!-- AVISO MÁS ARTÍCULOS -->
-            <div class="aviso-mas-articulos">
-                <div class="aviso-icono">
-                    <i class="fa-solid fa-boxes-stacking"></i>
-                </div>
-                <div>
-                    <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                    <p>Este catálogo muestra una selección de nuestros productos Bostik más habituales en tienda, pero
-                        disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
-                        sin compromiso.</p>
-                    <p class="mt-2">
-                        <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                        <i class="fa-solid fa-envelope me-1"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </p>
-                </div>
-            </div>
-        </section>
 
+        </section>
+        <!-- AVISO MÁS ARTÍCULOS -->
+        <div class="aviso-mas-articulos">
+            <div class="aviso-icono">
+                <i class="fa-solid fa-boxes-stacking"></i>
+            </div>
+            <div>
+                <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
+                <p>Este catálogo muestra una selección de nuestros productos Bostik más habituales en tienda, pero
+                    disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
+                    sin compromiso.</p>
+                <p class="mt-2">
+                    <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
+                    <i class="fa-solid fa-envelope me-1"></i>
+                    <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
+                </p>
+            </div>
+        </div>
     </main>
 
     <!-- ===== FOOTER ===== -->
@@ -1156,7 +1158,7 @@
             <div class="row g-4 pb-4">
                 <div class="col-lg-4 col-md-6 footer-brand">
                     <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:55px; filter:brightness(0) invert(1); opacity:0.85; margin-bottom:10px;">
+                        style="height:80px; margin-bottom:10px;">
                     <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
                         Asesoramiento técnico especializado.</p>
                 </div>
