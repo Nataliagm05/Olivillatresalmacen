@@ -373,6 +373,9 @@
             text-align: center;
             margin-bottom: 50px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-top: 30px;
         }
 
         .intro-box i {
@@ -389,6 +392,8 @@
             height: 100%;
             box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
             transition: .3s;
+            margin-left: 15px;
+            margin-right: 15px;
         }
 
         .categoria-card:hover {
@@ -430,6 +435,8 @@
             height: 100%;
             box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
             transition: .3s;
+            margin-left: 15px;
+            margin-right: 15px;
         }
 
         .card-producto-simple:hover {
@@ -453,12 +460,56 @@
             padding: 30px;
             text-align: center;
             box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
+            margin-bottom: 30px;
+            margin-left: 15px;
         }
 
         .ventaja-box i {
             font-size: 2rem;
             color: #b53987;
             margin-bottom: 15px;
+        }
+        /* ========== AVISO MÁS ARTÍCULOS ========== */
+        .aviso-mas-articulos {
+            margin: 48px;
+            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+            border-radius: 16px;
+            padding: 32px 36px;
+            color: #ffffff;
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            box-shadow: 0 8px 30px rgba(74, 59, 104, 0.25);
+        }
+
+        .aviso-mas-articulos .aviso-icono {
+            font-size: 2.5rem;
+            color: #f386cc;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .aviso-mas-articulos h4 {
+            margin: 0 0 8px;
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .aviso-mas-articulos p {
+            margin: 0 0 6px;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.65;
+        }
+
+        .aviso-mas-articulos a {
+            color: #f386cc;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .aviso-mas-articulos a:hover {
+            text-decoration: underline;
         }
 
         /* ========== FOOTER ========== */
@@ -634,23 +685,6 @@
             </div>
         </div>
     </div>
-    <section class="intro-ferreteria">
-
-        <div class="intro-box">
-
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-
-            <h1>Ferretería Profesional</h1>
-
-            <p>
-                Disponemos de una amplia gama de herramientas,
-                accesorios, fijaciones y consumibles para
-                construcción, impermeabilización y reformas.
-            </p>
-
-        </div>
-
-    </section>
 
 
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
@@ -889,203 +923,159 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-tape"></i>
                         <h5>Cintas</h5>
                         <p>Cinta de Aluminio. Rollo de 45 m x 48 mm</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-tape"></i>
                         <h5>Cintas</h5>
                         <p>Cinta de Carrocero</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-tape"></i>
                         <h5>Cintas</h5>
                         <p>Cinta Americana</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-box"></i>
                         <h5>Precinto</h5>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-fill-drip"></i>
                         <h5>Recambios</h5>
                         <p>Recambio Polvo Trazador</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-wrench"></i>
                         <h5>Fijación</h5>
                         <p>Fijación Drentex</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-wrench"></i>
                         <h5>Fijación</h5>
                         <p>Fijación Drentex</p>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-scroll"></i>
                         <h5>Rollos</h5>
                         <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
                     </div>
                 </div>
-                                <div class="col-md-4">
+
+                <div class="col-md-4">
                     <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
+                        <i class="fa-solid fa-scroll"></i>
                         <h5>Rollos</h5>
                         <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
                     </div>
                 </div>
 
-
-
-
-                <h2>Plásticos</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Plástico de Burbuja de 150 x 1.2</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Plástico Sopera</h5>
-                            <p>
-                                <li>
-                                    400 galgos: rollo de 50 x 4
-                                </li>
-                                <li>
-                                    600 galgos: rollo de 50 x 4
-                                </li>
-                                <li>
-                                    400 galgos: virgen rollo de 50 x 4
-                                </li>
-                            </p>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <h5>Plásticos</h5>
+                        <p>Plástico de Burbuja. 150 x 1.2</p>
                     </div>
                 </div>
 
-                <h2>Fomper</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Fomper 3mm. Rollo de 180 x 1.6</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Fomper 5mm. Rollo de 160 x 1.6</h5>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plásticos</h5>
+                        <p>400 galgos: rollo de 50 x 4</p>
                     </div>
                 </div>
 
-
-                <h2>Rodillos</h2>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Rodillo - 22</h5>
-                        </div>
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plásticos</h5>
+                        <p>600 galgos: rollo de 50 x 4</p>
                     </div>
                 </div>
-                <div class="col">
-                    <div class="card card-producto">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Rodillo - 18</h5>
-                        </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plásticos</h5>
+                        <p>400 galgos: virgen rollo de 50 x 4</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h5>Fomper</h5>
+                        <p>Fomper 3 mm. Rollo de 180 x 1.6</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h5>Fomper</h5>
+                        <p>Fomper 5 mm. Rollo de 160 x 1.6</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <h5>Rodillos</h5>
+                        <p>Rodillo - 22</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card-producto-simple">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <h5>Rodillos</h5>
+                        <p>Rodillo - 18</p>
                     </div>
                 </div>
 
         </section>
 
-        <!-- VENTAJAS -->
-        <section class="mt-5">
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-                    <div class="ventaja-box">
-                        <i class="fa-solid fa-boxes-stacked"></i>
-                        <h5>Stock Habitual</h5>
-                    </div>
+            <!-- AVISO -->
+        <div class="aviso-mas-articulos">
+                <div class="aviso-icono">
+                    <i class="fa-solid fa-boxes-stacking"></i>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="ventaja-box">
-                        <i class="fa-solid fa-truck-fast"></i>
-                        <h5>Suministro Rápido</h5>
-                    </div>
+                <div>
+                    <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
+                    <p>Este catálogo muestra una selección de nuestros productos Ferretería más habituales en tienda, pero
+                        disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
+                        sin compromiso.</p>
+                    <p class="mt-2">
+                        <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
+                        <i class="fa-solid fa-envelope me-1"></i>
+                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
+                    </p>
                 </div>
-
-                <div class="col-md-4">
-                    <div class="ventaja-box">
-                        <i class="fa-solid fa-user-gear"></i>
-                        <h5>Asesoramiento Técnico</h5>
-                    </div>
-                </div>
-
             </div>
 
-        </section>
-
-        <!-- AVISO -->
-        <div class="aviso-mas-articulos mt-5">
-
-            <div class="aviso-icono">
-                <i class="fa-solid fa-boxes-stacking"></i>
-            </div>
-
-            <div>
-
-                <h4>
-                    ¿No encuentras lo que buscas?
-                </h4>
-
-                <p>
-                    Disponemos de muchos más artículos de ferretería
-                    bajo pedido. Consúltanos sin compromiso y te
-                    ayudaremos a encontrar la solución más adecuada.
-                </p>
-
-                <p class="mt-2">
-
-                    <i class="fa-solid fa-phone me-1"></i>
-                    <strong>925 23 34 54</strong>
-
-                    &nbsp;|&nbsp;
-
-                    <i class="fa-solid fa-envelope me-1"></i>
-
-                    <a href="mailto:almacen@olivillatres.com">
-                        almacen@olivillatres.com
-                    </a>
-
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    </div>
     <div class="row g-4 mt-5">
 
         <div class="col-md-4">
@@ -1108,6 +1098,9 @@
                 <h5>Asesoramiento técnico</h5>
             </div>
         </div>
+
+    </div>
+
 
     </div>
     <!-- ===== FOOTER ===== -->
