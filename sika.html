@@ -417,7 +417,7 @@
 
         /* ========== CATÁLOGO ========== */
         .seccion-catalogo {
-            margin:20px;
+            margin: 20px;
         }
 
         .catalogo-heading {
@@ -506,6 +506,20 @@
             display: block;
         }
 
+        /* Oculta el contenido extra por defecto */
+        .card-desc-extra {
+            display: none !important;
+        }
+
+        /* Muestra el contenido cuando se añade la clase .visible */
+        .card-desc-extra.visible {
+            display: block !important;
+        }
+
+        /* Si quieres que los badges mantengan su diseño flex al mostrarse */
+        div.specs-wrap.card-desc-extra.visible {
+            display: flex !important;
+        }
 
 
         .btn-ver-mas {
@@ -1706,8 +1720,7 @@
         <div class="container">
             <div class="row g-4 pb-4">
                 <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:80px; margin-bottom:10px;">
+                    <img src="logonuevo2.png" alt="Olivilla Tres" style="height:80px; margin-bottom:10px;">
                     <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
                         Asesoramiento técnico especializado.</p>
                 </div>
