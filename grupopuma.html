@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Policarbonatos y Metacrilatos — Olivilla Tres</title>
+    <title>Grupo Puma — Olivilla Tres</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
@@ -205,15 +205,10 @@
             transition: all .15s;
         }
 
-        .dropdown-item.active {
-            background-color: #4a3b68;
-            color: #f7f9fa;
-        }
-
-
-        .navbar-custom .dropdown-item:hover {
-            color: #f7f9fa !important;
-            background: #b53987 !important;
+        .navbar-custom .dropdown-item:hover,
+        .navbar-custom .dropdown-item.active {
+            color: var(--accent);
+            background: #f7f0f5;
             padding-left: 24px;
         }
 
@@ -329,6 +324,20 @@
             margin-bottom: 20px;
         }
 
+        .hero-logo-wrap {
+            border-radius: 12px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+        }
+
+        .hero-logo-wrap img {
+            height: 38px;
+            width: auto;
+        }
+
         .hero-title {
             font-size: clamp(2rem, 5vw, 3.4rem);
             font-weight: 900;
@@ -349,7 +358,7 @@
         .hero-desc {
             font-size: 1rem;
             color: rgba(255, 255, 255, 0.65);
-            max-width: 480px;
+            max-width: 520px;
             line-height: 1.7;
         }
 
@@ -433,11 +442,22 @@
             background: #ffffff;
             border: 1px solid rgba(74, 59, 104, 0.12);
             border-radius: 14px;
-            padding: 24px;
+            padding: 0;
             transition: border-color .25s, transform .25s, box-shadow .25s;
             position: relative;
             overflow: hidden;
             box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-desc-extra {
+            display: none;
+            margin-top: 4px;
+        }
+
+        .card-desc-extra.visible {
+            display: block;
         }
 
         .pcard::before {
@@ -450,6 +470,7 @@
             background: linear-gradient(90deg, var(--accent), transparent);
             opacity: 0;
             transition: opacity .25s;
+            z-index: 2;
         }
 
         .pcard:hover {
@@ -460,6 +481,30 @@
 
         .pcard:hover::before {
             opacity: 1;
+        }
+
+        .pcard-img {
+            background: #f7f0f5;
+            border-bottom: 1px solid rgba(181, 57, 135, .12);
+            height: 168px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            flex-shrink: 0;
+        }
+
+        .pcard-img img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
+        }
+
+        .pcard-body {
+            padding: 22px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
         .pcard-material {
@@ -475,8 +520,16 @@
             font-size: 1rem;
             font-weight: 700;
             color: #4a3b68;
-            margin-bottom: 18px;
+            margin-bottom: 10px;
             line-height: 1.35;
+        }
+
+        .pcard-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
         }
 
         .dims-list {
@@ -532,6 +585,51 @@
             font-size: 11px;
         }
 
+        .specs-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        .spec-pill {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a3b68;
+            background: #f7f0f5;
+            border: 1px solid rgba(181, 57, 135, .18);
+            border-radius: 20px;
+            padding: 4px 10px;
+        }
+
+        .btn-ver-mas {
+            background: none;
+            border: none;
+            color: #b53987;
+            font-size: 0.78rem;
+            font-weight: 600;
+            padding: 4px 0 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: color 0.2s;
+            margin-top: 4px;
+        }
+
+        .btn-ver-mas:hover {
+            color: #922f6d;
+        }
+
+        .btn-ver-mas i {
+            font-size: 0.7rem;
+            transition: transform 0.2s;
+        }
+
+        .btn-ver-mas.abierto i {
+            transform: rotate(180deg);
+        }
+
         /* CTA BANNER */
         .cta-banner {
             background: linear-gradient(135deg, #4a3b68, #6b4f8f);
@@ -581,7 +679,7 @@
             font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.65);
             margin-bottom: 16px;
-            max-width: 520px;
+            max-width: 560px;
             line-height: 1.65;
         }
 
@@ -777,21 +875,24 @@
         <div class="container hero-inner">
             <div class="breadcrumb-custom">
                 <a href="./index.html">Inicio</a><span>›</span>
-                <a href="#">Catálogo</a><span>›</span>
+                <a href="#">Proveedores</a><span>›</span>
                 Grupo Puma
             </div>
-            <span class="hero-eyebrow"><i class="fa-solid fa-cube"></i> Morteros</span>
-            <h1 class="hero-title">Policarbonatos,<br>Poliéster &amp; <em>Metacrilatos</em></h1>
-            <p class="hero-desc">Láminas y planchas técnicas para cerramientos, cubiertas y proyectos de construcción.
-                Disponibles en múltiples medidas.</p>
+            <div class="hero-logo-wrap">
+                <img src="https://www.grupopuma.com/assets/public/img/logo.png" alt="Grupo Puma">
+            </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-trowel-bricks"></i> Morteros y soluciones técnicas</span>
+            <h1 class="hero-title">Adhesivos, Morteros<br>&amp; Sistemas de <em>Aislamiento</em></h1>
+            <p class="hero-desc">Gama de Grupo Puma para colocación, impermeabilización, reparación y
+                revestimiento. Productos de alta calidad fabricados en España.</p>
             <div class="hero-stats">
                 <div>
-                    <div class="stat-num">3</div>
+                    <div class="stat-num">6</div>
                     <div class="stat-label">Familias de producto</div>
                 </div>
                 <div>
-                    <div class="stat-num">7+</div>
-                    <div class="stat-label">Medidas disponibles</div>
+                    <div class="stat-num">10+</div>
+                    <div class="stat-label">Referencias en catálogo</div>
                 </div>
                 <div>
                     <div class="stat-num">Toledo</div>
@@ -805,85 +906,325 @@
     <main>
         <div class="container">
 
-            <!-- 01 POLICARBONATO -->
+            <!-- 01 Linea Pegoland Profesional -->
             <div class="section-header">
                 <span class="section-tag">01</span>
-                <h2 class="section-title">Morcem</h2>
+                <h2 class="section-title">Linea Pegoland Profesional</h2>
                 <div class="section-line"></div>
             </div>
             <div class="products-grid">
+
                 <div class="pcard">
-                    <div class="pcard-material">Policarbonato</div>
-                    <h3 class="pcard-name">Policarbonato Transparente</h3>
-                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 × 2,1
-                            m</span></div>
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/839ef174ea212ce0b855e32311a69b83.png_2.png"
+                            alt="Pegoland Profesional Flex C2 TE S1">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Linea Pegoland Profesional</div>
+                        <h3 class="pcard-name">Pegoland® Profesional Flex C2 TE S1 002</h3>
+                        <p class="pcard-desc">Adhesivo cementoso de ligantes mixtos con excelente trabajabilidad con
+                            baja emisión de polvo, baja emision de COVs y gran blancura, dotado de flexibilidad y alta
+                            adherencia,
+                            <span class="card-desc-extra">con deslizamiento reducido y tiempo abierto ampliado, para la
+                                colocación de pavimentos y revestimientos, interiores y exteriores. Especialmente
+                                recomendado para la colocación de fachadas, pavimentos de grandes superficies y suelos
+                                de calefacción radiante. Apto para soportes de yeso o anhidrita.</span>
+                        </p>
+                        <div class="specs-row">
+                            <span class="spec-pill">Blanco</span>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/839ef174ea212ce0b855e32311a69b83.png_4.jpg"
+                            alt="Pegoland Profesional Flex C2 TE S1">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Linea Pegoland Profesional</div>
+                        <h3 class="pcard-name">Pegoland® Profesional Flex C2 TE S1</h3>
+                        <p class="pcard-desc">Adhesivo de ligantes mixtos, flexible y de alta adherencia, con
+                            deslizamiento reducido y tiempo abierto ampliado. Apto para soportes de yeso o anhidrita.
+                        </p>
+                        <div class="specs-row">
+                            <span class="spec-pill">002</span>
+                            <span class="spec-pill">25 kg</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="pcard">
-                    <div class="pcard-material">Policarbonato</div>
-                    <h3 class="pcard-name">Policarbonato Blanco</h3>
-                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 × 2,1
-                            m</span></div>
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/1_1_f4954593ef4160608bb310e9141dc10f.png_2.png"
+                            alt="Pegoland® CE">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Linea Pegoland Profesional</div>
+                        <h3 class="pcard-name">Pegoland® CE</h3>
+                        <p class="pcard-desc">Adhesivo para azulejos a base de cemento, especialmente formulado por su delgadez, plasticidad y resistencia al asentamiento, para la colocación de azulejos de suelo y pared. <span class="card-desc-extra">Adhesivo para azulejos a base de cemento, especialmente formulado por su delgadez, plasticidad y resistencia al asentamiento, para la colocación de azulejos de suelo y pared. Ideal para la unión de azulejos cerámicos con absorción media a alta. Este adhesivo resistente al asentamiento ofrece una excelente adherencia inicial. Se distingue por su delgadez y alta plasticidad. Ideal para sustratos a base de cemento.</span>
+                        </p>
+                        <div class="specs-row">
+                            <span class="spec-pill">161</span>
+                            <span class="spec-pill">25 kg</span>
+                        </div>
+                        <button class="btn-ver-mas" onclick="toggleExtra(this)">Ver más <i
+                                class="fa-solid fa-chevron-down"></i></button>
+                    </div>
                 </div>
+
+
+
             </div>
 
-            <!-- 02 POLIÉSTER -->
+            <!-- 02 Morteros de revestimiento -->
             <div class="section-header">
                 <span class="section-tag">02</span>
-                <h2 class="section-title">Poliéster</h2>
+                <h2 class="section-title">Morteros de revestimiento</h2>
                 <div class="section-line"></div>
             </div>
             <div class="products-grid">
+
                 <div class="pcard">
-                    <div class="pcard-material">Poliéster</div>
-                    <h3 class="pcard-name">Onda Pequeña</h3>
-                    <div class="dims-list">
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,15 m</span></div>
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,15 m</span></div>
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/26a7f965b9e199fff43f6ed565562b12.png_2.png"
+                            alt="Morcemsec® Multiusos GP CSIV W0">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Morteros de revestimiento</div>
+                        <h3 class="pcard-name">Morcemsec® Multiusos GP CSIV W0</h3>
+                        <p class="pcard-desc">Mortero seco para enlucidos y obras de mampostería en general.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">690</span>
+                            <span class="spec-pill">437</span>
+                            <span class="spec-pill">Blanco</span>
+                            <span class="spec-pill">Gris</span>
+                            <span class="spec-pill">25kg</span>
+                        </div>
                     </div>
                 </div>
                 <div class="pcard">
-                    <div class="pcard-material">Poliéster</div>
-                    <h3 class="pcard-name">Onda Grande</h3>
-                    <div class="dims-list">
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,10 m</span></div>
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,10 m</span></div>
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/41543966c6608110b58ac89092ce2d53.png_2.png"
+                            alt="Morcemsec® Proyectable Interior GP CSIII W0">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Morteros de revestimiento</div>
+                        <h3 class="pcard-name">Morcemsec® Proyectable Interior GP CSIII W0</h3>
+                        <p class="pcard-desc">Mortero seco especialmente aditivado. Dotado de la fluidez y el tiempo
+                            necesarios para su aplicación con máquina de proyectar morteros.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">512</span>
+                            <span class="spec-pill">Gris</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- 03 Caucho Acrílico -->
+            <div class="section-header">
+                <span class="section-tag">03</span>
+                <h2 class="section-title">Caucho Acrílico</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/6fb16aab7efa2b5c309e270208e1221a.png_2.png"
+                            alt="Pumaflex Pu Hybrid">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Caucho Acrílico</div>
+                        <h3 class="pcard-name">Pumaflex® Pu Hybrid</h3>
+                        <p class="pcard-desc">Membrana impermeabilizante de poliuretano para cubiertas y terrazas.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">587</span>
+                            <span class="spec-pill">4l</span>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <!-- 04 Rehabilitación -->
+            <div class="section-header">
+                <span class="section-tag">04</span>
+                <h2 class="section-title">Rehabilitación</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/81184659cf1747120ea9fdf806eda03e.jpg_2.png"
+                            alt="Morcemrest Repair">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Rehabilitación</div>
+                        <h3 class="pcard-name">Morcemrest® Repair</h3>
+                        <p class="pcard-desc">Mortero de reparación para grandes espesores.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">729</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/9c0afa4d39a8a94b50dd48bab4fe4a10.png_2.png"
+                            alt="Morcem® Dry SF">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Rehabilitación</div>
+                        <h3 class="pcard-name">Morcem® Dry SF</h3>
+                        <p class="pcard-desc">Mortero impermeable para muros expuestos a la humedad.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">850</span>
+                            <span class="spec-pill">25kg</span>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/f332507b86257cfbdbf15dfc04102e75.png_2.png"
+                            alt="Morcem® Rápido R1">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Rehabilitación</div>
+                        <h3 class="pcard-name">Morcem® Rápido R1</h3>
+                        <p class="pcard-desc">Mortero rápido para albañilería.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">498</span>
+                            <span class="spec-pill">20kg</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/6f3c758ffe8eab3c15de68227fc1e04c.png_2.png"
+                            alt="Morcem® Dry Fix">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Rehabilitación</div>
+                        <h3 class="pcard-name">Morcem® Dry Fix</h3>
+                        <p class="pcard-desc">Mortero impermeabilizante para terrazas.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">501</span>
+                            <span class="spec-pill">20kg</span>
+                            <span class="spec-pill">Gris</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/2_33206ac654d90bfdf75bdc37791a6d85.png_2.png"
+                            alt="Morcem® Elastic PM">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Rehabilitación</div>
+                        <h3 class="pcard-name">Morcem® Elastic PM</h3>
+                        <p class="pcard-desc">Membrana de poliuretano monocomponente que produce una membrana aromática
+                            continua, elástica, completamente adherida al soporte, estanca y 100% impermeable,<span class="card-desc-extra"> cuyas
+                            propiedades la hacen excelente para su aplicación en todo tipo de superficies, ya sea en
+                            obra nueva o rehabilitación.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">148</span>
+                            <span class="spec-pill">6kg</span>
+                        </div>
+                        <button class="btn-ver-mas" onclick="toggleExtra(this)">Ver más <i
+                                class="fa-solid fa-chevron-down"></i></button>
                     </div>
                 </div>
             </div>
 
-            <!-- 03 METACRILATO -->
+            <!-- 05 Línea Cal -->
             <div class="section-header">
-                <span class="section-tag">03</span>
-                <h2 class="section-title">Metacrilato</h2>
+                <span class="section-tag">05</span>
+                <h2 class="section-title">Línea Cal</h2>
                 <div class="section-line"></div>
             </div>
             <div class="products-grid">
+
                 <div class="pcard">
-                    <div class="pcard-material">Metacrilato</div>
-                    <h3 class="pcard-name">Metacrilato Transparente</h3>
-                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>2 × 1,5
-                            m</span></div>
-                </div>
-                <div class="pcard">
-                    <div class="pcard-material">Metacrilato</div>
-                    <h3 class="pcard-name">Metacrilato Blanco</h3>
-                    <div class="dims-list">
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,5 m</span></div>
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,5 m</span></div>
-                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>5 × 1,5 m</span></div>
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/a3b7ccf7d12472a315121767c3db4a2d.png_2.png"
+                            alt="Morcemcril Siloxano">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Línea Cal</div>
+                        <h3 class="pcard-name">Morcem® Cal Base CR CSII W1</h3>
+                        <p class="pcard-desc">Mortero de revestimiento de cal hidráulica natural. Composición natural,
+                            altamente transpirable.</p>
+                        <div class="specs-row">
+                            <span class="spec-pill">434</span>
+                        </div>
                     </div>
                 </div>
+
+
             </div>
+
+            <!-- 06 Aditivos e imprimaciones -->
+            <div class="section-header">
+                <span class="section-tag">06</span>
+                <h2 class="section-title">Aditivos e imprimaciones</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://www.grupopuma.com/uploads/productos/media/24276faecfa1ab0d1cbaf000c49c591c.png_2.png"
+                            alt="Desmor">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Aditivos e imprimaciones</div>
+                        <h3 class="pcard-name">Desmor</h3>
+                        <p class="pcard-desc">Aditivo desincrustador de cemento, residuos de cola, yeso, pintura y
+                            estucados de cemento, para la limpieza de revestimientos y pavimentos de cerámica. <span class="card-desc-extra">Puede
+                            aplicarse directamente o diluído con agua. Mojar bien con agua la superficie a tratar,
+                            especialmente las juntas. Verter el producto y frotar fuertemente con un cepillo o
+                            estropajo. Después de eliminadas las manchas, lavar con abundante agua clara, con el fin de
+                            eliminar cualquier resto de producto. Las manchas sueltas se eliminan empapándolas y
+                            frotando con un trapo o estropajo bien mojado con el detergente desincrustador.</span></p>
+                        <div class="specs-row">
+                            <span class="spec-pill">5l</span>
+                        </div>
+                        <button class="btn-ver-mas" onclick="toggleExtra(this)">Ver más <i
+                                class="fa-solid fa-chevron-down"></i></button>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
 
             <!-- CTA -->
             <div class="cta-banner">
                 <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
                 <div class="cta-body">
                     <h3>¿No encuentras lo que necesitas?</h3>
-                    <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchos más formatos,
-                        espesores y colores. Consúltanos sin compromiso y te asesoramos para tu proyecto.</p>
+                    <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchas más referencias
+                        de
+                        las líneas Morcem, Pegoland, Traditerm, Paviland y Morcemrest que podemos pedir
+                        directamente.
+                        Consúltanos sin compromiso.</p>
                     <div class="cta-contacts">
-                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
+                                23 34
                                 54</a></div>
                         <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
                                 href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
@@ -892,6 +1233,7 @@
             </div>
 
         </div>
+
     </main>
 
     <!-- FOOTER -->
@@ -983,6 +1325,19 @@
             v.type = "text/javascript";
             s.parentNode.insertBefore(v, s);
         })(document, 'script');
+    </script>
+    <script>
+        function toggleExtra(btn) {
+            const extra = btn.parentElement.querySelector('.card-desc-extra');
+
+            extra.classList.toggle('visible');
+
+            if (extra.classList.contains('visible')) {
+                btn.innerHTML = 'Ver menos <i class="fa-solid fa-chevron-up"></i>';
+            } else {
+                btn.innerHTML = 'Ver más <i class="fa-solid fa-chevron-down"></i>';
+            }
+        }
     </script>
 </body>
 
