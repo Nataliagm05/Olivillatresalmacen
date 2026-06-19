@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Policarbonatos y Metacrilatos — Olivilla Tres</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f2f8;
+            --surface: #ffffff;
+            --card: #ffffff;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+            --label: #b53987;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: #35284f;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 24px;
+            font-size: 0.75rem;
+        }
+
+        .topbar a,
+        .topbar span {
+            color: rgba(201, 184, 232, 0.8);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s;
+        }
+
+        .topbar a:hover {
+            color: #f386cc;
+        }
+
+        .topbar-div {
+            width: 1px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width:600px) {
+            .topbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .topbar-div {
+                display: none;
+            }
+        }
+
+        /* NAVBAR */
+        .site-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+
+        .navbar-custom {
+            background: rgba(74, 59, 104, 0.97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, 0.99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .logo-empresa {
+            height: 76px;
+            width: auto;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
+        }
+
+        .logo-subtitulo {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--muted);
+            border-left: 1px solid var(--border);
+            padding-left: 12px;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
+        }
+
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: #ffffff !important;
+        }
+
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar-custom .dropdown-menu {
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar-custom .dropdown-item {
+            color: var(--purple);
+            font-size: 13px;
+            padding: 9px 18px;
+            transition: all .15s;
+        }
+
+        .dropdown-item.active {
+            background-color: #4a3b68;
+            color: #f7f9fa;
+        }
+
+
+        .navbar-custom .dropdown-item:hover {
+            color: #f7f9fa !important;
+            background: #b53987 !important;
+            padding-left: 24px;
+        }
+
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
+        }
+
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-cta::after {
+            display: none !important;
+        }
+
+        .navbar-custom .navbar-toggler {
+            border-color: var(--accent) !important;
+        }
+
+        .navbar-custom .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        #headerSpacer {
+            height: 130px;
+        }
+
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
+
+        /* HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 72px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05) 0%, transparent 70%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .breadcrumb-custom a:hover {
+            color: #f386cc;
+        }
+
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 480px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: .5px;
+            margin-top: 4px;
+        }
+
+        @media (max-width:576px) {
+            .page-hero {
+                padding: 48px 0 40px;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
+            background: #f4f2f8;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(181, 57, 135, .3);
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a3b68;
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(74, 59, 104, 0.12);
+        }
+
+        /* PRODUCT CARDS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .pcard {
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.12);
+            border-radius: 14px;
+            padding: 24px;
+            transition: border-color .25s, transform .25s, box-shadow .25s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
+        }
+
+        .pcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity .25s;
+        }
+
+        .pcard:hover {
+            border-color: rgba(181, 57, 135, .3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(74, 59, 104, .14);
+        }
+
+        .pcard:hover::before {
+            opacity: 1;
+        }
+
+        .pcard-material {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .pcard-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #4a3b68;
+            margin-bottom: 18px;
+            line-height: 1.35;
+        }
+
+        .dims-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .dim-row {
+            display: flex;
+            align-items: center;
+            font-size: 0.8rem;
+            color: rgba(74, 59, 104, 0.6);
+            background: #f7f0f5;
+            border: 1px solid rgba(181, 57, 135, .1);
+            border-radius: 8px;
+            padding: 8px 12px;
+            gap: 10px;
+            transition: background .2s, color .2s;
+        }
+
+        .dim-row:hover {
+            background: rgba(181, 57, 135, .1);
+            color: #4a3b68;
+        }
+
+        .dim-row i {
+            color: var(--accent);
+            font-size: 11px;
+            flex-shrink: 0;
+        }
+
+        .dim-row span {
+            font-weight: 600;
+            letter-spacing: .3px;
+        }
+
+        .dim-single {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #4a3b68;
+            background: #f7f0f5;
+            border: 1px solid rgba(181, 57, 135, .18);
+            border-radius: 8px;
+            padding: 7px 14px;
+        }
+
+        .dim-single i {
+            color: var(--accent);
+            font-size: 11px;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+            border: none;
+            border-radius: 18px;
+            padding: 40px 48px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
+        }
+
+        .cta-icon {
+            font-size: 3rem;
+            color: #f386cc;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-body {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-body h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .cta-body p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 16px;
+            max-width: 520px;
+            line-height: 1.65;
+        }
+
+        .cta-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .cta-contact-item i {
+            color: #f386cc;
+            font-size: 14px;
+        }
+
+        .cta-contact-item a {
+            color: #f386cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width:700px) {
+            .cta-banner {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .cta-contacts {
+                justify-content: center;
+            }
+        }
+
+        /* FOOTER */
+        .footer-main {
+            background: #4a3b68;
+            border-top: none;
+            padding: 56px 0 0;
+        }
+
+        .footer-logo {
+            height: 68px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #e8b0d0;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: #f386cc;
+        }
+
+        .footer-contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact-row i {
+            color: #b53987;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .footer-contact-row a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-contact-row a:hover {
+            color: #f386cc;
+        }
+
+        .footer-bottom {
+            background: #35284f;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0;
+            margin-top: 48px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .3);
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FIXED HEADER -->
+    <header id="siteHeader" class="site-header-fixed">
+        <div class="topbar" id="topbar">
+            <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
+            <div class="topbar-div"></div>
+            <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
+            <div class="topbar-div"></div>
+            <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
+        </div>
+
+        <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
+                    <span class="logo-subtitulo">Almacén</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
+                                <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
+                                <li><a class="dropdown-item active" href="./grupopuma.html">Grupo Puma</a></li>
+                                <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
+                                <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
+                                <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
+                                <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
+                                <li><a class="dropdown-item" href="./pladur.html">PYL</a></li>
+                                <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
+                                <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
+                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="headerSpacer"></div>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>
+                <a href="#">Catálogo</a><span>›</span>
+                Grupo Puma
+            </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-cube"></i> Morteros</span>
+            <h1 class="hero-title">Policarbonatos,<br>Poliéster &amp; <em>Metacrilatos</em></h1>
+            <p class="hero-desc">Láminas y planchas técnicas para cerramientos, cubiertas y proyectos de construcción.
+                Disponibles en múltiples medidas.</p>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Familias de producto</div>
+                </div>
+                <div>
+                    <div class="stat-num">7+</div>
+                    <div class="stat-label">Medidas disponibles</div>
+                </div>
+                <div>
+                    <div class="stat-num">Toledo</div>
+                    <div class="stat-label">Entrega local</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+
+            <!-- 01 POLICARBONATO -->
+            <div class="section-header">
+                <span class="section-tag">01</span>
+                <h2 class="section-title">Morcem</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="pcard">
+                    <div class="pcard-material">Policarbonato</div>
+                    <h3 class="pcard-name">Policarbonato Transparente</h3>
+                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 × 2,1
+                            m</span></div>
+                </div>
+                <div class="pcard">
+                    <div class="pcard-material">Policarbonato</div>
+                    <h3 class="pcard-name">Policarbonato Blanco</h3>
+                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 × 2,1
+                            m</span></div>
+                </div>
+            </div>
+
+            <!-- 02 POLIÉSTER -->
+            <div class="section-header">
+                <span class="section-tag">02</span>
+                <h2 class="section-title">Poliéster</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="pcard">
+                    <div class="pcard-material">Poliéster</div>
+                    <h3 class="pcard-name">Onda Pequeña</h3>
+                    <div class="dims-list">
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,15 m</span></div>
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,15 m</span></div>
+                    </div>
+                </div>
+                <div class="pcard">
+                    <div class="pcard-material">Poliéster</div>
+                    <h3 class="pcard-name">Onda Grande</h3>
+                    <div class="dims-list">
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,10 m</span></div>
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,10 m</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 03 METACRILATO -->
+            <div class="section-header">
+                <span class="section-tag">03</span>
+                <h2 class="section-title">Metacrilato</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="pcard">
+                    <div class="pcard-material">Metacrilato</div>
+                    <h3 class="pcard-name">Metacrilato Transparente</h3>
+                    <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>2 × 1,5
+                            m</span></div>
+                </div>
+                <div class="pcard">
+                    <div class="pcard-material">Metacrilato</div>
+                    <h3 class="pcard-name">Metacrilato Blanco</h3>
+                    <div class="dims-list">
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,5 m</span></div>
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,5 m</span></div>
+                        <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>5 × 1,5 m</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-banner">
+                <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
+                <div class="cta-body">
+                    <h3>¿No encuentras lo que necesitas?</h3>
+                    <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchos más formatos,
+                        espesores y colores. Consúltanos sin compromiso y te asesoramos para tu proyecto.</p>
+                    <div class="cta-contacts">
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                                54</a></div>
+                        <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
+                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row g-5 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="logonuevo2.png" class="footer-logo" alt="Olivilla Tres">
+                    <p class="footer-desc">Suministro de materiales de construcción, aislamiento e impermeabilización en
+                        Toledo. Asesoramiento técnico especializado.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <p class="footer-heading">Navegación</p>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="./ferreteria.html">Ferretería</a></li>
+                        <li><a href="./poliymeta.html">Policarbonatos</a></li>
+                        <li><a href="./maquinaria.html">Maquinaria</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <p class="footer-heading">Proveedores</p>
+                    <ul class="footer-links">
+                        <li><a href="./sika.html">Sika</a></li>
+                        <li><a href="./bostik.html">Bostik</a></li>
+                        <li><a href="./grupopuma.html">Grupo Puma</a></li>
+                        <li><a href="./ursa.html">Ursa</a></li>
+                        <li><a href="./regarsa.html">Regarsa</a></li>
+                        <li><a href="./soprema.html">Soprema</a></li>
+                        <li><a href="./pladur.html">Pladur</a></li>
+                        <li><a href="./suimco.html">Suimco</a></li>
+                        <li><a href="./tripomat.html">Tripomant</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <p class="footer-heading">Contacto</p>
+                    <div class="footer-contact-row"><i class="fa-solid fa-location-dot"></i><span>Calle Rio Valdecelada,
+                            7<br>45007 — Toledo</span></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                            54</a></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 <strong>Olivilla Tres S.L.U</strong> — Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var navbar = document.getElementById('mainNavbar');
+            var topbar = document.getElementById('topbar');
+            var spacer = document.getElementById('headerSpacer');
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    topbar.style.display = 'none';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    topbar.style.display = '';
+                }
+                resize();
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll();
+            requestAnimationFrame(resize);
+        })();
+    </script>
+    <script type="text/javascript">
+        (function (d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function () {
+                window.voiceflow.chat.load({
+                    verify: { projectID: '6a26a29ec4acdd8a282fd8bf' },
+                    url: 'https://general-runtime.voiceflow.com',
+                    voice: { url: "https://runtime-api.voiceflow.com" }
+                });
+            };
+            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
+            v.type = "text/javascript";
+            s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+    </script>
+</body>
+
+</html>
