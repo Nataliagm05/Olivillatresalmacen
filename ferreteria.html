@@ -4,174 +4,189 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ferretería - Almacen Olivilla tres S.L.U</title>
-
+    <title>Ferretería — Olivilla Tres</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <style>
-        * {
+        :root {
+            --bg: #f4f2f8;
+            --surface: #ffffff;
+            --card: #ffffff;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+            --label: #b53987;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html,
-        body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f7f9fa;
-            color: #4a3b68;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        h1 {
-            margin: 20px;
-        }
-
-        h2 {
-            margin: 20px;
-        }
-
-        li {
-            margin-left: 20px;
-        }
-
-        /* ========== TOPBAR ========== */
+        /* TOPBAR */
         .topbar {
-            background-color: #35284f;
-            padding: 7px 30px;
+            background: #35284f;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 32px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
+            font-size: 0.75rem;
         }
 
         .topbar a,
         .topbar span {
-            color: #c9b8e8;
-            font-size: 0.78rem;
+            color: rgba(201, 184, 232, 0.8);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .topbar a:hover {
             color: #f386cc;
         }
 
-        .topbar .topbar-divider {
+        .topbar-div {
             width: 1px;
-            height: 12px;
-            background-color: #5a4878;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
         }
 
-        @media (max-width: 768px) {
+        @media (max-width:600px) {
             .topbar {
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                text-align: center;
-                gap: 8px;
-                padding: 10px;
+                gap: 6px;
             }
 
-            .topbar-divider {
+            .topbar-div {
                 display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .topbar {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .topbar-divider {
-                display: none;
-            }
+        /* NAVBAR */
+        .site-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
         }
 
-        /* ========== NAVBAR ========== */
         .navbar-custom {
-            background-color: #4a3b68 !important;
-            border-bottom: 3px solid #b53987;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            background: rgba(74, 59, 104, 0.97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
         }
 
-        .navbar-custom .navbar-brand {
-            padding: 8px 0;
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, 0.99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            padding: 10px 0;
         }
 
         .logo-empresa {
-            height: 100px;
+            height: 76px;
             width: auto;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
         }
 
         .logo-subtitulo {
-            font-size: 14px;
-            color: #e8b0d0;
-            font-weight: 500;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(232, 176, 208, 0.8);
+            border-left: 1px solid rgba(255, 255, 255, 0.15);
             padding-left: 12px;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 400;
-            font-size: 14px;
-            padding: 12px 14px !important;
-            transition: color 0.2s;
-            white-space: nowrap;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
         }
 
-        @media (min-width: 992px) {
-            .navbar-custom .nav-link {
-                padding: 22px 14px !important;
-                border-bottom: 3px solid transparent;
-                margin-bottom: -3px;
-                transition: color 0.2s, border-color 0.2s;
-            }
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
         }
 
         .navbar-custom .nav-link:hover,
-        .navbar-custom .nav-link:focus {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
-        }
-
         .navbar-custom .nav-link.active {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
+            color: #ffffff !important;
         }
 
-        /* ========== DROPDOWN ========== */
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
         .navbar-custom .dropdown-menu {
-            background-color: #ffffff;
-            border: none;
-            border-top: 3px solid #b53987;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 12px 32px rgba(74, 59, 104, 0.18);
-            padding: 8px 0;
-            min-width: 220px;
-            animation: dropFade 0.15s ease;
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
         }
 
-        @keyframes dropFade {
+        @keyframes fade-in {
             from {
                 opacity: 0;
                 transform: translateY(-6px);
@@ -184,934 +199,913 @@
         }
 
         .navbar-custom .dropdown-item {
-            color: #4a3b68;
-            font-size: 0.88rem;
-            font-weight: 500;
+            color: var(--purple);
+            font-size: 13px;
             padding: 9px 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.15s, color 0.15s, padding-left 0.15s;
-        }
-
-        .navbar-custom .dropdown-item i {
-            width: 16px;
-            text-align: center;
-            color: #b53987;
+            transition: all .15s;
         }
 
         .navbar-custom .dropdown-item:hover {
-            background-color: #f7f0f5;
-            color: #b53987;
+            color: var(--accent);
+            background: #f7f0f5;
             padding-left: 24px;
         }
 
-        .navbar-custom .dropdown-divider {
-            border-color: #ede5f5;
-            margin: 5px 14px;
-        }
-
-        .dropdown-item .badge-new {
-            background-color: #b53987;
-            color: #fff;
-            font-size: 0.63rem;
-            font-weight: 600;
-            padding: 2px 7px;
-            border-radius: 20px;
-            margin-left: auto;
-        }
-
-        .btn-nav-contacto {
-            background-color: #b53987 !important;
-            color: #ffffff !important;
-            border-radius: 6px !important;
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
             font-size: 13px !important;
-            font-weight: 500 !important;
-            border-bottom: none !important;
-            padding: 10px 16px !important;
-            margin-top: 8px;
-            display: inline-block;
-            transition: background-color 0.2s !important;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
         }
 
-        @media (min-width: 992px) {
-            .btn-nav-contacto {
-                margin-top: 0;
-                margin-left: 6px;
-                padding: 8px 16px !important;
-            }
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
         }
 
-        .btn-nav-contacto:hover {
-            background-color: #922f6d !important;
+        .btn-cta::after {
+            display: none !important;
         }
 
         .navbar-custom .navbar-toggler {
-            border-color: #b53987 !important;
-        }
-
-        .navbar-custom .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
+            border-color: var(--accent) !important;
         }
 
         .navbar-custom .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
 
+        #headerSpacer {
+            height: 130px;
+        }
 
-        /* ========== FIN NAVBAR ========== */
-        /* ========== CABECERA PROVEEDOR ========== */
-        .proveedor-hero {
-            background: linear-gradient(135deg, #35284f 0%, #4a3b68 60%, #5e3d7a 100%);
-            padding: 4px 0 24px;
-            border-bottom: 4px solid #b53987;
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
+
+        /* HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 72px 0 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .proveedor-hero::after {
+        .page-hero::before {
             content: '';
             position: absolute;
-            right: -80px;
-            top: -80px;
-            width: 320px;
-            height: 320px;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: rgba(181, 57, 135, 0.08);
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
         }
 
-        .proveedor-hero .container {
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05) 0%, transparent 70%);
+        }
+
+        .hero-inner {
             position: relative;
             z-index: 1;
         }
 
-        .proveedor-breadcrumb {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 20px;
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 28px;
         }
 
-        .proveedor-breadcrumb a {
-            color: rgba(255, 255, 255, 0.5);
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .proveedor-breadcrumb a:hover {
+        .breadcrumb-custom a:hover {
             color: #f386cc;
         }
 
-        .proveedor-breadcrumb span {
-            margin: 0 6px;
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
         }
 
-        .proveedor-logo-wrap {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 12px;
-            padding: 14px 24px;
+        .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .proveedor-logo-wrap img {
-            height: 42px;
-            width: auto;
-        }
-
-        .proveedor-hero h1 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            gap: 8px;
+            font-size: 11px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 8px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
 
-        .proveedor-hero p {
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.65);
-            font-size: 0.95rem;
-            margin: 0;
+            max-width: 540px;
+            line-height: 1.7;
         }
 
-        .titulo-proveedor {
-            color: #b53987;
-            margin-bottom: 30px;
-            margin-top: 30px;
-            font-size: 2rem;
-            /* Bajado un poco para que quepa mejor en móviles */
-            font-weight: bold;
-            border-left: 6px solid #4a3b68;
-            padding-left: 15px;
-
-            /* --- FLEXBOX MEJORADO --- */
+        .hero-stats {
             display: flex;
-            flex-direction: column;
-            /* En móvil: el logo arriba, el texto abajo */
-            align-items: flex-start;
-            gap: 10px;
-            /* Espacio controlado entre logo y texto */
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
         }
 
-        /* Cuando la pantalla sea de tablet o computadora (escritorio) */
-        @media (min-width: 576px) {
-            .titulo-proveedor {
-                flex-direction: row;
-                /* Se ponen en fila horizontal */
-                align-items: center;
-                /* Se centran verticalmente */
-                font-size: 2.3rem;
-                /* Recupera el tamaño grande */
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: .5px;
+            margin-top: 4px;
+        }
+
+        @media (max-width:576px) {
+            .page-hero {
+                padding: 48px 0 40px;
+            }
+
+            .hero-stats {
                 gap: 20px;
             }
         }
 
-        .intro-box {
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
+            background: var(--bg);
+        }
+
+        /* CATEGORY CARDS */
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 16px;
+            margin-bottom: 64px;
+        }
+
+        .cat-card {
             background: #fff;
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-top: 30px;
-        }
-
-        .intro-box i {
-            font-size: 3rem;
-            color: #b53987;
-            margin-bottom: 15px;
-        }
-
-        .categoria-card {
-            background: #fff;
-            border-radius: 18px;
-            padding: 30px;
-            text-align: center;
-            height: 100%;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, .05);
-            transition: .3s;
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        .categoria-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(181, 57, 135, .15);
-        }
-
-        .categoria-card i {
-            font-size: 2.2rem;
-            color: #b53987;
-            margin-bottom: 15px;
-        }
-
-        .categoria-card span {
-            color: #b53987;
-            font-weight: 600;
-        }
-
-        .catalogo-seccion {
-            margin-bottom: 60px;
-        }
-
-        .catalogo-seccion h2 {
-            color: #ede5f5;
-            margin-bottom: 40px;
-            border-left: 5px solid #b53987;
-            padding: 15px;
-            background-color: #4a3b68;
-            border-radius: 8px;
-            
-        }
-
-        .card-producto-simple {
-            background: #fff;
-            border-radius: 15px;
-            padding: 25px;
-            text-align: center;
-            height: 100%;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
-            transition: .3s;
-            margin-left: 15px;
-            margin-right: 15px;
-        }
-
-        .card-producto-simple:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(181, 57, 135, .15);
-        }
-
-        .card-producto-simple i {
-            font-size: 2rem;
-            color: #b53987;
-            margin-bottom: 15px;
-        }
-
-        .card-producto-simple h5 {
-            color: #4a3b68;
-            font-weight: 600;
-        }
-
-        .ventaja-box {
-            background: #fff;
-            border-radius: 15px;
-            padding: 30px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, .05);
-            margin-bottom: 30px;
-            margin-left: 15px;
-        }
-
-        .ventaja-box i {
-            font-size: 2rem;
-            color: #b53987;
-            margin-bottom: 15px;
-        }
-        /* ========== AVISO MÁS ARTÍCULOS ========== */
-        .aviso-mas-articulos {
-            margin: 48px;
-            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+            border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 32px 36px;
-            color: #ffffff;
-            display: flex;
-            align-items: flex-start;
-            gap: 24px;
-            box-shadow: 0 8px 30px rgba(74, 59, 104, 0.25);
+            padding: 28px 20px;
+            text-align: center;
+            transition: transform .25s, box-shadow .25s, border-color .25s;
+            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
         }
 
-        .aviso-mas-articulos .aviso-icono {
-            font-size: 2.5rem;
+        .cat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(181, 57, 135, .12);
+            border-color: rgba(181, 57, 135, .25);
+        }
+
+        .cat-card i {
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 14px;
+            display: block;
+        }
+
+        .cat-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 6px;
+        }
+
+        .cat-card p {
+            font-size: 0.82rem;
+            color: var(--muted);
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .cat-badge {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: rgba(181, 57, 135, .08);
+            border: 1px solid rgba(181, 57, 135, .2);
+            padding: 3px 10px;
+            border-radius: 100px;
+        }
+
+        /* SECTION HEADERS */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .section-tag {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid rgba(181, 57, 135, .3);
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--purple);
+        }
+
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+        }
+
+        /* PRODUCT CARDS */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 14px;
+            margin-bottom: 64px;
+        }
+
+        .pcard {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 22px 18px;
+            text-align: center;
+            transition: border-color .25s, transform .25s, box-shadow .25s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.05);
+        }
+
+        .pcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity .25s;
+        }
+
+        .pcard:hover {
+            border-color: rgba(181, 57, 135, .3);
+            transform: translateY(-4px);
+            box-shadow: 0 14px 36px rgba(74, 59, 104, .12);
+        }
+
+        .pcard:hover::before {
+            opacity: 1;
+        }
+
+        .pcard i {
+            font-size: 1.6rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .pcard h5 {
+            font-size: 0.88rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin-bottom: 6px;
+        }
+
+        .pcard p {
+            font-size: 0.78rem;
+            color: var(--muted);
+            line-height: 1.45;
+            margin: 0;
+        }
+
+        /* VENTAJAS */
+        .ventajas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 48px;
+        }
+
+        .ventaja-card {
+            background: #fff;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 28px 20px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.05);
+        }
+
+        .ventaja-card i {
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .ventaja-card h5 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin: 0;
+        }
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+            border-radius: 18px;
+            padding: 40px 48px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
+        }
+
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
+        }
+
+        .cta-icon {
+            font-size: 3rem;
             color: #f386cc;
             flex-shrink: 0;
-            margin-top: 2px;
+            position: relative;
+            z-index: 1;
         }
 
-        .aviso-mas-articulos h4 {
-            margin: 0 0 8px;
-            font-size: 1.15rem;
-            font-weight: 700;
+        .cta-body {
+            position: relative;
+            z-index: 1;
         }
 
-        .aviso-mas-articulos p {
-            margin: 0 0 6px;
+        .cta-body h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .cta-body p {
             font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.65);
+            margin-bottom: 16px;
+            max-width: 520px;
             line-height: 1.65;
         }
 
-        .aviso-mas-articulos a {
-            color: #f386cc;
-            font-weight: 600;
-            text-decoration: none;
+        .cta-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        .aviso-mas-articulos a:hover {
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .cta-contact-item i {
+            color: #f386cc;
+            font-size: 14px;
+        }
+
+        .cta-contact-item a {
+            color: #f386cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-contact-item a:hover {
             text-decoration: underline;
         }
 
-        /* ========== FOOTER ========== */
-        .footer-main {
-            background-color: #4a3b68;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 50px 0 0;
+        @media (max-width:700px) {
+            .cta-banner {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .cta-contacts {
+                justify-content: center;
+            }
         }
 
-        .footer-brand p {
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 12px;
-            line-height: 1.65;
+        /* FOOTER */
+        .footer-main {
+            background: #4a3b68;
+            padding: 56px 0 0;
+        }
+
+        .footer-logo {
+            height: 68px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            max-width: 280px;
         }
 
         .footer-heading {
-            font-size: 0.78rem;
+            font-size: 10px;
             font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
             color: #e8b0d0;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .footer-links {
             list-style: none;
             padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
             text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .footer-links a:hover {
             color: #f386cc;
         }
 
-        .footer-contact-item {
+        .footer-contact-row {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
             margin-bottom: 12px;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.65);
         }
 
-        .footer-contact-item i {
+        .footer-contact-row i {
             color: #b53987;
-            font-size: 0.9rem;
             margin-top: 2px;
             flex-shrink: 0;
         }
 
-        .footer-contact-item a {
-            color: rgba(255, 255, 255, 0.65);
+        .footer-contact-row a {
+            color: rgba(255, 255, 255, 0.55);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .footer-contact-item a:hover {
+        .footer-contact-row a:hover {
             color: #f386cc;
         }
 
         .footer-bottom {
-            background-color: #35284f;
-            padding: 16px 0;
-            margin-top: 40px;
+            background: #35284f;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0;
+            margin-top: 48px;
         }
 
         .footer-bottom p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.45);
-            margin: 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .3);
             text-align: center;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- ===== TOPBAR ===== -->
-    <div class="topbar">
-        <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
-        <div class="topbar-divider"></div>
-        <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
-        <div class="topbar-divider"></div>
-        <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
-    </div>
-
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-        <div class="container-fluid px-3 px-lg-4">
-            <a class="navbar-brand" href="./index.html">
-                <img src="logonuevo2.png" class="logo-empresa" alt="Logo Almacén Olivilla Tres">
-                <span class="logo-subtitulo">Almacén</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
-                            <i class="fa-solid fa-house me-1"></i>Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-trowel-bricks me-1"></i>Proveedores
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
-                            <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
-                            <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
-                            <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
-                            <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
-                            <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
-                            <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
-                            <li><a class="dropdown-item" href="./pladur.html">PYL</a></li>
-                            <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
-                            <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="./ferreteria.html">
-                            <i class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./poliymeta.html">
-                            <i class="fa-solid fa-cube me-1"></i>Policarbonatos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./maquinaria.html">
-                            <i class="fa-solid fa-truck-monster me-1"></i>Alquiler de Maquinaria
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav-contacto" href="./formulario.html">
-                            <i class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- FIXED HEADER -->
+    <header id="siteHeader" class="site-header-fixed">
+        <div class="topbar" id="topbar">
+            <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
+            <div class="topbar-div"></div>
+            <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
+            <div class="topbar-div"></div>
+            <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
         </div>
-    </nav>
-    <!-- ===== CABECERA PROVEEDOR ===== -->
-    <div class="proveedor-hero">
-        <div class="container">
-            <div class="proveedor-breadcrumb">
-                <a href="./index.html">Inicio</a>
-                <span>›</span>
-                <a href="#">Proveedores</a>
-                <span>›</span>
+        <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
+                    <span class="logo-subtitulo">Almacén</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
+                                <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
+                                <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
+                                <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
+                                <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
+                                <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
+                                <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
+                                <li><a class="dropdown-item" href="./pladur.html">PYL</a></li>
+                                <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
+                                <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link active" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
+                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="headerSpacer"></div>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>
+                <a href="#">Catálogo</a><span>›</span>
                 Ferretería
             </div>
-        </div>
-    </div>
-
-
-    <!-- ===== CONTENIDO PRINCIPAL ===== -->
-    <div class="container-custom">
-
-        <!-- INTRO -->
-        <section class="intro-ferreteria">
-
-            <div class="intro-box">
-
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-
-                <h1>Ferretería Profesional</h1>
-
-                <p>
-                    Disponemos de una amplia selección de herramientas,
-                    accesorios, fijaciones, consumibles y materiales auxiliares
-                    para construcción, impermeabilización, reformas y obra nueva.
-                </p>
-
-            </div>
-
-        </section>
-
-        <!-- CATEGORÍAS -->
-        <section class="mb-5">
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-                    <div class="categoria-card">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h3>Brochas</h3>
-                        <p>Brochas para pintura, imprimaciones y tratamientos.</p>
-                        <span>5 referencias</span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="categoria-card">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <h3>Discos</h3>
-                        <p>Discos de corte para hierro y piedra.</p>
-                        <span>4 referencias</span>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="categoria-card">
-                        <i class="fa-solid fa-toolbox"></i>
-                        <h3>Accesorios</h3>
-                        <p>Fijaciones, cintas, cánulas y consumibles.</p>
-                        <span>Más de 20 referencias</span>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- BROCHAS -->
-        <section class="catalogo-seccion">
-
-            <h2>Brochas</h2>
-
-            <div class="row g-4 row-cols-lg-5 row-cols-md-3 row-cols-sm-2 row-cols-1">
-
-                <div class="col">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h5>Brocha Canaria</h5>
-                        <p>75 mm</p>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h5>Brocha</h5>
-                        <p>30 mm</p>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h5>Brocha</h5>
-                        <p>24 mm</p>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h5>Brocha</h5>
-                        <p>18 mm</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paintbrush"></i>
-                        <h5>Brocha</h5>
-                        <p>12 mm</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- DISCOS -->
-        <section class="catalogo-seccion">
-
-            <h2>Discos</h2>
-
-            <div class="row g-4">
-
-                <div class="col-md-3">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <h5>Hierro</h5>
-                        <p>230 mm</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <h5>Piedra</h5>
-                        <p>230 mm</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <h5>Hierro</h5>
-                        <p>115 mm</p>
-                    </div>
-                </div>
-
-                <div class="col-md-3">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-compact-disc"></i>
-                        <h5>Piedra</h5>
-                        <p>115 mm</p>
-                    </div>
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- PRODUCTOS VARIOS -->
-        <section class="catalogo-seccion">
-
-            <h2>Accesorios y Complementos</h2>
-
-            <div class="row g-4">
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-syringe"></i>
-                        <h5>Taco Químico</h5>
-                        <p>Tamiz 12 x 60 mm</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-flask"></i>
-                        <h5>Cánula</h5>
-                        <p>Cánula Mezcladora para Taco Químico</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-box-open"></i>
-                        <h5>Cánula</h5>
-                        <p>Cánulas para Sacos</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-bolt"></i>
-                        <h5>Tacos</h5>
-                        <p>Taco Clavo C-8</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-hammer"></i>
-                        <h5>Tacos</h5>
-                        <p>Taco Golpeo 6 cm x 35 mm</p>
-                    </div>
-                </div>
-
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
-                        <h5>Pistola Silicona</h5>
-                        <p>Aplicación profesional</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                        <h5>Pistola Poliuretano</h5>
-                        <p>Metálica profesional</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-link"></i>
-                        <h5>Banda Butílica</h5>
-                        <p>10 cm · 20 cm · 30 cm</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-circle"></i>
-                        <h5>Arandelas Neopreno</h5>
-                        <p>Varios formatos</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-screwdriver"></i>
-                        <h5>Tornillos Autotaladrantes</h5>
-                        <p>Diversas medidas</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-tape"></i>
-                        <h5>Cintas</h5>
-                        <p>Cinta de Aluminio. Rollo de 45 m x 48 mm</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-tape"></i>
-                        <h5>Cintas</h5>
-                        <p>Cinta de Carrocero</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-tape"></i>
-                        <h5>Cintas</h5>
-                        <p>Cinta Americana</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-box"></i>
-                        <h5>Precinto</h5>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-fill-drip"></i>
-                        <h5>Recambios</h5>
-                        <p>Recambio Polvo Trazador</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-wrench"></i>
-                        <h5>Fijación</h5>
-                        <p>Fijación Drentex</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-wrench"></i>
-                        <h5>Fijación</h5>
-                        <p>Fijación Drentex</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-scroll"></i>
-                        <h5>Rollos</h5>
-                        <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-scroll"></i>
-                        <h5>Rollos</h5>
-                        <p>Rollos de cartón. 0.9 x 0.45 · 0.9 x 25 · 100 x 1</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-circle-dot"></i>
-                        <h5>Plásticos</h5>
-                        <p>Plástico de Burbuja. 150 x 1.2</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <h5>Plásticos</h5>
-                        <p>400 galgos: rollo de 50 x 4</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <h5>Plásticos</h5>
-                        <p>600 galgos: rollo de 50 x 4</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-sheet-plastic"></i>
-                        <h5>Plásticos</h5>
-                        <p>400 galgos: virgen rollo de 50 x 4</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <h5>Fomper</h5>
-                        <p>Fomper 3 mm. Rollo de 180 x 1.6</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-layer-group"></i>
-                        <h5>Fomper</h5>
-                        <p>Fomper 5 mm. Rollo de 160 x 1.6</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paint-roller"></i>
-                        <h5>Rodillos</h5>
-                        <p>Rodillo - 22</p>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-producto-simple">
-                        <i class="fa-solid fa-paint-roller"></i>
-                        <h5>Rodillos</h5>
-                        <p>Rodillo - 18</p>
-                    </div>
-                </div>
-
-        </section>
-
-            <!-- AVISO -->
-        <div class="aviso-mas-articulos">
-                <div class="aviso-icono">
-                    <i class="fa-solid fa-boxes-stacking"></i>
+            <span class="hero-eyebrow"><i class="fa-solid fa-screwdriver-wrench"></i> Ferretería profesional</span>
+            <h1 class="hero-title">Herramientas,<br>fijaciones &amp; <em>complementos</em></h1>
+            <p class="hero-desc">Amplia selección de herramientas, accesorios, fijaciones y consumibles para
+                construcción, impermeabilización, reformas y obra nueva.</p>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-num">3</div>
+                    <div class="stat-label">Categorías</div>
                 </div>
                 <div>
-                    <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                    <p>Este catálogo muestra una selección de nuestros productos Ferretería más habituales en tienda, pero
-                        disponemos de <strong>muchos más artículos</strong> que podemos pedir directamente. Consúltanos
-                        sin compromiso.</p>
-                    <p class="mt-2">
-                        <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                        <i class="fa-solid fa-envelope me-1"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </p>
+                    <div class="stat-num">30+</div>
+                    <div class="stat-label">Referencias en tienda</div>
+                </div>
+                <div>
+                    <div class="stat-num">Toledo</div>
+                    <div class="stat-label">Suministro local</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+
+            <!-- CATEGORÍAS -->
+            <div class="section-header" style="margin-top: 0;">
+                <span class="section-tag">Categorías</span>
+                <h2 class="section-title">¿Qué necesitas?</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="cat-grid">
+                <div class="cat-card">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h3>Brochas</h3>
+                    <p>Para pintura, imprimaciones y tratamientos.</p>
+                    <span class="cat-badge">5 referencias</span>
+                </div>
+                <div class="cat-card">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <h3>Discos</h3>
+                    <p>Corte para hierro y piedra en dos medidas.</p>
+                    <span class="cat-badge">4 referencias</span>
+                </div>
+                <div class="cat-card">
+                    <i class="fa-solid fa-toolbox"></i>
+                    <h3>Accesorios</h3>
+                    <p>Fijaciones, cintas, cánulas y consumibles.</p>
+                    <span class="cat-badge">+20 referencias</span>
                 </div>
             </div>
 
-    <div class="row g-4 mt-5">
-
-        <div class="col-md-4">
-            <div class="ventaja-box">
-                <i class="fa-solid fa-boxes-stacked"></i>
-                <h5>Stock habitual</h5>
+            <!-- 01 BROCHAS -->
+            <div class="section-header">
+                <span class="section-tag">01</span>
+                <h2 class="section-title">Brochas</h2>
+                <div class="section-line"></div>
             </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="ventaja-box">
-                <i class="fa-solid fa-truck-fast"></i>
-                <h5>Suministro rápido</h5>
+            <div class="products-grid">
+                <div class="pcard">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h5>Brocha Canaria</h5>
+                    <p>75 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h5>Brocha</h5>
+                    <p>30 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h5>Brocha</h5>
+                    <p>24 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h5>Brocha</h5>
+                    <p>18 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paintbrush"></i>
+                    <h5>Brocha</h5>
+                    <p>12 mm</p>
+                </div>
             </div>
-        </div>
 
-        <div class="col-md-4">
-            <div class="ventaja-box">
-                <i class="fa-solid fa-user-gear"></i>
-                <h5>Asesoramiento técnico</h5>
+            <!-- 02 DISCOS -->
+            <div class="section-header">
+                <span class="section-tag">02</span>
+                <h2 class="section-title">Discos</h2>
+                <div class="section-line"></div>
             </div>
+            <div class="products-grid">
+                <div class="pcard">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <h5>Hierro</h5>
+                    <p>230 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <h5>Piedra</h5>
+                    <p>230 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <h5>Hierro</h5>
+                    <p>115 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-compact-disc"></i>
+                    <h5>Piedra</h5>
+                    <p>115 mm</p>
+                </div>
+            </div>
+
+            <!-- 03 ACCESORIOS -->
+            <div class="section-header">
+                <span class="section-tag">03</span>
+                <h2 class="section-title">Accesorios y Complementos</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+                <div class="pcard">
+                    <i class="fa-solid fa-syringe"></i>
+                    <h5>Taco Químico</h5>
+                    <p>Tamiz 12 × 60 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-flask"></i>
+                    <h5>Cánula Mezcladora</h5>
+                    <p>Para taco químico</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-box-open"></i>
+                    <h5>Cánulas para Sacos</h5>
+                    <p>Aplicación directa</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-bolt"></i>
+                    <h5>Taco Clavo</h5>
+                    <p>C-8</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-hammer"></i>
+                    <h5>Taco Golpeo</h5>
+                    <p>6 cm × 35 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-screwdriver"></i>
+                    <h5>Pistola Silicona</h5>
+                    <p>Aplicación profesional</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <h5>Pistola Poliuretano</h5>
+                    <p>Metálica profesional</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-link"></i>
+                    <h5>Banda Butílica</h5>
+                    <p>10 cm · 20 cm · 30 cm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-circle"></i>
+                    <h5>Arandelas Neopreno</h5>
+                    <p>Varios formatos</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-screwdriver"></i>
+                    <h5>Tornillos Autotaladrantes</h5>
+                    <p>Diversas medidas</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-tape"></i>
+                    <h5>Cinta de Aluminio</h5>
+                    <p>Rollo 45 m × 48 mm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-tape"></i>
+                    <h5>Cinta de Carrocero</h5>
+                    <p>Uso general</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-tape"></i>
+                    <h5>Cinta Americana</h5>
+                    <p>Alta resistencia</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-box"></i>
+                    <h5>Precinto</h5>
+                    <p>Embalaje y cierre</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-fill-drip"></i>
+                    <h5>Recambio Polvo Trazador</h5>
+                    <p>Para marcado de obra</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-wrench"></i>
+                    <h5>Fijación Drentex</h5>
+                    <p>Anclaje especializado</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-scroll"></i>
+                    <h5>Rollos de Cartón</h5>
+                    <p>0,9×0,45 · 0,9×25 · 100×1</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-circle-dot"></i>
+                    <h5>Plástico de Burbuja</h5>
+                    <p>150 × 1,2</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-sheet-plastic"></i>
+                    <h5>Plástico 400 Galgos</h5>
+                    <p>Rollo 50 × 4</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-sheet-plastic"></i>
+                    <h5>Plástico 600 Galgos</h5>
+                    <p>Rollo 50 × 4</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-sheet-plastic"></i>
+                    <h5>Plástico 400 Galgos Virgen</h5>
+                    <p>Rollo 50 × 4</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h5>Fomper 3 mm</h5>
+                    <p>Rollo 180 × 1,6</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <h5>Fomper 5 mm</h5>
+                    <p>Rollo 160 × 1,6</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <h5>Rodillo</h5>
+                    <p>22 cm</p>
+                </div>
+                <div class="pcard">
+                    <i class="fa-solid fa-paint-roller"></i>
+                    <h5>Rodillo</h5>
+                    <p>18 cm</p>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-banner">
+                <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
+                <div class="cta-body">
+                    <h3>¿No encuentras lo que necesitas?</h3>
+                    <p>Este catálogo muestra una selección habitual de tienda, pero disponemos de muchos más artículos
+                        que podemos pedir directamente. Consúltanos sin compromiso y te asesoramos.</p>
+                    <div class="cta-contacts">
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                                54</a></div>
+                        <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
+                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VENTAJAS -->
+            <div class="ventajas-grid">
+                <div class="ventaja-card">
+                    <i class="fa-solid fa-boxes-stacked"></i>
+                    <h5>Stock habitual</h5>
+                </div>
+                <div class="ventaja-card">
+                    <i class="fa-solid fa-truck-fast"></i>
+                    <h5>Suministro rápido</h5>
+                </div>
+                <div class="ventaja-card">
+                    <i class="fa-solid fa-user-gear"></i>
+                    <h5>Asesoramiento técnico</h5>
+                </div>
+            </div>
+
         </div>
+    </main>
 
-    </div>
-
-
-    </div>
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer-main">
         <div class="container">
-            <div class="row g-4 pb-4">
-                <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:80px; margin-bottom:10px;">
-                    <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
-                        Asesoramiento técnico especializado.</p>
+            <div class="row g-5 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="logonuevo2.png" class="footer-logo" alt="Olivilla Tres">
+                    <p class="footer-desc">Suministro de materiales de construcción, aislamiento e impermeabilización en
+                        Toledo. Asesoramiento técnico especializado.</p>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <p class="footer-heading">Navegación</p>
@@ -1119,7 +1113,7 @@
                         <li><a href="./index.html">Inicio</a></li>
                         <li><a href="./ferreteria.html">Ferretería</a></li>
                         <li><a href="./poliymeta.html">Policarbonatos</a></li>
-                        <li><a href="#proveedores">Todos los proveedores</a></li>
+                        <li><a href="./maquinaria.html">Maquinaria</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -1138,18 +1132,12 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <p class="footer-heading">Contacto</p>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Calle Rio Valdecelada, 7<br>45007 — Toledo</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:925233454">925 23 34 54</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-location-dot"></i><span>Calle Rio Valdecelada,
+                            7<br>45007 — Toledo</span></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                            54</a></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
                 </div>
             </div>
         </div>
@@ -1160,9 +1148,31 @@
         </div>
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var navbar = document.getElementById('mainNavbar');
+            var topbar = document.getElementById('topbar');
+            var spacer = document.getElementById('headerSpacer');
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    topbar.style.display = 'none';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    topbar.style.display = '';
+                }
+                resize();
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll();
+            requestAnimationFrame(resize);
+        })();
+    </script>
     <script type="text/javascript">
         (function (d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -1172,7 +1182,7 @@
                     url: 'https://general-runtime.voiceflow.com',
                     voice: { url: "https://runtime-api.voiceflow.com" }
                 });
-            }
+            };
             v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
             v.type = "text/javascript";
             s.parentNode.insertBefore(v, s);
