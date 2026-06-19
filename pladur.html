@@ -370,7 +370,7 @@
 
         /* ========== RESTO DE ESTILOS (sin cambios) ========== */
         .container-custom {
-            max-width: 900px;
+            max-width: auto;
             margin: 40px auto;
             padding: 0 20px;
             flex: 1;
@@ -385,46 +385,6 @@
             padding-left: 15px;
         }
 
-
-        /* ========== NUEVA SECCIÓN DE IMÁGENES DESTACADAS ========== */
-        .seccion-destacados {
-            margin-bottom: 50px;
-        }
-
-        .card-destacado {
-            border: none;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(74, 59, 104, 0.15);
-            background-color: #4a3b68;
-            overflow: hidden;
-            height: 100%;
-        }
-
-        .card-destacado img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            background-color: #4a3b68;
-        }
-
-        .card-destacado .card-body {
-            background: rgba(74, 59, 104, 0.95);
-            color: #ffffff;
-            padding: 15px;
-        }
-
-        .card-destacado .card-title {
-            color: #f386cc;
-            font-weight: bold;
-            font-size: 1.1rem;
-            margin-bottom: 5px;
-        }
-
-        .card-destacado .card-text {
-            font-size: 0.9rem;
-            color: #dcd6e8;
-            margin: 0;
-        }
 
         /* ========== FIN NUEVA SECCIÓN DE IMÁGENES DESTACADAS ========== */
         .intro-box {
@@ -444,10 +404,23 @@
             color: #b53987;
             margin-bottom: 15px;
         }
-        .seccion-productos h2 {
-            color: #4a3b68;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
+
+        .intro-box h1 {
+            margin: 20px;
+        }
+
+        .catalogo-seccion {
+            margin-bottom: 60px;
+        }
+
+        .catalogo-seccion h3 {
+            color: #ede5f5;
+            margin-bottom: 40px;
+            border-left: 5px solid #b53987;
+            padding: 15px;
+            background-color: #4a3b68;
+            border-radius: 8px;
+
         }
 
         .card-producto {
@@ -708,30 +681,32 @@
             </div>
         </div>
     </div>
+    <!-- INTRO -->
+    <section class="intro-pyl">
+
+        <div class="intro-box">
+
+            <i class="fa-solid fa-screwdriver-wrench"></i>
+
+            <h1>Placa de Yeso Laminado (PYL)</h1>
+
+            <p>
+                Disponemos de una amplia selección de Placas de Yeso Laminado (PYL) de alta calidad para tus
+                proyectos de construcción.
+            </p>
+
+        </div>
+
+    </section>
     <!-- ===== CONTENIDO PRINCIPAL ===== -->
     <div class="container-custom">
-                <!-- INTRO -->
-        <section class="intro-pyl">
 
-            <div class="intro-box">
-
-                <i class="fa-solid fa-screwdriver-wrench"></i>
-
-                <h1>Placa de Yeso Laminado (PYL)</h1>
-
-                <p>
-                    Disponemos de una amplia selección de Placas de Yeso Laminado (PYL) de alta calidad para tus proyectos de construcción.
-                </p>
-
-            </div>
-
-        </section>
 
         <h1 class="titulo-proveedor">
             Productos de Placa de Yeso Laminado (PYL)
         </h1>
 
-        <section class="seccion-productos">
+        <section class="catalogo-seccion">
             <h2>Catálogo Completo</h2>
             <h3>Placa N Estándar 13 mm</h3>
 
@@ -1229,8 +1204,7 @@
         <div class="container">
             <div class="row g-4 pb-4">
                 <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:105px; margin-bottom:10px;">
+                    <img src="logonuevo2.png" alt="Olivilla Tres" style="height:105px; margin-bottom:10px;">
                     <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
                         Asesoramiento técnico especializado.</p>
                 </div>
