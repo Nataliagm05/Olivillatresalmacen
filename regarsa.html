@@ -583,327 +583,330 @@
 
 
         /* SECTION HEADERS */
-        .section-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 28px;
-        }
 
-        .section-tag {
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #4a3b68;
-            border: 1px solid rgba(181, 57, 135, .3);
-            padding: 4px 10px;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
 
-        .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #f4f2f8;
-            background-color: #b53987;
-            padding: 20px;
-            border-radius: 8px;
-        }
+            .section-header {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                margin-bottom: 28px;
+            }
 
-        .section-line {
-            flex: 1;
-            height: 1px;
-            background: rgba(74, 59, 104, 0.12);
-        }
+            .section-tag {
+                font-size: 20px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #4a3b68;
+                border: 1px solid rgba(181, 57, 135, .3);
+                padding: 4px 10px;
+                border-radius: 4px;
+                white-space: nowrap;
+            }
 
-        /* PRODUCT CARDS */
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 16px;
-            margin-bottom: 64px;
-        }
+            .section-title {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #f4f2f8;
+                background-color: #b53987;
+                padding: 20px;
+                border-radius: 8px;
+            }
 
-        .pcard {
-            background: #ffffff;
-            border: 1px solid rgba(74, 59, 104, 0.12);
-            border-radius: 14px;
-            padding: 0;
-            transition: border-color .25s, transform .25s, box-shadow .25s;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
-            display: flex;
-            flex-direction: column;
-        }
+            .section-line {
+                flex: 1;
+                height: 1px;
+                background: rgba(74, 59, 104, 0.12);
+            }
 
-        .pcard::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--accent), transparent);
-            opacity: 0;
-            transition: opacity .25s;
-            z-index: 2;
-        }
+            /* PRODUCT CARDS */
+            .products-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+                gap: 16px;
+                margin-bottom: 64px;
+            }
 
-        .pcard:hover {
-            border-color: rgba(181, 57, 135, .3);
-            transform: translateY(-4px);
-            box-shadow: 0 16px 40px rgba(74, 59, 104, .14);
-        }
-
-        .pcard:hover::before {
-            opacity: 1;
-        }
-
-        .pcard-img {
-            background: #f7f0f5;
-            border-bottom: 1px solid rgba(181, 57, 135, .12);
-            height: 168px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 14px;
-            flex-shrink: 0;
-        }
-
-        .pcard-img img {
-            max-width: 100%;
-            max-height: 140px;
-            object-fit: contain;
-        }
-
-        .pcard-body {
-            padding: 22px 24px 24px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .pcard-material {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--accent);
-            margin-bottom: 10px;
-        }
-
-        .pcard-name {
-            font-size: 1rem;
-            font-weight: 700;
-            color: #4a3b68;
-            margin-bottom: 10px;
-            line-height: 1.35;
-        }
-
-        .pcard-desc {
-            font-size: 0.82rem;
-            color: var(--muted);
-            line-height: 1.6;
-            margin-bottom: 14px;
-            flex: 1;
-        }
-
-        .specs-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 6px;
-            margin-top: auto;
-        }
-
-        .spec-pill {
-            font-size: 0.7rem;
-            font-weight: 600;
-            color: #4a3b68;
-            background: #f7f0f5;
-            border: 1px solid rgba(181, 57, 135, .18);
-            border-radius: 20px;
-            padding: 4px 10px;
-        }
-
-        /* CTA BANNER */
-        .cta-banner {
-            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
-            border-radius: 18px;
-            padding: 40px 48px;
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
-        }
-
-        .cta-banner::before {
-            content: '';
-            position: absolute;
-            right: -60px;
-            top: -60px;
-            width: 260px;
-            height: 260px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
-        }
-
-        .cta-icon {
-            font-size: 3rem;
-            color: #f386cc;
-            flex-shrink: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-body {
-            position: relative;
-            z-index: 1;
-        }
-
-        .cta-body h3 {
-            font-size: 1.3rem;
-            font-weight: 800;
-            color: #fff;
-            margin-bottom: 8px;
-        }
-
-        .cta-body p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.65);
-            margin-bottom: 16px;
-            max-width: 560px;
-            line-height: 1.65;
-        }
-
-        .cta-contacts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .cta-contact-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.85);
-        }
-
-        .cta-contact-item i {
-            color: #f386cc;
-            font-size: 14px;
-        }
-
-        .cta-contact-item a {
-            color: #f386cc;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .cta-contact-item a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width:700px) {
-            .cta-banner {
+            .pcard {
+                background: #ffffff;
+                border: 1px solid rgba(74, 59, 104, 0.12);
+                border-radius: 14px;
+                padding: 0;
+                transition: border-color .25s, transform .25s, box-shadow .25s;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
+                display: flex;
                 flex-direction: column;
-                padding: 32px 24px;
-                text-align: center;
+            }
+
+            .pcard::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, var(--accent), transparent);
+                opacity: 0;
+                transition: opacity .25s;
+                z-index: 2;
+            }
+
+            .pcard:hover {
+                border-color: rgba(181, 57, 135, .3);
+                transform: translateY(-4px);
+                box-shadow: 0 16px 40px rgba(74, 59, 104, .14);
+            }
+
+            .pcard:hover::before {
+                opacity: 1;
+            }
+
+            .pcard-img {
+                background: #f7f0f5;
+                border-bottom: 1px solid rgba(181, 57, 135, .12);
+                height: 168px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 14px;
+                flex-shrink: 0;
+            }
+
+            .pcard-img img {
+                max-width: 100%;
+                max-height: 140px;
+                object-fit: contain;
+            }
+
+            .pcard-body {
+                padding: 22px 24px 24px;
+                display: flex;
+                flex-direction: column;
+                flex: 1;
+            }
+
+            .pcard-material {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: var(--accent);
+                margin-bottom: 10px;
+            }
+
+            .pcard-name {
+                font-size: 1rem;
+                font-weight: 700;
+                color: #4a3b68;
+                margin-bottom: 10px;
+                line-height: 1.35;
+            }
+
+            .pcard-desc {
+                font-size: 0.82rem;
+                color: var(--muted);
+                line-height: 1.6;
+                margin-bottom: 14px;
+                flex: 1;
+            }
+
+            .specs-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                margin-top: auto;
+            }
+
+            .spec-pill {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #4a3b68;
+                background: #f7f0f5;
+                border: 1px solid rgba(181, 57, 135, .18);
+                border-radius: 20px;
+                padding: 4px 10px;
+            }
+
+
+            /* CTA BANNER */
+            .cta-banner {
+                background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+                border-radius: 18px;
+                padding: 40px 48px;
+                display: flex;
+                align-items: center;
+                gap: 32px;
+                position: relative;
+                overflow: hidden;
+                box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
+            }
+
+            .cta-banner::before {
+                content: '';
+                position: absolute;
+                right: -60px;
+                top: -60px;
+                width: 260px;
+                height: 260px;
+                border-radius: 50%;
+                background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
+            }
+
+            .cta-icon {
+                font-size: 3rem;
+                color: #f386cc;
+                flex-shrink: 0;
+                position: relative;
+                z-index: 1;
+            }
+
+            .cta-body {
+                position: relative;
+                z-index: 1;
+            }
+
+            .cta-body h3 {
+                font-size: 1.3rem;
+                font-weight: 800;
+                color: #fff;
+                margin-bottom: 8px;
+            }
+
+            .cta-body p {
+                font-size: 0.9rem;
+                color: rgba(255, 255, 255, 0.65);
+                margin-bottom: 16px;
+                max-width: 560px;
+                line-height: 1.65;
             }
 
             .cta-contacts {
-                justify-content: center;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 16px;
             }
-        }
 
-        /* FOOTER */
-        .footer-main {
-            background: #4a3b68;
-            padding: 56px 0 0;
-        }
+            .cta-contact-item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 0.88rem;
+                color: rgba(255, 255, 255, 0.85);
+            }
 
-        .footer-logo {
-            height: 68px;
-            margin-bottom: 16px;
-        }
+            .cta-contact-item i {
+                color: #f386cc;
+                font-size: 14px;
+            }
 
-        .footer-desc {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.55);
-            line-height: 1.7;
-            max-width: 280px;
-        }
+            .cta-contact-item a {
+                color: #f386cc;
+                text-decoration: none;
+                font-weight: 600;
+            }
 
-        .footer-heading {
-            font-size: 10px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #e8b0d0;
-            margin-bottom: 18px;
-        }
+            .cta-contact-item a:hover {
+                text-decoration: underline;
+            }
 
-        .footer-links {
-            list-style: none;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
+            @media (max-width:700px) {
+                .cta-banner {
+                    flex-direction: column;
+                    padding: 32px 24px;
+                    text-align: center;
+                }
 
-        .footer-links a {
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.55);
-            text-decoration: none;
-            transition: color .2s;
-        }
+                .cta-contacts {
+                    justify-content: center;
+                }
+            }
 
-        .footer-links a:hover {
-            color: #f386cc;
-        }
+            /* FOOTER */
+            .footer-main {
+                background: #4a3b68;
+                padding: 56px 0 0;
+            }
 
-        .footer-contact-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.55);
-            margin-bottom: 12px;
-        }
+            .footer-logo {
+                height: 68px;
+                margin-bottom: 16px;
+            }
 
-        .footer-contact-row i {
-            color: #b53987;
-            margin-top: 2px;
-            flex-shrink: 0;
-        }
+            .footer-desc {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.55);
+                line-height: 1.7;
+                max-width: 280px;
+            }
 
-        .footer-contact-row a {
-            color: rgba(255, 255, 255, 0.55);
-            text-decoration: none;
-            transition: color .2s;
-        }
+            .footer-heading {
+                font-size: 10px;
+                font-weight: 700;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+                color: #e8b0d0;
+                margin-bottom: 18px;
+            }
 
-        .footer-contact-row a:hover {
-            color: #f386cc;
-        }
+            .footer-links {
+                list-style: none;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
 
-        .footer-bottom {
-            background: #35284f;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            padding: 18px 0;
-            margin-top: 48px;
-        }
+            .footer-links a {
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.55);
+                text-decoration: none;
+                transition: color .2s;
+            }
 
-        .footer-bottom p {
-            font-size: 12px;
-            color: rgba(255, 255, 255, .3);
-            text-align: center;
-            margin: 0;
-        }
+            .footer-links a:hover {
+                color: #f386cc;
+            }
+
+            .footer-contact-row {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-size: 0.85rem;
+                color: rgba(255, 255, 255, 0.55);
+                margin-bottom: 12px;
+            }
+
+            .footer-contact-row i {
+                color: #b53987;
+                margin-top: 2px;
+                flex-shrink: 0;
+            }
+
+            .footer-contact-row a {
+                color: rgba(255, 255, 255, 0.55);
+                text-decoration: none;
+                transition: color .2s;
+            }
+
+            .footer-contact-row a:hover {
+                color: #f386cc;
+            }
+
+            .footer-bottom {
+                background: #35284f;
+                border-top: 1px solid rgba(255, 255, 255, 0.08);
+                padding: 18px 0;
+                margin-top: 48px;
+            }
+
+            .footer-bottom p {
+                font-size: 12px;
+                color: rgba(255, 255, 255, .3);
+                text-align: center;
+                margin: 0;
+            }
     </style>
 </head>
 
@@ -978,7 +981,8 @@
             </div>
             <span class="hero-eyebrow"><i class="fa-solid fa-spray-can-sparkles"></i> Perfilería y Mallas</span>
             <h1 class="hero-title">Perfilería, Mallas<br>&amp; Resinas de <em>Poliester</em></h1>
-            <p class="hero-desc">Gama completa de Regarsa para construcción y bricolaje: perfilería, mallas, resinas de poliester y más.</p>
+            <p class="hero-desc">Gama completa de Regarsa para construcción y bricolaje: perfilería, mallas, resinas de
+                poliester y más.</p>
             <div class="hero-stats">
                 <div>
                     <div class="stat-num">14</div>
@@ -1006,25 +1010,21 @@
                     <div class="cr-bar" id="crBar"></div>
                 </div>
                 <div class="cr-stage">
-                    <div class="cr-slide active" data-tag="Poliespumas" data-title="P925 Poliespuma Fijación Turbo"
-                        data-desc="Adhesivo de espuma de poliuretano de fijación rápida.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/Bostik-spain-productimage-p925-fijacion-turbo-640x480.jpg"
-                            alt="P925">
+                    <div class="cr-slide active" data-tag="Refuerzo de Pavimentos" data-title="Tramaglass SGR 120"
+                        data-desc="Malla de fibra de vidrio.">
+                        <img src="https://regarsa.com/wp-content/uploads/2025/02/45_01.jpg" alt="Tramaglass SGR 120">
                     </div>
-                    <div class="cr-slide" data-tag="Adhesivos MSP" data-title="MSP Turbo"
-                        data-desc="Adhesivo de montaje y sellador MSP de alto agarre inmediato.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-msp-turbo-640x480.jpg"
-                            alt="MSP Turbo">
+                    <div class="cr-slide" data-tag="Impermeabilización" data-title="Regarmesh Premium Pintura"
+                        data-desc="Malla de fibra de vidrio.">
+                        <img src="https://regarsa.com/media/2100/imagen_300050.jpg" alt="Regarmesh Premium Pintura">
                     </div>
-                    <div class="cr-slide" data-tag="Impermeabilización" data-title="WaterStop Espray Reparador"
-                        data-desc="Solución impermeabilizante de reparación en espray.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-waterstop-espray-640x480.jpg"
-                            alt="WaterStop">
+                    <div class="cr-slide" data-tag="MAT Fibra de Vidrio" data-title="Euro-MAT 100 50m²"
+                        data-desc="Hilos cortados de 50 mm de fibra de vidrio que se mantienen cohesionados gracias a un emulsionante.">
+                        <img src="https://regarsa.com/media/2200/imagen_200430.jpg" alt="Euro-MAT 100 50m²">
                     </div>
-                    <div class="cr-slide" data-tag="Selladores" data-title="P795 Poliuretano Premium"
-                        data-desc="Sellador de poliuretano de nueva generación, curado rápido.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-p795-poliuretano-premium-640x480.jpg"
-                            alt="P795">
+                    <div class="cr-slide" data-tag="Berenjenos" data-title="Berenjeno 20 mm"
+                        data-desc="Berenjeno de PVC.">
+                        <img src="https://regarsa.com/media/2130/imagen_R2333250.jpg" alt="Berenjeno 20 mm">
                     </div>
                     <div class="cr-overlay"></div>
                     <div class="cr-info">
@@ -1133,7 +1133,7 @@
                     <div class="pcard-body">
                         <div class="pcard-material">Refuerzo de Pavimentos
                         </div>
-                        <h3 class="pcard-name">Tramaglass SGR120</h3>
+                        <h3 class="pcard-name">Tramaglass SGR 120</h3>
                         <p class="pcard-desc">Malla de fibra de vidrio desarrollada como solución para el refuerzo de
                             pavimentos de interior, en sustitución del mallazo, con el fin de reducir las grietas que se
                             pueden producir durante las fases de fraguado y secado del mortero.</p>
@@ -1367,13 +1367,15 @@
 
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="" alt="">
+                        <img src="https://regarsa.com/media/2140/imagen_200650.jpg" alt="Regar‑fibra 500">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">Polipropileno
                         </div>
-                        <h3 class="pcard-name"></h3>
-                        <p class="pcard-desc"></p>
+                        <h3 class="pcard-name">Regar‑fibra 500</h3>
+                        <p class="pcard-desc">Fibras de refuerzo fabricada en multifilamento de polipropileno. Indicado
+                            para ser adicionada a morteros y hormigones. Reducción de las microfisuras por retracción
+                            durante el fraguado, evitando la formación de fisuras mayores.</p>
                     </div>
                 </div>
 
@@ -1425,8 +1427,7 @@
                 </div>
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="https://regarsa.com/media/2190/imagen_579-000-010.jpgg"
-                            alt="Perfil goterón PVC 4 mm.">
+                        <img src="https://regarsa.com/media/2190/imagen_579-000-010.jpg" alt="Perfil goterón PVC 4 mm.">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">Perfiles PVC con Malla
@@ -1448,28 +1449,27 @@
 
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="https://regarsa.com/media/2190/imagen_579-000-009.jpg"
-                            alt="Perfil goterón oculto PVC">
+                        <img src="https://regarsa.com/media/2190/imagen-LTX-800x800.png" alt="Caja Taco Fijación LTX">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">Fijaciones
                         </div>
-                        <h3 class="pcard-name">Perfil goterón oculto PVC</h3>
-                        <p class="pcard-desc">Perfil con goterón oculto de PVC con malla de fibra de vidrio
-                            álcali-resistente y certificada EAD.</p>
+                        <h3 class="pcard-name">Caja Taco Fijación LTX</h3>
+                        <p class="pcard-desc">VARIAS MEDIDAS. Taco de fijación mecánica por golpeo con clavo de
+                            poliamida reforzada con fibra de vidrio.</p>
                     </div>
                 </div>
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="https://regarsa.com/media/2190/imagen_579-000-010.jpgg"
-                            alt="Perfil goterón PVC 4 mm.">
+                        <img src="https://regarsa.com/media/2190/imagen-FIXPLUG10-800x800.png"
+                            alt="Taco fijación golpeo Fixplug">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">Fijaciones
                         </div>
-                        <h3 class="pcard-name">Perfil goterón PVC 4 mm.</h3>
-                        <p class="pcard-desc">Perfil con goterón visto de 4 mm de PVC con malla de fibra de vidrio
-                            álcali-resistente y certificada EAD.</p>
+                        <h3 class="pcard-name">Taco fijación golpeo Fixplug</h3>
+                        <p class="pcard-desc">VARIAS MEDIDAS. Taco de fijación por golpeo con clavo poliamida reforzada
+                            con fibra de vidrio y arandela de soporte de diseño telescópico.</p>
                     </div>
                 </div>
             </div>
@@ -1543,26 +1543,51 @@
 
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="https://regarsa.com/media/2190/imagen_579-000-009.jpg" alt="Euro-MAT 100 50m²">
+                        <img src="https://regarsa.com/media/2200/imagen_200430.jpg" alt="Euro-MAT 100 50m²">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">MAT Fibra de Vidrio
                         </div>
-                        <h3 class="pcard-name">Euro-MAT100 50m²</h3>
-                        <p class="pcard-desc"></p>
+                        <h3 class="pcard-name">Euro-MAT 100 50m²</h3>
+                        <p class="pcard-desc">MAT de fibra de vidrio. Hilos cortados de 50 mm de fibra de vidrio que se
+                            mantienen cohesionados gracias a un emulsionante.</p>
                     </div>
                 </div>
                 <div class="pcard">
                     <div class="pcard-img">
-                        <img src="https://regarsa.com/media/2190/imagen_579-000-010.jpgg" alt="Euro-MAT 225 50m²">
+                        <img src="https://regarsa.com/media/2200/imagen_200470.jpg" alt="Euro-MAT 225 50m²">
                     </div>
                     <div class="pcard-body">
                         <div class="pcard-material">MAT Fibra de Vidrio
                         </div>
                         <h3 class="pcard-name">Euro-MAT 225 50m²</h3>
-                        <p class="pcard-desc"></p>
+                        <p class="pcard-desc">MAT de fibra de vidrio. Hilos cortados de 50 mm de fibra de vidrio que se
+                            mantienen cohesionados gracias a un emulsionante.</p>
                     </div>
                 </div>
+            </div>
+
+            <!-- 15 Cinta · Tabiquería Seca -->
+            <div class="section-header">
+                <span class="section-tag">15</span>
+                <h2 class="section-title">Cinta · Tabiquería Seca</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="products-grid">
+
+                <div class="pcard">
+                    <div class="pcard-img">
+                        <img src="https://regarsa.com/media/2120/imagen_600630.jpg" alt="Cinta Veloglas 5 cm x 25 m">
+                    </div>
+                    <div class="pcard-body">
+                        <div class="pcard-material">Cinta · Tabiquería Seca
+                        </div>
+                        <h3 class="pcard-name">Cinta Veloglas 5 cm x 25 m</h3>
+                        <p class="pcard-desc">Cinta de velo de fibra de vidrio. Indicada para las juntas y acabados en
+                            sistemas de cartón-yeso, al igual que para la reparación de grietas.</p>
+                    </div>
+                </div>
+
             </div>
 
             <!-- CTA -->
@@ -1571,7 +1596,7 @@
                 <div class="cta-body">
                     <h3>¿No encuentras lo que necesitas?</h3>
                     <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchos más artículos
-                        Bostik
+                        Regarsa
                         que podemos pedir directamente. Consúltanos sin compromiso.</p>
                     <div class="cta-contacts">
                         <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
@@ -1661,70 +1686,70 @@
             requestAnimationFrame(resize);
         })();
     </script>
-        <script>
-    (function(){
-        const slides = document.querySelectorAll('.cr-slide');
-        const thumbsWrap = document.getElementById('crThumbs');
-        const bar = document.getElementById('crBar');
-        const tag = document.getElementById('crTag');
-        const title = document.getElementById('crTitle');
-        const desc = document.getElementById('crDesc');
-        const counter = document.getElementById('crCounter');
-        const total = slides.length;
-        let cur = 0, barStart = null, barDur = 3500;
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.cr-slide');
+            const thumbsWrap = document.getElementById('crThumbs');
+            const bar = document.getElementById('crBar');
+            const tag = document.getElementById('crTag');
+            const title = document.getElementById('crTitle');
+            const desc = document.getElementById('crDesc');
+            const counter = document.getElementById('crCounter');
+            const total = slides.length;
+            let cur = 0, barStart = null, barDur = 3500;
 
-        slides.forEach((s, i) => {
-            const img = s.querySelector('img');
-            const th = document.createElement('div');
-            th.className = 'cr-thumb' + (i === 0 ? ' active' : '');
-            th.innerHTML = `<img src="${img.src}" alt="">`;
-            th.addEventListener('click', () => go(i));
-            thumbsWrap.appendChild(th);
-        });
+            slides.forEach((s, i) => {
+                const img = s.querySelector('img');
+                const th = document.createElement('div');
+                th.className = 'cr-thumb' + (i === 0 ? ' active' : '');
+                th.innerHTML = `<img src="${img.src}" alt="">`;
+                th.addEventListener('click', () => go(i));
+                thumbsWrap.appendChild(th);
+            });
 
-        function updateInfo(i) {
-            const s = slides[i];
-            tag.textContent = s.dataset.tag;
-            title.textContent = s.dataset.title;
-            desc.textContent = s.dataset.desc;
-            counter.textContent = (i + 1) + ' / ' + total;
-        }
-
-        function go(idx) {
-            slides[cur].classList.remove('active');
-            document.querySelectorAll('.cr-thumb')[cur].classList.remove('active');
-            cur = (idx + total) % total;
-            slides[cur].classList.add('active');
-            document.querySelectorAll('.cr-thumb')[cur].classList.add('active');
-            updateInfo(cur);
-            resetBar();
-        }
-
-        function resetBar() {
-            bar.style.transition = 'none';
-            bar.style.width = '0%';
-            barStart = null;
-            requestAnimationFrame(() => requestAnimationFrame(animBar));
-        }
-
-        function animBar(ts) {
-            if (!barStart) barStart = ts;
-            const elapsed = ts - barStart;
-            const pct = Math.min(elapsed / barDur * 100, 100);
-            bar.style.width = pct + '%';
-            if (pct < 100) {
-                requestAnimationFrame(animBar);
-            } else {
-                go(cur + 1);
+            function updateInfo(i) {
+                const s = slides[i];
+                tag.textContent = s.dataset.tag;
+                title.textContent = s.dataset.title;
+                desc.textContent = s.dataset.desc;
+                counter.textContent = (i + 1) + ' / ' + total;
             }
-        }
 
-        document.getElementById('crPrev').addEventListener('click', () => go(cur - 1));
-        document.getElementById('crNext').addEventListener('click', () => go(cur + 1));
+            function go(idx) {
+                slides[cur].classList.remove('active');
+                document.querySelectorAll('.cr-thumb')[cur].classList.remove('active');
+                cur = (idx + total) % total;
+                slides[cur].classList.add('active');
+                document.querySelectorAll('.cr-thumb')[cur].classList.add('active');
+                updateInfo(cur);
+                resetBar();
+            }
 
-        updateInfo(0);
-        requestAnimationFrame(animBar);
-    })();
+            function resetBar() {
+                bar.style.transition = 'none';
+                bar.style.width = '0%';
+                barStart = null;
+                requestAnimationFrame(() => requestAnimationFrame(animBar));
+            }
+
+            function animBar(ts) {
+                if (!barStart) barStart = ts;
+                const elapsed = ts - barStart;
+                const pct = Math.min(elapsed / barDur * 100, 100);
+                bar.style.width = pct + '%';
+                if (pct < 100) {
+                    requestAnimationFrame(animBar);
+                } else {
+                    go(cur + 1);
+                }
+            }
+
+            document.getElementById('crPrev').addEventListener('click', () => go(cur - 1));
+            document.getElementById('crNext').addEventListener('click', () => go(cur + 1));
+
+            updateInfo(0);
+            requestAnimationFrame(animBar);
+        })();
     </script>
     <script type="text/javascript">
         (function (d, t) {
