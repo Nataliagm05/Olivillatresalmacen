@@ -238,7 +238,8 @@
         .navbar-custom .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
-                .navbar-custom .navbar-toggler:focus {
+
+        .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
 
@@ -256,9 +257,10 @@
         .page-hero {
             background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
             border-bottom: 4px solid var(--accent);
-            padding: 72px 0 60px;
+            padding: 100px 0 100px;
             position: relative;
             overflow: hidden;
+            margin-bottom: 110px;
         }
 
         .page-hero::before {
@@ -1005,31 +1007,30 @@
     <main>
         <div class="container">
             <div class="cr-wrap">
-                <div class="cr-progress"><div class="cr-bar" id="crBar"></div></div>
+                <div class="cr-progress">
+                    <div class="cr-bar" id="crBar"></div>
+                </div>
                 <div class="cr-stage">
-                    <div class="cr-slide active"
-                        data-tag="Poliespumas de Poliuretano"
+                    <div class="cr-slide active" data-tag="Poliespumas de Poliuretano"
                         data-title="P925 Poliespuma Fijación Turbo"
                         data-desc="Adhesivo de espuma de poliuretano de fijación rápida.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/Bostik-spain-productimage-p925-fijacion-turbo-640x480.jpg" alt="P925 Poliespuma Fijación Turbo">
+                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/Bostik-spain-productimage-p925-fijacion-turbo-640x480.jpg"
+                            alt="P925 Poliespuma Fijación Turbo">
                     </div>
-                    <div class="cr-slide"
-                        data-tag="Selladores y Adhesivos MSP"
-                        data-title="MSP Turbo"
+                    <div class="cr-slide" data-tag="Selladores y Adhesivos MSP" data-title="MSP Turbo"
                         data-desc="Adhesivo de montaje y sellador MSP de alto agarre inmediato.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-msp-turbo-640x480.jpg" alt="MSP Turbo">
+                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-msp-turbo-640x480.jpg"
+                            alt="MSP Turbo">
                     </div>
-                    <div class="cr-slide"
-                        data-tag="Selladores y Adhesivos MSP"
-                        data-title="WaterStop Espray Reparador"
+                    <div class="cr-slide" data-tag="Selladores y Adhesivos MSP" data-title="WaterStop Espray Reparador"
                         data-desc="Solución impermeabilizante de reparación en espray.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-waterstop-espray-640x480.jpg" alt="WaterStop Espray Reparador">
+                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-waterstop-espray-640x480.jpg"
+                            alt="WaterStop Espray Reparador">
                     </div>
-                    <div class="cr-slide"
-                        data-tag="Selladores y Adhesivos MSP"
-                        data-title="P795 Poliuretano Premium"
+                    <div class="cr-slide" data-tag="Selladores y Adhesivos MSP" data-title="P795 Poliuretano Premium"
                         data-desc="Sellador de poliuretano de nueva generación, curado rápido.">
-                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-p795-poliuretano-premium-640x480.jpg" alt="P795 Poliuretano Premium">
+                        <img src="https://www.bostik.com/files/live/sites/shared_bostik/files/Images/Spain/Products/C%26C/bostik-spain-productimage-p795-poliuretano-premium-640x480.jpg"
+                            alt="P795 Poliuretano Premium">
                     </div>
                     <div class="cr-overlay"></div>
                     <div class="cr-info">
@@ -1039,10 +1040,14 @@
                     </div>
                     <div class="cr-counter" id="crCounter"></div>
                     <button class="cr-nav cr-prev" id="crPrev" aria-label="Anterior">
-                        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
                     </button>
                     <button class="cr-nav cr-next" id="crNext" aria-label="Siguiente">
-                        <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 6 15 12 9 18" />
+                        </svg>
                     </button>
                 </div>
                 <div class="cr-thumbs" id="crThumbs"></div>
@@ -1400,7 +1405,7 @@
             requestAnimationFrame(resize);
         })();
     </script>
-        <script>
+    <script>
         (function () {
             const slides = document.querySelectorAll('.cr-slide');
             const thumbsWrap = document.getElementById('crThumbs');
