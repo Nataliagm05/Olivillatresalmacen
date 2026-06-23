@@ -4,230 +4,187 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pladur - Almacen Olivilla tres S.L.U</title>
-
+    <title>PYL — Olivilla Tres</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <style>
-        * {
+        :root {
+            --bg: #f4f2f8;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html,
-        body {
-            min-height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f7f9fa;
-            color: #4a3b68;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* Evita que el flexbox del body comprima estas secciones */
-        .proveedor-hero,
-        .intro-pyl,
-        .container-custom {
-            flex-shrink: 0;
-        }
-
-        /* ========== TOPBAR ========== */
+        /* TOPBAR */
         .topbar {
-            background-color: #35284f;
-            padding: 7px 30px;
+            background: #35284f;
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            padding: 8px 32px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
-            transition: transform 0.35s ease, opacity 0.3s ease;
+            gap: 24px;
+            font-size: .75rem;
         }
 
         .topbar a,
         .topbar span {
-            color: #c9b8e8;
-            font-size: 0.78rem;
+            color: rgba(201, 184, 232, .8);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .topbar a:hover {
             color: #f386cc;
         }
 
-        .topbar .topbar-divider {
+        .topbar-div {
             width: 1px;
-            height: 12px;
-            background-color: #5a4878;
+            height: 10px;
+            background: rgba(255, 255, 255, .15);
         }
 
-        /* Topbar se desliza hacia arriba y se desvanece cuando el navbar está "scrolled" */
-        .topbar.topbar-hidden {
-            transform: translateY(-100%);
-            opacity: 0;
-            position: absolute;
-            pointer-events: none;
-        }
-
-        @media (max-width: 768px) {
+        @media(max-width:600px) {
             .topbar {
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                text-align: center;
-                gap: 8px;
-                padding: 10px;
+                gap: 6px;
             }
 
-            .topbar-divider {
+            .topbar-div {
                 display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .topbar {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .topbar-divider {
-                display: none;
-            }
-        }
-
-        /* ========== CABECERA FIJA (wrapper) ========== */
+        /* NAVBAR */
         .site-header-fixed {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
-            width: 100%;
             z-index: 1030;
         }
 
-        /* Altura de respaldo por si el JS aún no ha medido el header (evita que el hero quede tapado) */
-        #headerSpacer {
-            height: 156px;
-        }
-
-        @media (max-width: 768px) {
-            #headerSpacer {
-                height: 220px;
-            }
-        }
-
-        /* ========== NAVBAR ========== */
         .navbar-custom {
-            background-color: #4a3b68 !important;
-            border-bottom: 3px solid #b53987;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-            transition: box-shadow 0.3s ease;
+            background: rgba(74, 59, 104, .97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
         }
 
-        .navbar-custom .navbar-brand {
-            padding: 8px 0;
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, .99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
-            transition: padding 0.3s ease;
+            padding: 10px 0;
         }
 
         .logo-empresa {
-            height: 100px;
+            height: 76px;
             width: auto;
-            transition: height 0.3s ease;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
         }
 
         .logo-subtitulo {
-            font-size: 14px;
-            color: #e8b0d0;
-            font-weight: 500;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(232, 176, 208, .8);
+            border-left: 1px solid var(--border);
             padding-left: 12px;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
-            transition: font-size 0.3s ease;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 400;
-            font-size: 14px;
-            padding: 12px 14px !important;
-            transition: color 0.2s, padding 0.3s ease;
-            white-space: nowrap;
+            color: rgba(255, 255, 255, .75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
         }
 
-        @media (min-width: 992px) {
-            .navbar-custom .nav-link {
-                padding: 22px 14px !important;
-                border-bottom: 3px solid transparent;
-                margin-bottom: -3px;
-                transition: color 0.2s, border-color 0.2s, padding 0.3s ease;
-            }
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
+            border-bottom-color: #b53987;
         }
 
         .navbar-custom .nav-link:hover,
-        .navbar-custom .nav-link:focus {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
-        }
-
         .navbar-custom .nav-link.active {
-            color: #f386cc !important;
             border-bottom-color: #b53987;
         }
 
-        /* ----- Estado "encogido" al hacer scroll ----- */
-        .navbar-custom.navbar-scrolled {
-            box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
         }
 
-        .navbar-custom.navbar-scrolled .navbar-brand {
-            padding: 4px 0;
-        }
-
-        .navbar-custom.navbar-scrolled .logo-empresa {
-            height: 58px;
-        }
-
-        .navbar-custom.navbar-scrolled .logo-subtitulo {
-            font-size: 12px;
-        }
-
-        @media (min-width: 992px) {
-            .navbar-custom.navbar-scrolled .nav-link {
-                padding: 14px 14px !important;
-            }
-        }
-
-        .navbar-custom.navbar-scrolled .btn-nav-contacto {
-            padding: 7px 14px !important;
-        }
-
-        /* ========== DROPDOWN ========== */
         .navbar-custom .dropdown-menu {
-            background-color: #ffffff;
-            border: none;
-            border-top: 3px solid #b53987;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 12px 32px rgba(74, 59, 104, 0.18);
-            padding: 8px 0;
-            min-width: 220px;
-            animation: dropFade 0.15s ease;
+            background: #fff;
+            border: 1px solid rgba(74, 59, 104, .1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
         }
 
-        @keyframes dropFade {
+        @keyframes fade-in {
             from {
                 opacity: 0;
                 transform: translateY(-6px);
@@ -240,484 +197,488 @@
         }
 
         .navbar-custom .dropdown-item {
-            color: #4a3b68;
-            font-size: 0.88rem;
-            font-weight: 500;
+            color: var(--purple);
+            font-size: 13px;
             padding: 9px 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.15s, color 0.15s, padding-left 0.15s;
+            transition: all .15s;
         }
 
-        .navbar-custom .dropdown-item i {
-            width: 16px;
-            text-align: center;
-            color: #b53987;
-        }
-
-        .navbar-custom .dropdown-item:hover {
-            background-color: #f7f0f5;
-            color: #b53987;
+        .navbar-custom .dropdown-item:hover,
+        .navbar-custom .dropdown-item.active {
+            color: var(--accent);
+            background: #f7f0f5;
             padding-left: 24px;
         }
 
-        .navbar-custom .dropdown-divider {
-            border-color: #ede5f5;
-            margin: 5px 14px;
-        }
-
-        .dropdown-item .badge-new {
-            background-color: #b53987;
-            color: #fff;
-            font-size: 0.63rem;
-            font-weight: 600;
-            padding: 2px 7px;
-            border-radius: 20px;
-            margin-left: auto;
-        }
-
-        .btn-nav-contacto {
-            background-color: #b53987 !important;
-            color: #ffffff !important;
-            border-radius: 6px !important;
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
             font-size: 13px !important;
-            font-weight: 500 !important;
-            border-bottom: none !important;
-            padding: 10px 16px !important;
-            margin-top: 8px;
-            display: inline-block;
-            transition: background-color 0.2s, padding 0.3s ease;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
         }
 
-        @media (min-width: 992px) {
-            .btn-nav-contacto {
-                margin-top: 0;
-                margin-left: 6px;
-                padding: 8px 16px !important;
-            }
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
         }
 
-        .btn-nav-contacto:hover {
-            background-color: #922f6d !important;
+        .btn-cta::after {
+            display: none !important;
         }
 
         .navbar-custom .navbar-toggler {
-            border-color: #b53987 !important;
-        }
-
-        .navbar-custom .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
+            border-color: var(--accent) !important;
         }
 
         .navbar-custom .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
 
-
-        .dropdown-item.active {
-            background-color: #4a3b68;
-            color: #f7f9fa;
-            font-size: 14px;
-            font-weight: 400;
+        #headerSpacer {
+            height: 130px;
         }
 
-        .dropdown-item.active:hover {
-            background-color: #b53987 !important;
-            color: #f7f9fa !important;
-            font-size: 14px;
-            font-weight: 400;
+        @media(max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
         }
 
-        /* ========== FIN NAVBAR ========== */
-        /* ========== CABECERA PROVEEDOR ========== */
-        .proveedor-hero {
-            background: linear-gradient(135deg, #35284f 0%, #4a3b68 60%, #5e3d7a 100%);
-            padding: 4px 0 4px;
-            border-bottom: 4px solid #b53987;
+        /* HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 72px 0 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .proveedor-hero::after {
+        .page-hero::before {
             content: '';
             position: absolute;
-            right: -80px;
-            top: -80px;
-            width: 320px;
-            height: 320px;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: rgba(181, 57, 135, 0.08);
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
         }
 
-        .proveedor-hero .container {
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05) 0%, transparent 70%);
+        }
+
+        .hero-inner {
             position: relative;
             z-index: 1;
         }
 
-        .proveedor-breadcrumb {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.5);
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, .45);
+            margin-bottom: 28px;
         }
 
-        .proveedor-breadcrumb a {
-            color: rgba(255, 255, 255, 0.5);
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, .45);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .proveedor-breadcrumb a:hover {
+        .breadcrumb-custom a:hover {
             color: #f386cc;
         }
 
-        .proveedor-breadcrumb span {
-            margin: 0 6px;
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
         }
 
-        .proveedor-logo-wrap {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 12px;
-            padding: 14px 24px;
+        .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .proveedor-logo-wrap img {
-            height: 42px;
-            width: auto;
-        }
-
-        .proveedor-hero h1 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            gap: 8px;
+            font-size: 11px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 8px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
 
-        .proveedor-hero p {
-            color: rgba(255, 255, 255, 0.65);
-            font-size: 0.95rem;
-            margin: 0;
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
         }
 
-        /* ========== RESTO DE ESTILOS ========== */
-        .container-custom {
-            max-width: auto;
-            margin: 40px auto;
-            padding: 0 20px;
-            flex: 1;
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
-        .titulo-proveedor {
-            color: #b53987;
-            margin-bottom: 30px;
-            margin-top: 30px;
-            font-size: 2rem;
-            font-weight: bold;
-            border-left: 6px solid #4a3b68;
-            padding-left: 15px;
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, .65);
+            max-width: 560px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
             display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 10px;
+            gap: 40px;
+            margin-top: 40px;
         }
 
-        @media (min-width: 576px) {
-            .titulo-proveedor {
-                flex-direction: row;
-                align-items: center;
-                font-size: 2.3rem;
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, .5);
+            letter-spacing: .5px;
+            margin-top: 4px;
+        }
+
+        @media(max-width:576px) {
+            .page-hero {
+                padding: 48px 0 40px;
+            }
+
+            .hero-stats {
                 gap: 20px;
             }
         }
 
-        /* ========== INTRO ========== */
-        .intro-box {
-            background: #fff;
-            border-radius: 20px;
-            padding: 40px;
-            text-align: center;
-            margin-bottom: 50px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, .06);
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-top: 30px;
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
+            background: var(--bg);
         }
 
-        .intro-box i {
-            font-size: 3rem;
-            color: #b53987;
-            margin-bottom: 15px;
-        }
-
-        .intro-box h1 {
-            margin: 20px;
-        }
-
-        /* ========== CATÁLOGO ========== */
+        /* SECTION HEADERS — misma estructura original pero estilo pro */
         .catalogo-seccion {
-            margin-bottom: 60px;
+            margin-bottom: 56px;
         }
 
-        .catalogo-seccion h3 {
+        .sec-heading {
             color: #ede5f5;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             margin-top: 40px;
-            border-left: 5px solid #b53987;
-            padding: 15px 18px;
-            background-color: #4a3b68;
-            border-radius: 8px;
-            font-size: 1.15rem;
+            border-left: 5px solid var(--accent);
+            padding: 14px 18px;
+            background-color: var(--purple);
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
             display: flex;
             align-items: center;
             gap: 10px;
+            letter-spacing: .3px;
         }
 
-        .catalogo-seccion h2 {
-            color: #4a3b68;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
+        .sec-heading:first-child {
+            margin-top: 0;
         }
 
-        /* Rejilla de tarjetas */
+        /* PRODUCT GRID — mismo auto-fill del original, mejorado */
         .grid-productos {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px;
-            margin-bottom: 10px;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-bottom: 8px;
         }
 
         .card-producto {
-            border: 1px solid rgba(74, 59, 104, 0.12);
-            border-left: 4px solid #b53987;
+            background: #fff;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--accent);
             border-radius: 10px;
-            transition: all 0.25s ease;
-            background: #ffffff;
-            height: 100%;
-            box-shadow: 0 2px 6px rgba(74, 59, 104, 0.04);
+            transition: transform .2s, box-shadow .2s, border-color .2s;
+            box-shadow: 0 2px 6px rgba(74, 59, 104, .05);
         }
 
         .card-producto:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 10px 20px rgba(181, 57, 135, 0.16);
-            border-left-color: #4a3b68;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(181, 57, 135, .14);
+            border-left-color: var(--purple);
         }
 
         .card-producto .card-body {
-            padding: 16px 18px;
+            padding: 14px 16px;
         }
 
         .card-producto .card-title {
-            color: #4a3b68;
+            color: var(--purple);
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: .9rem;
             margin-bottom: 10px;
         }
 
-        /* Badges de especificaciones (medidas, grosor, formato) */
+        /* BADGES */
         .specs-badges {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
+            gap: 5px;
         }
 
         .badge-spec {
             display: inline-flex;
             align-items: center;
             gap: 4px;
-            font-size: 0.72rem;
+            font-size: .7rem;
             font-weight: 600;
-            padding: 4px 9px;
+            padding: 3px 9px;
             border-radius: 20px;
-            background-color: #f7f0f5;
-            color: #b53987;
-            border: 1px solid rgba(181, 57, 135, 0.18);
+            background: #f7f0f5;
+            color: var(--accent);
+            border: 1px solid rgba(181, 57, 135, .18);
         }
 
         .badge-spec.badge-grosor {
-            background-color: #ede5f5;
-            color: #4a3b68;
-            border-color: rgba(74, 59, 104, 0.15);
+            background: #ede5f5;
+            color: var(--purple);
+            border-color: rgba(74, 59, 104, .15);
         }
 
         .badge-spec i {
-            font-size: 0.68rem;
+            font-size: .65rem;
         }
 
-        .aviso-mas-articulos {
-            margin-top: 40px;
+        /* CTA */
+        .cta-banner {
             background: linear-gradient(135deg, #4a3b68, #6b4f8f);
-            border-radius: 12px;
-            padding: 30px 35px;
-            color: #ffffff;
+            border-radius: 18px;
+            padding: 40px 48px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 15px rgba(74, 59, 104, 0.25);
+            gap: 32px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
+            margin-top: 48px;
         }
 
-        .aviso-mas-articulos .aviso-icono {
-            font-size: 2.8rem;
+        .cta-banner::before {
+            content: '';
+            position: absolute;
+            right: -60px;
+            top: -60px;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
+        }
+
+        .cta-icon {
+            font-size: 3rem;
             color: #f386cc;
             flex-shrink: 0;
+            position: relative;
+            z-index: 1;
         }
 
-        .aviso-mas-articulos h4 {
-            margin: 0 0 6px 0;
+        .cta-body {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-body h3 {
             font-size: 1.3rem;
-            font-weight: bold;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
         }
 
-        .aviso-mas-articulos p {
-            margin: 0;
-            font-size: 0.97rem;
-            color: #dcd6e8;
-        }
-
-        .aviso-mas-articulos a {
-            color: #f386cc;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .aviso-mas-articulos a:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            .aviso-mas-articulos {
-                flex-direction: column;
-                text-align: center;
-            }
-        }
-
-        /* ========== FOOTER ========== */
-        .footer-main {
-            background-color: #4a3b68;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 50px 0 0;
-        }
-
-        .footer-brand p {
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 12px;
+        .cta-body p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .65);
+            margin-bottom: 16px;
+            max-width: 560px;
             line-height: 1.65;
         }
 
-        .footer-heading {
-            font-size: 0.78rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            color: #e8b0d0;
+        .cta-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: .88rem;
+            color: rgba(255, 255, 255, .85);
+        }
+
+        .cta-contact-item i {
+            color: #f386cc;
+            font-size: 14px;
+        }
+
+        .cta-contact-item a {
+            color: #f386cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media(max-width:700px) {
+            .cta-banner {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .cta-contacts {
+                justify-content: center;
+            }
+        }
+
+        /* FOOTER */
+        .footer-main {
+            background: #4a3b68;
+            padding: 56px 0 0;
+        }
+
+        .footer-logo {
+            height: 68px;
             margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: .85rem;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #e8b0d0;
+            margin-bottom: 18px;
         }
 
         .footer-links {
             list-style: none;
             padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.65);
+            font-size: .85rem;
+            color: rgba(255, 255, 255, .55);
             text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .footer-links a:hover {
             color: #f386cc;
         }
 
-        .footer-contact-item {
+        .footer-contact-row {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            font-size: .85rem;
+            color: rgba(255, 255, 255, .55);
             margin-bottom: 12px;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.65);
         }
 
-        .footer-contact-item i {
+        .footer-contact-row i {
             color: #b53987;
-            font-size: 0.9rem;
             margin-top: 2px;
             flex-shrink: 0;
         }
 
-        .footer-contact-item a {
-            color: rgba(255, 255, 255, 0.65);
+        .footer-contact-row a {
+            color: rgba(255, 255, 255, .55);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .footer-contact-item a:hover {
+        .footer-contact-row a:hover {
             color: #f386cc;
         }
 
         .footer-bottom {
-            background-color: #35284f;
-            padding: 16px 0;
-            margin-top: 40px;
+            background: #35284f;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+            padding: 18px 0;
+            margin-top: 48px;
         }
 
         .footer-bottom p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.45);
-            margin: 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .3);
             text-align: center;
+            margin: 0;
         }
     </style>
 </head>
 
-
 <body>
 
-    <!-- ===== CABECERA FIJA (topbar + navbar) ===== -->
     <header id="siteHeader" class="site-header-fixed">
-        <!-- ===== TOPBAR ===== -->
         <div class="topbar" id="topbar">
             <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
-            <div class="topbar-divider"></div>
+            <div class="topbar-div"></div>
             <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
-            <div class="topbar-divider"></div>
+            <div class="topbar-div"></div>
             <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
         </div>
-
-        <!-- ===== NAVBAR ===== -->
         <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
             <div class="container-fluid px-3 px-lg-4">
                 <a class="navbar-brand" href="./index.html">
-                    <img src="logonuevo2.png" class="logo-empresa" alt="Logo Almacén Olivilla Tres">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
                     <span class="logo-subtitulo">Almacén</span>
                 </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navMenu">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
-                        <li class="nav-item">
-                            <a class="nav-link" href="./index.html">
-                                <i class="fa-solid fa-house me-1"></i>Inicio
-                            </a>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-solid fa-trowel-bricks me-1"></i>Proveedores
-                            </a>
+                            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
                                 <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
@@ -729,661 +690,619 @@
                                 <li><a class="dropdown-item active" href="./pladur.html">PYL</a></li>
                                 <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
                                 <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
                             </ul>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./ferreteria.html">
-                                <i class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./poliymeta.html">
-                                <i class="fa-solid fa-cube me-1"></i>Policarbonatos
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="./maquinaria.html">
-                                <i class="fa-solid fa-truck-monster me-1"></i>Alquiler de Maquinaria
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link btn-nav-contacto" href="./formulario.html">
-                                <i class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto
-                            </a>
+                        <li class="nav-item"><a class="nav-link" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
+                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <!-- Espaciador: compensa la altura del header fijo para que el contenido no quede tapado -->
     <div id="headerSpacer"></div>
 
-    <!-- ===== CABECERA PROVEEDOR ===== -->
-    <div class="proveedor-hero">
-        <div class="container">
-            <div class="proveedor-breadcrumb">
-                <a href="./index.html">Inicio</a>
-                <span>›</span>
-                <a href="./#proveedores">Proveedores</a>
-                <span>›</span>
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>
+                <a href="#">Proveedores</a><span>›</span>
                 Placa de Yeso Laminado (PYL)
             </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-layer-group"></i> Tabiquería seca</span>
+            <h1 class="hero-title">Placa de Yeso<br>Laminado <em>(PYL)</em></h1>
+            <p class="hero-desc">Amplia selección de placas, perfiles, pastas, cintas y accesorios para sistemas de
+                tabiquería seca y techos continuos.</p>
+            <div class="hero-stats">
+                <div>
+                    <div class="stat-num">9</div>
+                    <div class="stat-label">Familias de producto</div>
+                </div>
+                <div>
+                    <div class="stat-num">50+</div>
+                    <div class="stat-label">Referencias en catálogo</div>
+                </div>
+                <div>
+                    <div class="stat-num">Toledo</div>
+                    <div class="stat-label">Entrega local</div>
+                </div>
+            </div>
         </div>
-    </div>
-    <!-- INTRO -->
-    <section class="intro-pyl">
-
-        <div class="intro-box">
-
-            <i class="fa-solid fa-screwdriver-wrench"></i>
-
-            <h1>Placa de Yeso Laminado (PYL)</h1>
-
-            <p>
-                Disponemos de una amplia selección de Placas de Yeso Laminado (PYL) de alta calidad para tus
-                proyectos de construcción.
-            </p>
-
-        </div>
-
     </section>
-    <!-- ===== CONTENIDO PRINCIPAL ===== -->
-    <div class="container-custom">
 
+    <main>
+        <div class="container">
+            <section class="catalogo-seccion">
 
-        <h1 class="titulo-proveedor">
-            Productos de Placa de Yeso Laminado (PYL)
-        </h1>
+                <!-- 1 · PLACA N 13 mm -->
+                <h3 class="sec-heading"><i class="fa-solid fa-layer-group"></i> Placa N Estándar 13 mm</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.7 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.8 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.9 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        <section class="catalogo-seccion">
-            <h2>Catálogo Completo</h2>
+                <!-- 2 · PLACA N 15 mm -->
+                <h3 class="sec-heading"><i class="fa-solid fa-layer-group"></i> Placa N Estándar 15 mm</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.7 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.8 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.9 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Estándar</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-            <h3><i class="fa-solid fa-layer-group"></i>Placa N Estándar 13 mm</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
+                <!-- 3 · PLACA H1 VERDE -->
+                <h3 class="sec-heading"><i class="fa-solid fa-droplet"></i> Placa H1 Verde</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa H1 Verde</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 x 1.2 m</span>
+
+                <!-- 4 · OTROS MODELOS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-border-all"></i> Otros Modelos de Placas</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Omnia</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Omnia</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>15 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>3 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Ultra L-TEC</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Synia STD-4BA</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>13 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>2 × 1.2 m</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Decor Vinílica</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>60 × 60 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Placa Decor Vinílica</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>1.20 × 60 cm</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.7 x 1.2 m</span>
+
+                <!-- 5 · MONTANTES -->
+                <h3 class="sec-heading"><i class="fa-solid fa-grip-lines-vertical"></i> Montantes</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Montante 48/35 Z1</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Montante 48/35 Z1</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>2.5 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Montante 70/35 Z1</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
                         </div>
                     </div>
                 </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.8 x 1.2 m</span>
+
+                <!-- 6 · CANALES -->
+                <h3 class="sec-heading"><i class="fa-solid fa-grip-lines"></i> Canales y Perfiles de Techo</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Canal 48/30 Z1</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Canal 70/30 Z1</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Maestra 82 × 16 A</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Perfil Techo PH 45</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>4 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Perfil Techo T-45</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Horquilla T-45</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i class="fa-solid fa-box"></i>100
+                                    ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pieza Empalme T-45</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i class="fa-solid fa-box"></i>100
+                                    ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Angular L30</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>3 m</span></div>
                         </div>
                     </div>
                 </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.9 x 1.2 m</span>
+
+                <!-- 7 · TORNILLOS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-gear"></i> Tornillos</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.5 × 25</span><span
+                                    class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.5 × 35</span><span
+                                    class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.5 × 45</span><span
+                                    class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.9 × 35</span><span
+                                    class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo MM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.5 × 9.5</span><span
+                                    class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PB</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>25 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-box"></i>500 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo MM</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>25 mm</span><span class="badge-spec"><i
+                                        class="fa-solid fa-box"></i>1000 ud.</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PB Broca</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>3.5 × 25</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Tornillo PMA Madera</h5>
+                            <div class="specs-badges"><span class="badge-spec badge-grosor"><i
+                                        class="fa-solid fa-ruler-vertical"></i>4.8 × 35</span></div>
                         </div>
                     </div>
                 </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
+
+                <!-- 8 · PASTAS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-jar"></i> Pastas</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Agarre</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span></div>
                         </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Junta Normal</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>Saco 18 kg</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Juntas 1H</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Juntas 1H</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>Saco 10 kg</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Juntas 2H</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Juntas al uso</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>7 kg</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Pasta Juntas al uso</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-weight-hanging"></i>20 kg</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 9 · CINTAS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-ribbon"></i> Cintas</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Cinta de Juntas</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>Rollo 150 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Cinta Guardavivos</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Cinta de Refuerzo</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>Rollo 90 m</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 10 · BANDAS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-water"></i> Bandas</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Banda Estanca 46</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span></div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Banda Estanca 70</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 11 · TRAMPILLAS -->
+                <h3 class="sec-heading"><i class="fa-solid fa-square"></i> Trampillas</h3>
+                <div class="grid-productos">
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Trampilla</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>20 × 20 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Trampilla</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>30 × 30 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Trampilla</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>40 × 40 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-producto">
+                        <div class="card-body">
+                            <h5 class="card-title">Trampilla</h5>
+                            <div class="specs-badges"><span class="badge-spec"><i
+                                        class="fa-solid fa-up-right-and-down-left-from-center"></i>60 × 60 cm</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- CTA -->
+            <div class="cta-banner">
+                <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
+                <div class="cta-body">
+                    <h3>¿No encuentras lo que necesitas?</h3>
+                    <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchos más artículos de PYL
+                        que podemos pedir directamente. Consúltanos sin compromiso.</p>
+                    <div class="cta-contacts">
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                                54</a></div>
+                        <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
+                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
                     </div>
                 </div>
             </div>
 
-            <h3><i class="fa-solid fa-layer-group"></i>Placa N Estándar 15 mm</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.7 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.8 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.9 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Estándar</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-droplet"></i>Placa H1 Verde</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2.5 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa H1 Verde</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-border-all"></i>Otros Modelos de Placas</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Omnia</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Omnia</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>15 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>3 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Ultra L-TEC</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Synia STD-4BA</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>13 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>2 x 1.2 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Decor Vinílica</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>60 x 60 cm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Placa Decor Vinílica</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>1.20 x 60 cm</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-grip-lines-vertical"></i>Montantes</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Montante 48/35 Z1</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Montante 48/35 Z1</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>2.5 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Montante 70/35 Z1</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-grip-lines"></i>Canales</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Canal 48/30 Z1</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Canal 70/30 Z1</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Maestra 82 x 16 A</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Perfil Techo PH 45</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>4 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Perfil Techo T-45</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Horquilla T-45</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>100 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pieza Empalme T-45</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>100 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Angular L30</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>3 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-gear"></i>Tornillos</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.5 x 25</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.5 x 35</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.5 x 45</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.9 x 35</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo MM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.5 x 9.5</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PB</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>25 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>500 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo MM</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>25 mm</span>
-                            <span class="badge-spec"><i class="fa-solid fa-box"></i>1000 ud.</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PB Broca</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>3.5 x 25</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Tornillo PMA Madera</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec badge-grosor"><i class="fa-solid fa-ruler-vertical"></i>4.8 x 35</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-jar"></i>Pastas</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Agarre</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Junta Normal</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>Saco 18 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Juntas 1H</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Juntas 1H</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>Saco 10 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Juntas 2H</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>Saco 20 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Juntas al uso</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>7 kg</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Pasta Juntas al uso</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-weight-hanging"></i>20 kg</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-ribbon"></i>Cintas</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Cinta de Juntas</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>Rollo 150 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Cinta Guardavivos</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Cinta de Refuerzo</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>Rollo 90 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-water"></i>Bandas</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Banda Estanca 46</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Banda Estanca 70</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-ruler-horizontal"></i>Rollo 30 m</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <h3><i class="fa-solid fa-square"></i>Trampillas</h3>
-            <div class="grid-productos">
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Trampilla</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>20 x 20 cm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Trampilla</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>30 x 30 cm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Trampilla</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>40 x 40 cm</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="card card-producto">
-                    <div class="card-body">
-                        <h5 class="card-title">Trampilla</h5>
-                        <div class="specs-badges">
-                            <span class="badge-spec"><i class="fa-solid fa-up-right-and-down-left-from-center"></i>60 x 60 cm</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </section>
-        <div class="aviso-mas-articulos">
-            <div class="aviso-icono">
-                <i class="fa-solid fa-boxes-stacking"></i>
-            </div>
-            <div>
-                <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                <p>Este catálogo muestra una selección de nuestros productos de Placa de Yeso Laminado más habituales
-                    en tienda, pero disponemos de <strong>muchos más artículos</strong> en catálogo que te podemos
-                    pedir directamente. Consúltanos sin compromiso y te asesoramos sobre el producto más adecuado
-                    para tu proyecto.</p>
-                <p class="mt-2">
-                    <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                    <i class="fa-solid fa-envelope me-1"></i> <a
-                        href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                </p>
-            </div>
         </div>
+    </main>
 
-    </div>
-
-    <!-- ===== FOOTER ===== -->
+    <!-- FOOTER -->
     <footer class="footer-main">
         <div class="container">
-            <div class="row g-4 pb-4">
-                <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres" style="height:105px; margin-bottom:10px;">
-                    <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
-                        Asesoramiento técnico especializado.</p>
+            <div class="row g-5 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="logonuevo2.png" class="footer-logo" alt="Olivilla Tres">
+                    <p class="footer-desc">Suministro de materiales de construcción, aislamiento e impermeabilización en
+                        Toledo. Asesoramiento técnico especializado.</p>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <p class="footer-heading">Navegación</p>
@@ -1391,7 +1310,7 @@
                         <li><a href="./index.html">Inicio</a></li>
                         <li><a href="./ferreteria.html">Ferretería</a></li>
                         <li><a href="./poliymeta.html">Policarbonatos</a></li>
-                        <li><a href="#proveedores">Todos los proveedores</a></li>
+                        <li><a href="./maquinaria.html">Maquinaria</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -1410,18 +1329,12 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <p class="footer-heading">Contacto</p>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Calle Rio Valdecelada, 7<br>45007 — Toledo</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:925233454">925 23 34 54</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-location-dot"></i><span>Calle Rio Valdecelada,
+                            7<br>45007 — Toledo</span></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                            54</a></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
                 </div>
             </div>
         </div>
@@ -1432,61 +1345,25 @@
         </div>
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Navbar fijo: se encoge al hacer scroll y el spacer se ajusta para que nunca tape ni salte -->
     <script>
         (function () {
             var header = document.getElementById('siteHeader');
             var navbar = document.getElementById('mainNavbar');
             var topbar = document.getElementById('topbar');
             var spacer = document.getElementById('headerSpacer');
-            var umbral = 60; // píxeles de scroll antes de activar el modo "encogido"
-
-            function ajustarSpacer() {
-                // El spacer siempre mide lo mismo que el header fijo en ese instante,
-                // así el contenido de abajo nunca queda tapado ni "salta".
-                var alto = header.offsetHeight;
-                if (alto > 0) {
-                    spacer.style.height = alto + 'px';
-                }
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) { navbar.classList.add('scrolled'); topbar.style.display = 'none'; }
+                else { navbar.classList.remove('scrolled'); topbar.style.display = ''; }
+                resize();
             }
-
-            function actualizarNavbar() {
-                if (window.scrollY > umbral) {
-                    navbar.classList.add('navbar-scrolled');
-                    topbar.classList.add('topbar-hidden');
-                } else {
-                    navbar.classList.remove('navbar-scrolled');
-                    topbar.classList.remove('topbar-hidden');
-                }
-                ajustarSpacer();
-            }
-
-            window.addEventListener('scroll', actualizarNavbar, { passive: true });
-            window.addEventListener('resize', ajustarSpacer);
-
-            // Tras cada transición CSS (cambio de alto del topbar/navbar) recalculamos también
-            header.addEventListener('transitionend', ajustarSpacer);
-
-            // El logo es una imagen: hasta que carga, el navbar mide menos de lo real.
-            // Recalculamos en cuanto termine de cargar y también al cargar toda la página.
-            var logoImg = header.querySelector('.logo-empresa');
-            if (logoImg) {
-                if (logoImg.complete) {
-                    ajustarSpacer();
-                } else {
-                    logoImg.addEventListener('load', ajustarSpacer);
-                }
-            }
-            window.addEventListener('load', ajustarSpacer);
-
-            actualizarNavbar(); // estado inicial por si la página carga ya con scroll
-            requestAnimationFrame(ajustarSpacer); // recalculo tras el primer pintado real
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll(); requestAnimationFrame(resize);
         })();
     </script>
-
     <script type="text/javascript">
         (function (d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
@@ -1496,7 +1373,7 @@
                     url: 'https://general-runtime.voiceflow.com',
                     voice: { url: "https://runtime-api.voiceflow.com" }
                 });
-            }
+            };
             v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
             v.type = "text/javascript";
             s.parentNode.insertBefore(v, s);
