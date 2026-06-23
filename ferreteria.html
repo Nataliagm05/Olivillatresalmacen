@@ -382,7 +382,6 @@
         main {
             flex: 1;
             padding: 64px 0 80px;
-            background: var(--bg);
         }
 
         /* CATEGORY CARDS */
@@ -667,6 +666,17 @@
             }
         }
 
+        .categorias-bg {
+            background:
+                linear-gradient(rgba(255, 255, 255, .60),
+                    rgba(255, 255, 255, .60)),
+                url('https://images.unsplash.com/photo-1519520104014-df63821cb6f9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
         /* FOOTER */
         .footer-main {
             background: #4a3b68;
@@ -841,13 +851,16 @@
     </section>
 
     <!-- MAIN -->
+    <section class="categorias categorias-bg" id="categorias">
     <main>
-        <div class="container">
 
+
+        <div class="container">
             <!-- CATEGORÍAS -->
             <div class="section-header" style="margin-top: 0;">
                 <span class="section-tag">Categorías</span>
                 <h2 class="section-title">¿Qué necesitas?</h2>
+
                 <div class="section-line"></div>
             </div>
             <div class="cat-grid">
@@ -1073,10 +1086,12 @@
                 <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
                 <div class="cta-body">
                     <h3>¿No encuentras lo que necesitas?</h3>
-                    <p>Este catálogo muestra una selección habitual de tienda, pero disponemos de muchos más artículos
+                    <p>Este catálogo muestra una selección habitual de tienda, pero disponemos de muchos más
+                        artículos
                         que podemos pedir directamente. Consúltanos sin compromiso y te asesoramos.</p>
                     <div class="cta-contacts">
-                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
+                                23 34
                                 54</a></div>
                         <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
                                 href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
@@ -1084,10 +1099,11 @@
                 </div>
             </div>
 
-            
-
         </div>
+
+
     </main>
+    </section>
 
     <!-- FOOTER -->
     <footer class="footer-main">
