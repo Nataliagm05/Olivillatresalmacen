@@ -10,154 +10,181 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <style>
-        * {
+        :root {
+            --bg: #f4f2f8;
+            --surface: #ffffff;
+            --card: #ffffff;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html,
-        body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f7f9fa;
-            color: #4a3b68;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* ========== TOPBAR ========== */
+        /* TOPBAR */
         .topbar {
-            background-color: #35284f;
-            padding: 7px 30px;
+            background: #35284f;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 32px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
+            font-size: 0.75rem;
         }
 
         .topbar a,
         .topbar span {
-            color: #c9b8e8;
-            font-size: 0.78rem;
+            color: rgba(201, 184, 232, 0.8);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .topbar a:hover {
             color: #f386cc;
         }
 
-        .topbar .topbar-divider {
+        .topbar-div {
             width: 1px;
-            height: 12px;
-            background-color: #5a4878;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
         }
-        @media (max-width: 768px) {
+
+        @media (max-width:600px) {
             .topbar {
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                text-align: center;
-                gap: 8px;
-                padding: 10px;
+                gap: 6px;
             }
 
-            .topbar-divider {
+            .topbar-div {
                 display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .topbar {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .topbar-divider {
-                display: none;
-            }
+        /* NAVBAR */
+        .site-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
         }
-        /* ========== NAVBAR ========== */
+
         .navbar-custom {
-            background-color: #4a3b68 !important;
-            border-bottom: 3px solid #b53987;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            background: rgba(74, 59, 104, 0.97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
         }
 
-        .navbar-custom .navbar-brand {
-            padding: 8px 0;
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, 0.99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            padding: 10px 0;
         }
 
         .logo-empresa {
-            height: 100px;
+            height: 76px;
             width: auto;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
         }
 
         .logo-subtitulo {
-            font-size: 14px;
-            color: #e8b0d0;
-            font-weight: 500;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(232, 176, 208, 0.8);
+            border-left: 1px solid var(--border);
             padding-left: 12px;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 400;
-            font-size: 14px;
-            padding: 12px 14px !important;
-            transition: color 0.2s;
-            white-space: nowrap;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
         }
 
-        @media (min-width: 992px) {
-            .navbar-custom .nav-link {
-                padding: 22px 14px !important;
-                border-bottom: 3px solid transparent;
-                margin-bottom: -3px;
-                transition: color 0.2s, border-color 0.2s;
-            }
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
         }
 
         .navbar-custom .nav-link:hover,
-        .navbar-custom .nav-link:focus {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
-        }
-
         .navbar-custom .nav-link.active {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
+            color: #ffffff !important;
         }
 
-        /* ========== DROPDOWN ========== */
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
         .navbar-custom .dropdown-menu {
-            background-color: #ffffff;
-            border: none;
-            border-top: 3px solid #b53987;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 12px 32px rgba(74, 59, 104, 0.18);
-            padding: 8px 0;
-            min-width: 220px;
-            animation: dropFade 0.15s ease;
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
         }
 
-        @keyframes dropFade {
+        @keyframes fade-in {
             from {
                 opacity: 0;
                 transform: translateY(-6px);
@@ -170,96 +197,438 @@
         }
 
         .navbar-custom .dropdown-item {
-            color: #4a3b68;
-            font-size: 0.88rem;
-            font-weight: 500;
+            color: var(--purple);
+            font-size: 13px;
             padding: 9px 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.15s, color 0.15s, padding-left 0.15s;
+            transition: all .15s;
         }
 
-        .navbar-custom .dropdown-item i {
-            width: 16px;
-            text-align: center;
-            color: #b53987;
-        }
-
-        .navbar-custom .dropdown-item:hover {
-            background-color: #f7f0f5;
-            color: #b53987;
+        .navbar-custom .dropdown-item:hover,
+        .navbar-custom .dropdown-item.active {
+            color: var(--accent);
+            background: #f7f0f5;
             padding-left: 24px;
         }
 
-        .navbar-custom .dropdown-divider {
-            border-color: #ede5f5;
-            margin: 5px 14px;
-        }
-
-        .dropdown-item .badge-new {
-            background-color: #b53987;
-            color: #fff;
-            font-size: 0.63rem;
-            font-weight: 600;
-            padding: 2px 7px;
-            border-radius: 20px;
-            margin-left: auto;
-        }
-
-        .btn-nav-contacto {
-            background-color: #b53987 !important;
-            color: #ffffff !important;
-            border-radius: 6px !important;
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
             font-size: 13px !important;
-            font-weight: 500 !important;
-            border-bottom: none !important;
-            padding: 10px 16px !important;
-            margin-top: 8px;
-            display: inline-block;
-            transition: background-color 0.2s !important;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
         }
 
-        @media (min-width: 992px) {
-            .btn-nav-contacto {
-                margin-top: 0;
-                margin-left: 6px;
-                padding: 8px 16px !important;
-            }
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
         }
 
-        .btn-nav-contacto:hover {
-            background-color: #922f6d !important;
+        .btn-cta::after {
+            display: none !important;
         }
 
         .navbar-custom .navbar-toggler {
-            border-color: #b53987 !important;
+            border-color: var(--accent) !important;
+        }
+
+        .navbar-custom .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        #headerSpacer {
+            height: 130px;
+        }
+
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
         }
 
         .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
 
-        .navbar-custom .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
-        }
-
-
-        .dropdown-item.active {
-            background-color: #4a3b68;
-            color: #f7f9fa;
-            font-size: 14px;
-            font-weight: 400;
-        }
-
-        .dropdown-item.active:hover {
-            background-color: #b53987 !important;
-            color: #f7f9fa !important;
-            font-size: 14px;
-            font-weight: 400;
-        }
-
         /* ========== FIN NAVBAR ========== */
+
+        /* HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 72px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
+        }
+
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05) 0%, transparent 70%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .breadcrumb-custom a:hover {
+            color: #f386cc;
+        }
+
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .hero-logo-wrap {
+            border-radius: 12px;
+            padding: 10px 20px;
+            display: inline-flex;
+            align-items: center;
+            margin-bottom: 22px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, .18);
+        }
+
+        .hero-logo-wrap img {
+            height: 38px;
+            width: auto;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.65);
+            max-width: 520px;
+            line-height: 1.7;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .stat-num {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.5);
+            letter-spacing: .5px;
+            margin-top: 4px;
+        }
+
+        @media (max-width:576px) {
+            .page-hero {
+                padding: 48px 0 40px;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
+            background: #f4f2f8;
+        }
+
+        /* CARRUSEL */
+        .cr-wrap {
+            position: relative;
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #2d1f42;
+            font-family: 'Inter', sans-serif;
+            margin-bottom: 30px;
+        }
+
+        .cr-stage {
+            position: relative;
+            height: 380px;
+            overflow: hidden;
+        }
+
+        .cr-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity .6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .cr-slide.active {
+            opacity: 1;
+        }
+
+        .cr-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 24px 80px;
+        }
+
+        .cr-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(30, 15, 50, .85) 0%, rgba(30, 15, 50, .1) 45%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .cr-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 20px 24px 16px;
+        }
+
+        .cr-tag {
+            display: inline-block;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(181, 57, 135, .2);
+            border: 1px solid rgba(243, 134, 204, .35);
+            padding: 3px 10px;
+            border-radius: 100px;
+            margin-bottom: 8px;
+        }
+
+        .cr-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+            margin: 0 0 4px;
+            line-height: 1.25;
+        }
+
+        .cr-desc {
+            font-size: 0.78rem;
+            color: rgba(255, 255, 255, .6);
+            margin: 0;
+        }
+
+        .cr-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, .1);
+        }
+
+        .cr-bar {
+            height: 100%;
+            background: #b53987;
+        }
+
+        .cr-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(53, 40, 79, .8);
+            border: 1px solid rgba(181, 57, 135, .4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background .2s, border-color .2s;
+        }
+
+        .cr-nav:hover {
+            background: rgba(181, 57, 135, .85);
+            border-color: rgba(181, 57, 135, .8);
+        }
+
+        .cr-nav svg {
+            width: 16px;
+            height: 16px;
+            stroke: #fff;
+            fill: none;
+            stroke-width: 2.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .cr-prev {
+            left: 12px;
+        }
+
+        .cr-next {
+            right: 12px;
+        }
+
+        .cr-counter {
+            position: absolute;
+            top: 14px;
+            right: 16px;
+            font-size: 11px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, .5);
+            letter-spacing: 1px;
+            z-index: 5;
+        }
+
+        .cr-thumbs {
+            display: flex;
+            gap: 8px;
+            padding: 12px 16px;
+            background: rgba(53, 40, 79, .6);
+            border-top: 1px solid rgba(181, 57, 135, .15);
+        }
+
+        .cr-thumb {
+            flex: 1;
+            height: 52px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: border-color .2s, opacity .2s;
+            opacity: .45;
+            background: #2d1f42;
+        }
+
+        .cr-thumb.active {
+            border-color: #b53987;
+            opacity: 1;
+        }
+
+        .cr-thumb:hover:not(.active) {
+            opacity: .75;
+            border-color: rgba(181, 57, 135, .4);
+        }
+
+        .cr-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            padding: 4px;
+        }
+
+        /* ========== SECCIÓN CATÁLOGO ========== */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
+        }
+
+        .seccion-catalogo {
+            margin: 20px;
+        }
+
+        .catalogo-heading {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #ede5f5;
+        }
+
+        .catalogo-heading h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4a3b68;
+            margin: 0;
+        }
+
+        .catalogo-heading .badge-count {
+            background: #f0ebf7;
+            color: #b53987;
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .seccion-productos h2 {
+            color: #4a3b68;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+        }
+
 
         /* ========== CABECERA PROVEEDOR ========== */
         .proveedor-hero {
@@ -367,297 +736,242 @@
             }
         }
 
-        /* ========== CARRUSEL ========== */
-        .seccion-carrusel {
-            margin: 40px 0;
+        /* SECTION HEADERS */
+
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 28px;
         }
 
-        .carousel-inner {
-            border-radius: 14px;
-            overflow: hidden;
-            box-shadow: 0 8px 30px rgba(74, 59, 104, 0.15);
-            background-color: #4a3b68;
+        .section-tag {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #4a3b68;
+            border: 1px solid rgba(181, 57, 135, .3);
+            padding: 4px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
         }
 
-        .carousel-item img {
-            width: 100%;
-            height: 400px;
-            object-fit: contain;
-            background-color: #4a3b68;
-            padding: 20px;
-        }
-
-        .carousel-caption {
-            background: rgba(30, 20, 50, 0.75);
-            border-radius: 8px;
-            padding: 12px 18px;
-            backdrop-filter: blur(4px);
-        }
-
-        .carousel-caption h5 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 4px;
-        }
-
-        .carousel-caption p {
-            font-size: 0.83rem;
-            margin: 0;
-            color: rgba(255, 255, 255, 0.8);
-        }
-
-        .carousel-control-prev,
-        .carousel-control-next {
-            width: 44px;
-            height: 44px;
-            background: rgba(181, 57, 135, 0.75);
-            border-radius: 50%;
-            top: 50%;
-            transform: translateY(-50%);
-            margin: 0 12px;
-        }
-
-        .carousel-control-prev {
-            left: 0;
-        }
-
-        .carousel-control-next {
-            right: 0;
-        }
-
-        .carousel-indicators [data-bs-target] {
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #f4f2f8;
             background-color: #b53987;
-            opacity: 0.5;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
+            padding: 20px;
+            border-radius: 8px;
         }
 
-        .carousel-indicators .active {
+        .section-line {
+            flex: 1;
+            height: 1px;
+            background: rgba(74, 59, 104, 0.12);
+        }
+
+
+        .pcard {
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.12);
+            border-radius: 14px;
+            padding: 0;
+            transition: border-color .25s, transform .25s, box-shadow .25s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(74, 59, 104, 0.06);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pcard::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), transparent);
+            opacity: 0;
+            transition: opacity .25s;
+            z-index: 2;
+        }
+
+        .pcard:hover {
+            border-color: rgba(181, 57, 135, .3);
+            transform: translateY(-4px);
+            box-shadow: 0 16px 40px rgba(74, 59, 104, .14);
+        }
+
+        .pcard:hover::before {
             opacity: 1;
         }
 
-        /* ========== SECCIÓN CATÁLOGO ========== */
-        .seccion-catalogo {
-            margin: 20px;
-        }
-
-        .catalogo-heading {
+        .pcard-img {
+            background: #f7f0f5;
+            border-bottom: 1px solid rgba(181, 57, 135, .12);
+            height: 168px;
             display: flex;
             align-items: center;
-            gap: 14px;
-            margin-bottom: 32px;
-            padding-bottom: 18px;
-            border-bottom: 2px solid #ede5f5;
-        }
-
-        .catalogo-heading h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #4a3b68;
-            margin: 0;
-        }
-
-        .catalogo-heading .badge-count {
-            background: #f0ebf7;
-            color: #b53987;
-            font-size: 0.8rem;
-            font-weight: 700;
-            padding: 4px 12px;
-            border-radius: 20px;
-        }
-
-        .seccion-productos h2 {
-            color: #4a3b68;
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-        }
-
-        .card-producto {
-            border: 2px solid rgba(74, 59, 104, 0.1);
-            border-radius: 10px;
-            transition: all 0.3s ease;
-            background: #ffffff;
-            height: 100%;
-        }
-
-        .card-producto:hover {
-            transform: translateY(-5px);
-            border-color: #b53987;
-            box-shadow: 0 8px 16px rgba(181, 57, 135, 0.15);
-        }
-
-        .card-producto img {
-            height: 200px;
-            object-fit: contain;
-            padding: 15px;
-            background: #f8f9fa;
-            border-top-left-radius: 8px;
-            border-top-right-radius: 8px;
-        }
-
-        .card-producto .card-title {
-            color: #4a3b68;
-            font-weight: bold;
-        }
-
-        .btn-producto {
-            background-color: #4a3b68;
-            color: white;
-            border: none;
-            transition: background-color 0.2s;
-        }
-
-        .btn-producto:hover {
-            background-color: #b52a7c;
-            color: white;
-        }
-
-        .aviso-mas-articulos {
-            margin-top: 40px;
-            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
-            border-radius: 12px;
-            padding: 30px 35px;
-            color: #ffffff;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 15px rgba(74, 59, 104, 0.25);
-            margin-bottom: 60px;
-        }
-
-        .aviso-mas-articulos .aviso-icono {
-            font-size: 2.8rem;
-            color: #f386cc;
+            justify-content: center;
+            padding: 14px;
             flex-shrink: 0;
         }
 
-        .aviso-mas-articulos h4 {
-            margin: 0 0 6px 0;
-            font-size: 1.3rem;
-            font-weight: bold;
+        .pcard-img img {
+            max-width: 100%;
+            max-height: 140px;
+            object-fit: contain;
         }
 
-        .aviso-mas-articulos p {
-            margin: 0;
-            font-size: 0.97rem;
-            color: #dcd6e8;
+        .pcard-body {
+            padding: 22px 24px 24px;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
         }
 
-        .aviso-mas-articulos a {
-            color: #f386cc;
-            font-weight: bold;
-            text-decoration: none;
+        .pcard-material {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 10px;
         }
 
-        .aviso-mas-articulos a:hover {
-            text-decoration: underline;
+        .pcard-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #4a3b68;
+            margin-bottom: 10px;
+            line-height: 1.35;
         }
-/* ========== CABECERA PROVEEDOR ========== */
-        .proveedor-hero {
-            background: linear-gradient(135deg, #35284f 0%, #4a3b68 60%, #5e3d7a 100%);
-            padding: 4px 0 24px;
-            border-bottom: 4px solid #b53987;
+
+        .pcard-desc {
+            font-size: 0.82rem;
+            color: var(--muted);
+            line-height: 1.6;
+            margin-bottom: 14px;
+            flex: 1;
+        }
+
+        .specs-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: auto;
+        }
+
+        .spec-pill {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #4a3b68;
+            background: #f7f0f5;
+            border: 1px solid rgba(181, 57, 135, .18);
+            border-radius: 20px;
+            padding: 4px 10px;
+        }
+
+
+
+
+        /* CTA BANNER */
+        .cta-banner {
+            background: linear-gradient(135deg, #4a3b68, #6b4f8f);
+            border-radius: 18px;
+            padding: 40px 48px;
+            display: flex;
+            align-items: center;
+            gap: 32px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 8px 32px rgba(74, 59, 104, .25);
         }
 
-        .proveedor-hero::after {
+        .cta-banner::before {
             content: '';
             position: absolute;
-            right: -80px;
-            top: -80px;
-            width: 320px;
-            height: 320px;
+            right: -60px;
+            top: -60px;
+            width: 260px;
+            height: 260px;
             border-radius: 50%;
-            background: rgba(181, 57, 135, 0.08);
+            background: radial-gradient(circle, rgba(181, 57, 135, .2), transparent 70%);
         }
 
-        .proveedor-hero .container {
+        .cta-icon {
+            font-size: 3rem;
+            color: #f386cc;
+            flex-shrink: 0;
             position: relative;
             z-index: 1;
         }
 
-        .proveedor-breadcrumb {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 20px;
+        .cta-body {
+            position: relative;
+            z-index: 1;
         }
 
-        .proveedor-breadcrumb a {
-            color: rgba(255, 255, 255, 0.5);
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .proveedor-breadcrumb a:hover {
-            color: #f386cc;
-        }
-
-        .proveedor-breadcrumb span {
-            margin: 0 6px;
-        }
-
-        .proveedor-logo-wrap {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 12px;
-            padding: 14px 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .proveedor-logo-wrap img {
-            height: 42px;
-            width: auto;
-        }
-
-        .proveedor-hero h1 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 700;
-            color: #ffffff;
+        .cta-body h3 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
             margin-bottom: 8px;
         }
 
-        .proveedor-hero p {
+        .cta-body p {
+            font-size: 0.9rem;
             color: rgba(255, 255, 255, 0.65);
-            font-size: 0.95rem;
-            margin: 0;
+            margin-bottom: 16px;
+            max-width: 560px;
+            line-height: 1.65;
         }
 
-        .titulo-proveedor {
-            color: #b53987;
-            margin-bottom: 30px;
-            margin-top: 30px;
-            font-size: 2rem;
-            /* Bajado un poco para que quepa mejor en móviles */
-            font-weight: bold;
-            border-left: 6px solid #4a3b68;
-            padding-left: 15px;
-
-            /* --- FLEXBOX MEJORADO --- */
+        .cta-contacts {
             display: flex;
-            flex-direction: column;
-            /* En móvil: el logo arriba, el texto abajo */
-            align-items: flex-start;
-            gap: 10px;
-            /* Espacio controlado entre logo y texto */
+            flex-wrap: wrap;
+            gap: 16px;
         }
 
-        /* Cuando la pantalla sea de tablet o computadora (escritorio) */
-        @media (min-width: 576px) {
-            .titulo-proveedor {
-                flex-direction: row;
-                /* Se ponen en fila horizontal */
-                align-items: center;
-                /* Se centran verticalmente */
-                font-size: 2.3rem;
-                /* Recupera el tamaño grande */
-                gap: 20px;
+        .cta-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.88rem;
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .cta-contact-item i {
+            color: #f386cc;
+            font-size: 14px;
+        }
+
+        .cta-contact-item a {
+            color: #f386cc;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .cta-contact-item a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width:700px) {
+            .cta-banner {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .cta-contacts {
+                justify-content: center;
             }
         }
+
         /* ========== FOOTER ========== */
         .footer-main {
             background-color: #4a3b68;
@@ -744,226 +1058,207 @@
 
 <body>
 
-    <!-- ===== TOPBAR ===== -->
-    <div class="topbar">
-        <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
-        <div class="topbar-divider"></div>
-        <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
-        <div class="topbar-divider"></div>
-        <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
-    </div>
-
     <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-        <div class="container-fluid px-3 px-lg-4">
-            <a class="navbar-brand" href="./index.html">
-                <img src="logonuevo2.png" class="logo-empresa" alt="Logo Almacén Olivilla Tres">
-                <span class="logo-subtitulo">Almacén</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
-                            <i class="fa-solid fa-house me-1"></i>Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle active" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-trowel-bricks me-1"></i>Proveedores
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
-                            <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
-                            <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
-                            <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
-                            <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
-                            <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
-                            <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
-                            <li><a class="dropdown-item" href="./pladur.html">PYL</a></li>
-                            <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
-                            <li><a class="dropdown-item active" href="./tripomat.html">Tripomant</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./ferreteria.html">
-                            <i class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./poliymeta.html">
-                            <i class="fa-solid fa-cube me-1"></i>Policarbonatos
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./maquinaria.html">
-                            <i class="fa-solid fa-truck-monster me-1"></i>Alquiler de Maquinaria
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav-contacto" href="./formulario.html">
-                            <i class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <header id="siteHeader" class="site-header-fixed">
+        <div class="topbar" id="topbar">
+            <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
+            <div class="topbar-div"></div>
+            <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
+            <div class="topbar-div"></div>
+            <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
         </div>
-    </nav>
- <!-- ===== CABECERA PROVEEDOR ===== -->
-    <div class="proveedor-hero">
-        <div class="container">
-            <div class="proveedor-breadcrumb">
-                <a href="./index.html">Inicio</a>
-                <span>›</span>
-                <a href="#">Proveedores</a>
-                <span>›</span>
+        <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
+                    <span class="logo-subtitulo">Almacén</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle active" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
+                                <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
+                                <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
+                                <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
+                                <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
+                                <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
+                                <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
+                                <li><a class="dropdown-item" href="./pladur.html">PYL</a></li>
+                                <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
+                                <li><a class="dropdown-item active" href="./tripomat.html">Tripomant</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
+                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li> -->
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="headerSpacer"></div>
+
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>
+                <a href="#">Proveedores</a><span>›</span>
                 Tripomant
             </div>
+            <div class="hero-logo-wrap">
+                <img src="https://tripomant.com/wp-content/uploads/2023/03/tripomant-header-logo@2x.jpeg"
+                    alt="Tripomant Logo" class="hero-logo">
+            </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-spray-can-sparkles"></i> Aislante e
+                Impermeabilizante</span>
+            <h1 class="hero-title">Aislante Encolado <br>&amp; <em>Impermeabilizante</em></h1>
+            <p class="hero-desc">Gama de Tripomant para construcción y bricolaje: aislante encolado e impermeabilizante
+            </p>
         </div>
-    </div>
-    <!-- ===== CONTENIDO PRINCIPAL ===== -->
-    <main class="container" style="padding-top: 0; flex: 1;">
+    </section>
 
-        <h1 class="titulo-proveedor">
-            <img src="https://tripomant.com/wp-content/uploads/2023/03/tripomant-header-logo@2x.jpeg"
-                alt="Logo Tripomant" style="height: 100px; width: auto; vertical-align: middle; margin-right: 12px;">
-            Productos de Tripomant
-        </h1>
 
-        <!-- CARRUSEL -->
-        <div class="seccion-carrusel">
-            <div id="carruselProductos" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
-                <div class="carousel-indicators">
-                    <button type="button" data-bs-target="#carruselProductos" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                    <button type="button" data-bs-target="#carruselProductos" data-bs-slide-to="1"
-                        aria-label="Slide 2"></button>
-                    <button type="button" data-bs-target="#carruselProductos" data-bs-slide-to="2"
-                        aria-label="Slide 3"></button>
+
+    <main>
+        <div class="container">
+
+            <!-- CARRUSEL -->
+            <div class="cr-wrap">
+                <div class="cr-progress">
+                    <div class="cr-bar" id="crBar"></div>
                 </div>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
+                <div class="cr-stage">
+                    <div class="cr-slide active" data-tag="Aislante Encolado" data-title="Tripomant Air"
+                        data-desc="Aislante térmico reflexivo encolado.">
                         <img src="https://tripomant.com/wp-content/uploads/2023/04/tripomant-air.jpg"
-                            class="d-block w-100" alt="Producto 1">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tripomant Air</h5>
-                            <p>Aislante térmico reflexivo encolado.</p>
-                        </div>
+                            alt="Tripomant Air">
                     </div>
-
-                    <div class="carousel-item">
-                        <img src="https://tripomant.com/wp-content/uploads/2023/04/Union5B.jpg" class="d-block w-100"
-                            alt="Producto 2">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tripomant GR</h5>
-                            <p>Compuesto multicapa formado por dos laminas aluminizadas y dos espumas protectoras.
-                            </p>
-                        </div>
+                    <div class="cr-slide" data-tag="Aislante Encolado" data-title="Tripomant GR"
+                        data-desc="Compuesto multicapa formado por dos laminas aluminizadas y dos espumas protectoras.">
+                        <img src="https://tripomant.com/wp-content/uploads/2023/04/Union5B.jpg" alt="Tripomant GR">
                     </div>
-
-                    <div class="carousel-item">
-                        <img src="tripomantcumifelt.png" class="d-block w-100" alt="Producto 3">
-                        <div class="carousel-caption d-none d-md-block">
-                            <h5>Tripomant Cumifelt</h5>
-                            <p>Lámina Impermeable Cumifelt.</p>
-                        </div>
+                    <div class="cr-slide" data-tag="Impermeabilización" data-title="Tripomant Cumifelt"
+                        data-desc="Lámina Impermeable Cumifelt.">
+                        <img src="tripomantcumifelt.png" alt="Tripomant Cumifelt">
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carruselProductos"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Anterior</span>
+                    <div class="cr-overlay"></div>
+                    <div class="cr-info">
+                        <div class="cr-tag" id="crTag"></div>
+                        <div class="cr-title" id="crTitle"></div>
+                        <div class="cr-desc" id="crDesc"></div>
+                    </div>
+                    <div class="cr-counter" id="crCounter"></div>
+                    <button class="cr-nav cr-prev" id="crPrev" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="15 18 9 12 15 6" />
+                        </svg>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carruselProductos"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Siguiente</span>
+                    <button class="cr-nav cr-next" id="crNext" aria-label="Siguiente">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="9 6 15 12 9 18" />
+                        </svg>
                     </button>
                 </div>
+                <div class="cr-thumbs" id="crThumbs"></div>
             </div>
+
+
+            <!-- CATÁLOGO -->
+            <section class="seccion-catalogo">
+                <div class="catalogo-heading">
+                    <h2>Catálogo Completo</h2>
+                    <span class="badge-count">A–Z</span>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div class="pcard">
+                        <div class="col">
+                            <div class="pcard-img">
+                                <img src="https://tripomant.com/wp-content/uploads/2023/04/tripomant-air.jpg"
+                                    class="card-img-top" alt="Tripomant Air">
+                            </div>
+                            <div class="pcard-body">
+                                <div class="pcard-material">Aislante Encolado</div>
+                                <h5 class="pcard-name">Tripomant Air</h5>
+                                <p class="pcard-desc">Aislante térmico reflexivo encolado. Compuesto
+                                    por
+                                    dos láminas de aluminio y una de burbuja de polietileno.</p>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="pcard">
+                            <div class="pcard-img">
+                                <img src="https://tripomant.com/wp-content/uploads/2023/04/Union5B.jpg"
+                                    class="card-img-top" alt="Tripomant GR">
+                            </div>
+                            <div class="pcard-body">
+                                <div class="pcard-material">Aislante Encolado</div>
+                                <h5 class="pcard-name">Tripomant GR</h5>
+                                <p class="pcard-desc">Compuesto multicapa formado por dos laminas
+                                    aluminizadas y dos espumas protectoras.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="pcard">
+                            <div class="pcard-img">
+                                <img src="tripomantcumifelt.png" class="card-img-top" alt="Tripomant Cumifelt">
+                            </div>
+                            <div class="pcard-body">
+                                <div class="pcard-material">Impermeabilización</div>
+                                <h5 class="pcard-name">Tripomant Cumifelt</h5>
+                                <p class="pcard-desc">Evita filtraciones de agua en baños, duchas,
+                                    piscinas… Impermeabilización completa y duradera.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+            </section>
+
+            <div class="cta-banner">
+                <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
+                <div class="cta-body">
+                    <h3>¿No encuentras lo que necesitas?</h3>
+                    <p>Este catálogo es una selección habitual de tienda, pero disponemos de muchos más artículos
+                        Regarsa
+                        que podemos pedir directamente. Consúltanos sin compromiso.</p>
+                    <div class="cta-contacts">
+                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
+                                23 34
+                                54</a></div>
+                        <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
+                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <!-- CATÁLOGO -->
-        <section class="seccion-catalogo">
-            <div class="catalogo-heading">
-                <h2>Catálogo Completo</h2>
-                <span class="badge-count">A–Z</span>
-            </div>
-
-            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-
-                <div class="col">
-                    <div class="card card-producto">
-                        <img src="https://tripomant.com/wp-content/uploads/2023/04/tripomant-air.jpg"
-                            class="card-img-top" alt="Tripomant Air">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Tripomant Air</h5>
-                            <p class="card-text text-muted small">Aislante térmico reflexivo encolado. Compuesto
-                                por
-                                dos láminas de aluminio y una de burbuja de polietileno.</p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card card-producto">
-                        <img src="https://tripomant.com/wp-content/uploads/2023/04/Union5B.jpg" class="card-img-top"
-                            alt="Tripomant GR">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Tripomant GR</h5>
-                            <p class="card-text text-muted small">Compuesto multicapa formado por dos laminas
-                                aluminizadas y dos espumas protectoras.</p>
-
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="card card-producto">
-                        <img src="tripomantcumifelt.png" class="card-img-top" alt="Tripomant Cumifelt">
-                        <div class="card-body d-flex flex-column">
-                            <h5 class="card-title">Tripomant Cumifelt</h5>
-                            <p class="card-text text-muted small">Evita filtraciones de agua en baños, duchas,
-                                piscinas… Impermeabilización completa y duradera.</p>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-
-        </section>
-
-        <div class="aviso-mas-articulos">
-                <div class="aviso-icono">
-                    <i class="fa-solid fa-boxes-stacking"></i>
-                </div>
-                <div>
-                    <h4><i class="fa-solid fa-circle-info me-2"></i>¿No encuentras lo que buscas?</h4>
-                    <p>Este catálogo muestra una selección de nuestros productos Tripomant más habituales en
-                        tienda,
-                        pero disponemos de <strong>muchos más artículos</strong> en catálogo que te podemos
-                        pedir
-                        directamente. Consúltanos sin compromiso y te asesoramos sobre el producto más adecuado
-                        para
-                        tu proyecto.</p>
-                    <p class="mt-2">
-                        <i class="fa-solid fa-phone me-1"></i> <strong>925 23 34 54</strong> &nbsp;|&nbsp;
-                        <i class="fa-solid fa-envelope me-1"></i> <a
-                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </p>
-                </div>
-            </div>
     </main>
 
 
@@ -972,8 +1267,7 @@
         <div class="container">
             <div class="row g-4 pb-4">
                 <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:80px; margin-bottom:10px;">
+                    <img src="logonuevo2.png" alt="Olivilla Tres" style="height:80px; margin-bottom:10px;">
                     <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
                         Asesoramiento técnico especializado.</p>
                 </div>
@@ -1024,9 +1318,96 @@
         </div>
     </footer>
 
-
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var navbar = document.getElementById('mainNavbar');
+            var topbar = document.getElementById('topbar');
+            var spacer = document.getElementById('headerSpacer');
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    topbar.style.display = 'none';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    topbar.style.display = '';
+                }
+                resize();
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll();
+            requestAnimationFrame(resize);
+        })();
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            const slides = document.querySelectorAll('.cr-slide');
+            const thumbsWrap = document.getElementById('crThumbs');
+            const bar = document.getElementById('crBar');
+            const tag = document.getElementById('crTag');
+            const title = document.getElementById('crTitle');
+            const desc = document.getElementById('crDesc');
+            const counter = document.getElementById('crCounter');
+            const total = slides.length;
+            let cur = 0, barStart = null, barDur = 3500;
 
+            slides.forEach((s, i) => {
+                const img = s.querySelector('img');
+                const th = document.createElement('div');
+                th.className = 'cr-thumb' + (i === 0 ? ' active' : '');
+                th.innerHTML = `<img src="${img.src}" alt="">`;
+                th.addEventListener('click', () => go(i));
+                thumbsWrap.appendChild(th);
+            });
+
+            function updateInfo(i) {
+                const s = slides[i];
+                tag.textContent = s.dataset.tag;
+                title.textContent = s.dataset.title;
+                desc.textContent = s.dataset.desc;
+                counter.textContent = (i + 1) + ' / ' + total;
+            }
+
+            function go(idx) {
+                slides[cur].classList.remove('active');
+                document.querySelectorAll('.cr-thumb')[cur].classList.remove('active');
+                cur = (idx + total) % total;
+                slides[cur].classList.add('active');
+                document.querySelectorAll('.cr-thumb')[cur].classList.add('active');
+                updateInfo(cur);
+                resetBar();
+            }
+
+            function resetBar() {
+                bar.style.transition = 'none';
+                bar.style.width = '0%';
+                barStart = null;
+                requestAnimationFrame(() => requestAnimationFrame(animBar));
+            }
+
+            function animBar(ts) {
+                if (!barStart) barStart = ts;
+                const elapsed = ts - barStart;
+                const pct = Math.min(elapsed / barDur * 100, 100);
+                bar.style.width = pct + '%';
+                if (pct < 100) {
+                    requestAnimationFrame(animBar);
+                } else {
+                    go(cur + 1);
+                }
+            }
+
+            document.getElementById('crPrev').addEventListener('click', () => go(cur - 1));
+            document.getElementById('crNext').addEventListener('click', () => go(cur + 1));
+
+            updateInfo(0);
+            requestAnimationFrame(animBar);
+        })();
+    </script>
     <script type="text/javascript">
         (function (d, t) {
             var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
