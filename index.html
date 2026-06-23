@@ -517,7 +517,7 @@
 
         .beneficios {
             background:
-                linear-gradient(rgba(255,255,255,.70), rgba(255,255,255,.70)),
+                linear-gradient(rgba(255, 255, 255, .70), rgba(255, 255, 255, .70)),
                 url('https://images.unsplash.com/photo-1485083269755-a7b559a4fe5e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
@@ -675,6 +675,53 @@
             border-color: var(--accent);
             transform: translateY(-3px);
             box-shadow: 0 10px 24px rgba(181, 57, 135, .22);
+        }
+
+        .servicio-card-img {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+            height: 280px;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(74, 59, 104, .10);
+        }
+
+        .servicio-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+
+        .servicio-card-img:hover img {
+            transform: scale(1.08);
+        }
+
+        .servicio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top,
+                    rgba(53, 40, 79, .95) 0%,
+                    rgba(53, 40, 79, .55) 45%,
+                    rgba(53, 40, 79, .15) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 24px;
+            color: white;
+        }
+
+        .servicio-overlay h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .servicio-overlay p {
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .85);
+            margin: 0;
+            line-height: 1.6;
         }
 
         /* ── CTA FINAL ── */
@@ -1030,8 +1077,8 @@
                                     class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
                         <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
                                     class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
-                        <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
-                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link" href="./maquinaria.html"><i
+                                    class="fa-solid fa-truck-monster me-1"></i>Alquiler Maquinaria</a></li> -->
                         <li class="nav-item ms-lg-2">
                             <a class="nav-link btn-cta-nav" href="./formulario.html"><i
                                     class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
@@ -1169,8 +1216,7 @@
             </div>
         </div>
     </section>
-
-    <!-- ── SERVICIOS ── -->
+    <!-- ── Servicios ── -->
     <section class="servicios">
         <div class="container">
             <div class="section-heading-center">
@@ -1178,32 +1224,59 @@
                 <h2 class="section-title">Nuestros Servicios</h2>
                 <div class="section-bar"></div>
             </div>
+
             <div class="row g-4">
-                <div class="col-sm-6 col-lg-4">
-                    <div class="servicio-card"><i class="fa-solid fa-layer-group"></i>
-                        <h4>Aislamiento</h4>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="servicio-card-img">
+                        <img src="https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Aislamiento">
+                        <div class="servicio-overlay">
+                            <h4>Aislamiento</h4>
+                            <p>Soluciones térmicas y acústicas para todo tipo de proyectos.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="servicio-card"><i class="fa-solid fa-water"></i>
-                        <h4>Impermeabilización</h4>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="servicio-card-img">
+                        <img src="https://plus.unsplash.com/premium_photo-1754344817706-3c5d8870a838?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Impermeabilización">
+                        <div class="servicio-overlay">
+                            <h4>Impermeabilización</h4>
+                            <p>Sistemas profesionales para cubiertas, terrazas y fachadas.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4">
-                    <div class="servicio-card"><i class="fa-solid fa-screwdriver-wrench"></i>
-                        <h4>Ferretería</h4>
+
+                <div class="col-md-6 col-lg-4">
+                    <div class="servicio-card-img">
+                        <img src="https://media.istockphoto.com/id/1351998505/es/foto/herramientas-puestas-a-la-venta-en-una-ferreter%C3%ADa.webp?a=1&b=1&s=612x612&w=0&k=20&c=CwLRKGrDFEBhTUbkZxbDxV3Lb4vLH-sqX01jQ9S_bOA=" alt="Ferretería">
+                        <div class="servicio-overlay">
+                            <h4>Ferretería</h4>
+                            <p>Herramientas y accesorios para profesionales y particulares.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-6">
-                    <div class="servicio-card"><i class="fa-solid fa-cube"></i>
-                        <h4>Policarbonatos y Metacrilatos</h4>
+
+                <div class="col-md-6 col-lg-6">
+                    <div class="servicio-card-img">
+                        <img src="https://images.unsplash.com/photo-1603847734787-9e8a3f3e9d60?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cG9saWNhcmJvbmF0b3N8ZW58MHx8MHx8fDA%3D" alt="Policarbonatos">
+                        <div class="servicio-overlay">
+                            <h4>Policarbonatos y Metacrilatos</h4>
+                            <p>Materiales resistentes y versátiles para múltiples aplicaciones.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-sm-12 col-lg-6">
-                    <div class="servicio-card"><i class="fa-solid fa-truck-monster"></i>
-                        <h4>Alquiler de Maquinaria</h4>
+
+                <div class="col-md-12 col-lg-6">
+                    <div class="servicio-card-img">
+                        <img src="https://images.unsplash.com/photo-1606337321936-02d1b1a4d5ef?q=80&w=735&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Maquinaria">
+                        <div class="servicio-overlay">
+                            <h4>Alquiler de Maquinaria</h4>
+                            <p>Equipos profesionales para construcción.</p>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>
