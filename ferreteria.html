@@ -238,9 +238,11 @@
         .navbar-custom .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
+
         .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
+
         #headerSpacer {
             height: 130px;
         }
@@ -662,30 +664,33 @@
             .cta-contacts {
                 justify-content: center;
             }
-            
+
         }
 
         .categorias-bg {
             background:
-                linear-gradient(rgba(255, 255, 255, .60),
-                    rgba(255, 255, 255, .60)),
+                linear-gradient(rgba(255, 255, 255, .80),
+                    rgba(255, 255, 255, .80)),
                 url('https://images.unsplash.com/photo-1519520104014-df63821cb6f9?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
         }
+
         @media (max-width:768px) {
             #headerSpacer {
                 height: 170px;
             }
-                    .cat-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-            gap: 16px;
-            margin-bottom: 64px;
+
+            .cat-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+                gap: 16px;
+                margin-bottom: 64px;
+            }
         }
-        }
+
         /* FOOTER */
         .footer-main {
             background: #4a3b68;
@@ -861,257 +866,257 @@
 
     <!-- MAIN -->
     <section class="categorias categorias-bg" id="categorias">
-    <main>
+        <main>
 
 
-        <div class="container">
-            <!-- CATEGORÍAS -->
-            <div class="section-header" style="margin-top: 0;">
-                <span class="section-tag">Categorías</span>
-                <h2 class="section-title">¿Qué necesitas?</h2>
+            <div class="container">
+                <!-- CATEGORÍAS -->
+                <div class="section-header" style="margin-top: 0;">
+                    <span class="section-tag">Categorías</span>
+                    <h2 class="section-title">¿Qué necesitas?</h2>
 
-                <div class="section-line"></div>
-            </div>
-            <div class="cat-grid">
-                <div class="cat-card">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h3>Brochas</h3>
-                    <p>Para pintura, imprimaciones y tratamientos.</p>
-                    <span class="cat-badge">5 referencias</span>
+                    <div class="section-line"></div>
                 </div>
-                <div class="cat-card">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    <h3>Discos</h3>
-                    <p>Corte para hierro y piedra en dos medidas.</p>
-                    <span class="cat-badge">4 referencias</span>
-                </div>
-                <div class="cat-card">
-                    <i class="fa-solid fa-toolbox"></i>
-                    <h3>Accesorios</h3>
-                    <p>Fijaciones, cintas, cánulas y consumibles.</p>
-                    <span class="cat-badge">+20 referencias</span>
-                </div>
-            </div>
-
-            <!-- 01 BROCHAS -->
-            <div class="section-header">
-                <span class="section-tag">01</span>
-                <h2 class="section-title">Brochas</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="products-grid">
-                <div class="pcard">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h5>Brocha Canaria</h5>
-                    <p>75 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h5>Brocha</h5>
-                    <p>30 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h5>Brocha</h5>
-                    <p>24 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h5>Brocha</h5>
-                    <p>18 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paintbrush"></i>
-                    <h5>Brocha</h5>
-                    <p>12 mm</p>
-                </div>
-            </div>
-
-            <!-- 02 DISCOS -->
-            <div class="section-header">
-                <span class="section-tag">02</span>
-                <h2 class="section-title">Discos</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="products-grid">
-                <div class="pcard">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    <h5>Hierro</h5>
-                    <p>230 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    <h5>Piedra</h5>
-                    <p>230 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    <h5>Hierro</h5>
-                    <p>115 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-compact-disc"></i>
-                    <h5>Piedra</h5>
-                    <p>115 mm</p>
-                </div>
-            </div>
-
-            <!-- 03 ACCESORIOS -->
-            <div class="section-header">
-                <span class="section-tag">03</span>
-                <h2 class="section-title">Accesorios y Complementos</h2>
-                <div class="section-line"></div>
-            </div>
-            <div class="products-grid">
-                <div class="pcard">
-                    <i class="fa-solid fa-syringe"></i>
-                    <h5>Taco Químico</h5>
-                    <p>Tamiz 12 × 60 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-flask"></i>
-                    <h5>Cánula Mezcladora</h5>
-                    <p>Para taco químico</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-box-open"></i>
-                    <h5>Cánulas para Sacos</h5>
-                    <p>Aplicación directa</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-bolt"></i>
-                    <h5>Taco Clavo</h5>
-                    <p>C-8</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-hammer"></i>
-                    <h5>Taco Golpeo</h5>
-                    <p>6 cm × 35 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-screwdriver"></i>
-                    <h5>Pistola Silicona</h5>
-                    <p>Aplicación profesional</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
-                    <h5>Pistola Poliuretano</h5>
-                    <p>Metálica profesional</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-link"></i>
-                    <h5>Banda Butílica</h5>
-                    <p>10 cm · 20 cm · 30 cm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-circle"></i>
-                    <h5>Arandelas Neopreno</h5>
-                    <p>Varios formatos</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-screwdriver"></i>
-                    <h5>Tornillos Autotaladrantes</h5>
-                    <p>Diversas medidas</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-tape"></i>
-                    <h5>Cinta de Aluminio</h5>
-                    <p>Rollo 45 m × 48 mm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-tape"></i>
-                    <h5>Cinta de Carrocero</h5>
-                    <p>Uso general</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-tape"></i>
-                    <h5>Cinta Americana</h5>
-                    <p>Alta resistencia</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-box"></i>
-                    <h5>Precinto</h5>
-                    <p>Embalaje y cierre</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-fill-drip"></i>
-                    <h5>Recambio Polvo Trazador</h5>
-                    <p>Para marcado de obra</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-wrench"></i>
-                    <h5>Fijación Drentex</h5>
-                    <p>Anclaje especializado</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-scroll"></i>
-                    <h5>Rollos de Cartón</h5>
-                    <p>0,9×0,45 · 0,9×25 · 100×1</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-circle-dot"></i>
-                    <h5>Plástico de Burbuja</h5>
-                    <p>150 × 1,2</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-sheet-plastic"></i>
-                    <h5>Plástico 400 Galgos</h5>
-                    <p>Rollo 50 × 4</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-sheet-plastic"></i>
-                    <h5>Plástico 600 Galgos</h5>
-                    <p>Rollo 50 × 4</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-sheet-plastic"></i>
-                    <h5>Plástico 400 Galgos Virgen</h5>
-                    <p>Rollo 50 × 4</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <h5>Fomper 3 mm</h5>
-                    <p>Rollo 180 × 1,6</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-layer-group"></i>
-                    <h5>Fomper 5 mm</h5>
-                    <p>Rollo 160 × 1,6</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <h5>Rodillo</h5>
-                    <p>22 cm</p>
-                </div>
-                <div class="pcard">
-                    <i class="fa-solid fa-paint-roller"></i>
-                    <h5>Rodillo</h5>
-                    <p>18 cm</p>
-                </div>
-            </div>
-
-            <!-- CTA -->
-            <div class="cta-banner">
-                <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
-                <div class="cta-body">
-                    <h3>¿No encuentras lo que necesitas?</h3>
-                    <p>Este catálogo muestra una selección habitual de tienda, pero disponemos de muchos más
-                        artículos
-                        que podemos pedir directamente. Consúltanos sin compromiso y te asesoramos.</p>
-                    <div class="cta-contacts">
-                        <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
-                                23 34
-                                54</a></div>
-                        <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
-                                href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                <div class="cat-grid">
+                    <div class="cat-card">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h3>Brochas</h3>
+                        <p>Para pintura, imprimaciones y tratamientos.</p>
+                        <span class="cat-badge">5 referencias</span>
+                    </div>
+                    <div class="cat-card">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h3>Discos</h3>
+                        <p>Corte para hierro y piedra en dos medidas.</p>
+                        <span class="cat-badge">4 referencias</span>
+                    </div>
+                    <div class="cat-card">
+                        <i class="fa-solid fa-toolbox"></i>
+                        <h3>Accesorios</h3>
+                        <p>Fijaciones, cintas, cánulas y consumibles.</p>
+                        <span class="cat-badge">+20 referencias</span>
                     </div>
                 </div>
+
+                <!-- 01 BROCHAS -->
+                <div class="section-header">
+                    <span class="section-tag">01</span>
+                    <h2 class="section-title">Brochas</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="products-grid">
+                    <div class="pcard">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha Canaria</h5>
+                        <p>75 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>30 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>24 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>18 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paintbrush"></i>
+                        <h5>Brocha</h5>
+                        <p>12 mm</p>
+                    </div>
+                </div>
+
+                <!-- 02 DISCOS -->
+                <div class="section-header">
+                    <span class="section-tag">02</span>
+                    <h2 class="section-title">Discos</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="products-grid">
+                    <div class="pcard">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Hierro</h5>
+                        <p>230 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Piedra</h5>
+                        <p>230 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Hierro</h5>
+                        <p>115 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-compact-disc"></i>
+                        <h5>Piedra</h5>
+                        <p>115 mm</p>
+                    </div>
+                </div>
+
+                <!-- 03 ACCESORIOS -->
+                <div class="section-header">
+                    <span class="section-tag">03</span>
+                    <h2 class="section-title">Accesorios y Complementos</h2>
+                    <div class="section-line"></div>
+                </div>
+                <div class="products-grid">
+                    <div class="pcard">
+                        <i class="fa-solid fa-syringe"></i>
+                        <h5>Taco Químico</h5>
+                        <p>Tamiz 12 × 60 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-flask"></i>
+                        <h5>Cánula Mezcladora</h5>
+                        <p>Para taco químico</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h5>Cánulas para Sacos</h5>
+                        <p>Aplicación directa</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-bolt"></i>
+                        <h5>Taco Clavo</h5>
+                        <p>C-8</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-hammer"></i>
+                        <h5>Taco Golpeo</h5>
+                        <p>6 cm × 35 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Pistola Silicona</h5>
+                        <p>Aplicación profesional</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <h5>Pistola Poliuretano</h5>
+                        <p>Metálica profesional</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-link"></i>
+                        <h5>Banda Butílica</h5>
+                        <p>10 cm · 20 cm · 30 cm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-circle"></i>
+                        <h5>Arandelas Neopreno</h5>
+                        <p>Varios formatos</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-screwdriver"></i>
+                        <h5>Tornillos Autotaladrantes</h5>
+                        <p>Diversas medidas</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-tape"></i>
+                        <h5>Cinta de Aluminio</h5>
+                        <p>Rollo 45 m × 48 mm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-tape"></i>
+                        <h5>Cinta de Carrocero</h5>
+                        <p>Uso general</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-tape"></i>
+                        <h5>Cinta Americana</h5>
+                        <p>Alta resistencia</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-box"></i>
+                        <h5>Precinto</h5>
+                        <p>Embalaje y cierre</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-fill-drip"></i>
+                        <h5>Recambio Polvo Trazador</h5>
+                        <p>Para marcado de obra</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-wrench"></i>
+                        <h5>Fijación Drentex</h5>
+                        <p>Anclaje especializado</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-scroll"></i>
+                        <h5>Rollos de Cartón</h5>
+                        <p>0,9×0,45 · 0,9×25 · 100×1</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-circle-dot"></i>
+                        <h5>Plástico de Burbuja</h5>
+                        <p>150 × 1,2</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plástico 400 Galgos</h5>
+                        <p>Rollo 50 × 4</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plástico 600 Galgos</h5>
+                        <p>Rollo 50 × 4</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-sheet-plastic"></i>
+                        <h5>Plástico 400 Galgos Virgen</h5>
+                        <p>Rollo 50 × 4</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h5>Fomper 3 mm</h5>
+                        <p>Rollo 180 × 1,6</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-layer-group"></i>
+                        <h5>Fomper 5 mm</h5>
+                        <p>Rollo 160 × 1,6</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <h5>Rodillo</h5>
+                        <p>22 cm</p>
+                    </div>
+                    <div class="pcard">
+                        <i class="fa-solid fa-paint-roller"></i>
+                        <h5>Rodillo</h5>
+                        <p>18 cm</p>
+                    </div>
+                </div>
+
+                <!-- CTA -->
+                <div class="cta-banner">
+                    <div class="cta-icon"><i class="fa-solid fa-boxes-stacking"></i></div>
+                    <div class="cta-body">
+                        <h3>¿No encuentras lo que necesitas?</h3>
+                        <p>Este catálogo muestra una selección habitual de tienda, pero disponemos de muchos más
+                            artículos
+                            que podemos pedir directamente. Consúltanos sin compromiso y te asesoramos.</p>
+                        <div class="cta-contacts">
+                            <div class="cta-contact-item"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925
+                                    23 34
+                                    54</a></div>
+                            <div class="cta-contact-item"><i class="fa-solid fa-envelope"></i><a
+                                    href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-        </div>
 
-
-    </main>
+        </main>
     </section>
 
     <!-- FOOTER -->
