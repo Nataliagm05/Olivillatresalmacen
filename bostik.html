@@ -247,11 +247,7 @@
             height: 130px;
         }
 
-        @media (max-width:768px) {
-            #headerSpacer {
-                height: 170px;
-            }
-        }
+
 
         /* HERO */
         .page-hero {
@@ -579,19 +575,7 @@
             padding: 4px;
         }
 
-        @media (max-width:576px) {
-            .page-hero {
-                padding: 80px 0 80px;
-            }
 
-            .hero-stats {
-                gap: 20px;
-            }
-
-            main {
-                padding-top: 100px;
-            }
-        }
 
         /* SECTION HEADERS */
         .section-header {
@@ -819,17 +803,7 @@
             text-decoration: underline;
         }
 
-        @media (max-width:700px) {
-            .cta-banner {
-                flex-direction: column;
-                padding: 32px 24px;
-                text-align: center;
-            }
 
-            .cta-contacts {
-                justify-content: center;
-            }
-        }
 
 
         /* FOOTER */
@@ -1144,6 +1118,7 @@
 
             main {
                 padding-top: 0px;
+                margin-right: 15px;
             }
 
             .breadcrumb-custom {
@@ -1162,10 +1137,12 @@
             .page-hero {
                 margin-bottom: 10px;
                 padding: 10px 0 10px;
+                
             }
 
             main {
                 padding-top: 0px;
+                margin-right: 0px;
             }
 
             .breadcrumb-custom {
@@ -1180,10 +1157,89 @@
             }
 
         }
+                @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
 
-        @media (max-width:430px) {
+        @media (max-width:700px) {
+            .cta-banner {
+                flex-direction: column;
+                padding: 32px 24px;
+                text-align: center;
+            }
+
+            .cta-contacts {
+                justify-content: center;
+            }
+
+        }
+
+        @media (max-width:576px) {
+            .page-hero {
+                padding: 80px 0 80px;
+            }
+
+            .hero-stats {
+                gap: 20px;
+            }
+
+            main {
+                padding-top: 100px;
+            }
+        }
+        
+
+        @media (max-width:440px) {
+            .page-hero {
+                margin-bottom: 40px;
+                padding: 20px 0 20px;
+            }
+
+            .hero-desc {
+                font-size: 0.8rem;
+            }
+
+            .hero-title {
+                font-size: clamp(1.5rem, 5vw, 4.4rem);
+            }
+
+            .hero-eyebrow {
+                font-size: 10px;
+                display: inline;
+            }
+
+            .stat-num {
+                font-size: 1rem;
+            }
+
+            .stat-label {
+                font-size: 10px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 10px;
+            }
+
+            .hero-logo-wrap img {
+                height: 30px;
+            }
+
+            main {
+                padding-top: 0px;
+                margin-right: 0px;
+                margin-left: 10px;
+            }
+
+            .cr-stage {
+                height: 275px;
+            }
+        }
+                @media (max-width:394px) {
             .page-hero {
                 margin-bottom: 5px;
+                padding: 20px 0 20px;
             }
 
             .hero-desc {
@@ -1220,9 +1276,9 @@
             }
 
             .cr-stage {
-                height: 260px;
+                height: 230px;
             }
-
+        }
     </style>
 </head>
 
@@ -1779,21 +1835,7 @@
             requestAnimationFrame(animBar);
         })();
     </script>
-    <script type="text/javascript">
-        (function (d, t) {
-            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-            v.onload = function () {
-                window.voiceflow.chat.load({
-                    verify: { projectID: '6a26a29ec4acdd8a282fd8bf' },
-                    url: 'https://general-runtime.voiceflow.com',
-                    voice: { url: "https://runtime-api.voiceflow.com" }
-                });
-            };
-            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-            v.type = "text/javascript";
-            s.parentNode.insertBefore(v, s);
-        })(document, 'script');
-    </script>
+¡
 </body>
 
 </html>
