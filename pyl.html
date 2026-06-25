@@ -666,7 +666,42 @@
             margin: 0;
         }
 
-        @media (max-width:1920px) {}
+        @media (max-width:1920px) {
+            .page-hero {
+                padding: 72px 0 100px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 20px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 5vw, 4.4rem);
+            }
+
+            .hero-eyebrow {
+                margin-left: 1rem;
+                font-size: 20px;
+                margin: 50px;
+            }
+
+            .hero-desc {
+                font-size: 1.5rem;
+            }
+
+            .stat-num {
+                font-size: 2.5rem;
+            }
+
+            .stat-label {
+                font-size: 20px;
+            }
+
+            main {
+                flex: 1;
+                padding: 90px 0 80px;
+            }
+        }
 
         @media (max-width:1536px) {}
 
@@ -676,6 +711,54 @@
             .sec-heading {
                 color: #ede5f5;
                 margin-bottom: 40px;
+            }
+
+            .page-hero {
+                margin-bottom: 80px;
+                padding: 80px 0 80px;
+            }
+
+            .hero-desc {
+                font-size: 0.95rem;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 3vw, 4.4rem);
+            }
+
+            .hero-eyebrow {
+                margin-left: 0.5rem;
+                font-size: 20px;
+            }
+
+            .stat-num {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 17px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 17px;
+            }
+
+            .hero-logo-wrap img {
+                height: 100px;
+            }
+
+            main {
+                padding-top: 0px;
+            }
+
+            .cr-wrap {
+                position: relative;
+                width: 100%;
+                border-radius: 16px;
+                overflow: hidden;
+                background: #2d1f42;
+                font-family: 'Inter', sans-serif;
+                margin-bottom: 90px;
             }
 
         }
@@ -693,14 +776,85 @@
                 flex: 1;
                 padding: 75px 0 80px;
             }
+            .page-hero {
+                margin-bottom: 30px;
+                padding: 10px 0 30px;
+            }
 
+            .cr-thumbs {
+                display: flex;
+                gap: 8px;
+                padding: 12px 140px;
+            }
+
+            .stat-num {
+                font-size: 1rem;
+            }
+
+            .hero-title {
+                font-size: clamp(1.5rem, 3vw, 4.4rem);
+            }
+
+            .hero-eyebrow {
+                font-size: 10px;
+                margin: 20px;
+            }
+
+            .hero-desc {
+                font-size: 0.75rem;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
         }
 
         @media (max-width:768px) {
             .page-hero {
-
-                padding: 80px 0 80px;
+                margin-bottom: 30px;
+                padding: 10px 0 30px;
             }
+
+            .cr-thumbs {
+                display: flex;
+                gap: 8px;
+                padding: 12px 140px;
+            }
+
+            .stat-num {
+                font-size: 1rem;
+            }
+
+            .hero-title {
+                font-size: clamp(1.5rem, 3vw, 4.4rem);
+            }
+
+            .hero-eyebrow {
+                font-size: 10px;
+                margin: 20px;
+            }
+
+            .hero-desc {
+                font-size: 0.75rem;
+            }
+
+            .stat-label {
+                font-size: 11px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+                main {
+        flex: 1;
+        padding: 40px 0 80px;
+    }
 
         }
 
@@ -717,12 +871,12 @@
 
         @media (max-width:440px) {
             .page-hero {
-                padding: 30px 0 30px;
+                padding: 30px 0 25px;
             }
 
             main {
                 flex: 1;
-                padding: 40px 0 80px;
+                padding: 0px 0 80px;
             }
 
             .stat-num {
