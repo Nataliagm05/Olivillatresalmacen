@@ -4,160 +4,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solicitud de Presupuesto</title>
-
+    <title>Solicitar Presupuesto — Olivilla Tres</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
 
     <style>
-        * {
+        :root {
+            --bg: #f4f2f8;
+            --surface: #ffffff;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --dark: #35284f;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        html,
-        body {
-            height: 100%;
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f7f9fa;
-            color: #4a3b68;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* ========== TOPBAR ========== */
+        /* TOPBAR */
         .topbar {
-            background-color: #35284f;
-            padding: 7px 30px;
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 32px;
             display: flex;
             justify-content: flex-end;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
+            font-size: 0.75rem;
         }
 
         .topbar a,
         .topbar span {
-            color: #c9b8e8;
-            font-size: 0.78rem;
+            color: rgba(201, 184, 232, 0.8);
             text-decoration: none;
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .topbar a:hover {
             color: #f386cc;
         }
 
-        .topbar .topbar-divider {
+        .topbar-div {
             width: 1px;
-            height: 12px;
-            background-color: #5a4878;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
         }
-        @media (max-width: 768px) {
+
+        @media (max-width:600px) {
             .topbar {
                 flex-direction: column;
-                justify-content: center;
                 align-items: center;
-                text-align: center;
-                gap: 8px;
-                padding: 10px;
+                gap: 6px;
             }
 
-            .topbar-divider {
+            .topbar-div {
                 display: none;
             }
         }
 
-        @media (max-width: 576px) {
-            .topbar {
-                flex-direction: column;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .topbar-divider {
-                display: none;
-            }
+        /* NAVBAR */
+        .site-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
         }
-        /* ========== NAVBAR ========== */
+
         .navbar-custom {
-            background-color: #4a3b68 !important;
-            border-bottom: 3px solid #b53987;
-            padding: 0 20px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+            background: rgba(74, 59, 104, 0.97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
         }
 
-        .navbar-custom .navbar-brand {
-            padding: 8px 0;
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, 0.99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
             display: flex;
             align-items: center;
             gap: 12px;
+            padding: 10px 0;
         }
 
         .logo-empresa {
-            height: 100px;
+            height: 76px;
             width: auto;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
         }
 
         .logo-subtitulo {
-            font-size: 14px;
-            color: #e8b0d0;
-            font-weight: 500;
-            border-left: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(232, 176, 208, 0.8);
+            border-left: 1px solid var(--border);
             padding-left: 12px;
-            letter-spacing: 0.3px;
-            white-space: nowrap;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, 0.85) !important;
-            font-weight: 400;
-            font-size: 14px;
-            padding: 12px 14px !important;
-            transition: color 0.2s;
-            white-space: nowrap;
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
         }
 
-        @media (min-width: 992px) {
-            .navbar-custom .nav-link {
-                padding: 22px 14px !important;
-                border-bottom: 3px solid transparent;
-                margin-bottom: -3px;
-                transition: color 0.2s, border-color 0.2s;
-            }
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
         }
 
         .navbar-custom .nav-link:hover,
-        .navbar-custom .nav-link:focus {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
-        }
-
         .navbar-custom .nav-link.active {
-            color: #f386cc !important;
-            border-bottom-color: #b53987;
+            color: #ffffff !important;
         }
 
-        /* ========== DROPDOWN ========== */
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
         .navbar-custom .dropdown-menu {
-            background-color: #ffffff;
-            border: none;
-            border-top: 3px solid #b53987;
-            border-radius: 0 0 10px 10px;
-            box-shadow: 0 12px 32px rgba(74, 59, 104, 0.18);
-            padding: 8px 0;
-            min-width: 220px;
-            animation: dropFade 0.15s ease;
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
         }
 
-        @keyframes dropFade {
+        @keyframes fade-in {
             from {
                 opacity: 0;
                 transform: translateY(-6px);
@@ -170,454 +198,678 @@
         }
 
         .navbar-custom .dropdown-item {
-            color: #4a3b68;
-            font-size: 0.88rem;
-            font-weight: 500;
+            color: var(--purple);
+            font-size: 13px;
             padding: 9px 18px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: background 0.15s, color 0.15s, padding-left 0.15s;
-        }
-
-        .navbar-custom .dropdown-item i {
-            width: 16px;
-            text-align: center;
-            color: #b53987;
+            transition: all .15s;
         }
 
         .navbar-custom .dropdown-item:hover {
-            background-color: #f7f0f5;
-            color: #b53987;
+            color: var(--accent);
+            background: #f7f0f5;
             padding-left: 24px;
         }
 
-        .navbar-custom .dropdown-divider {
-            border-color: #ede5f5;
-            margin: 5px 14px;
-        }
-
-        .dropdown-item .badge-new {
-            background-color: #b53987;
-            color: #fff;
-            font-size: 0.63rem;
-            font-weight: 600;
-            padding: 2px 7px;
-            border-radius: 20px;
-            margin-left: auto;
-        }
-
-        .btn-nav-contacto {
-            background-color: #b53987 !important;
-            color: #ffffff !important;
-            border-radius: 6px !important;
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
             font-size: 13px !important;
-            font-weight: 500 !important;
-            border-bottom: none !important;
-            padding: 10px 16px !important;
-            margin-top: 8px;
-            display: inline-block;
-            transition: background-color 0.2s !important;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
         }
 
-        @media (min-width: 992px) {
-            .btn-nav-contacto {
-                margin-top: 0;
-                margin-left: 6px;
-                padding: 8px 16px !important;
-            }
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
         }
 
-        .btn-nav-contacto:hover {
-            background-color: #922f6d !important;
+        .btn-cta::after {
+            display: none !important;
         }
 
         .navbar-custom .navbar-toggler {
-            border-color: #b53987 !important;
-        }
-
-        .navbar-custom .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
+            border-color: var(--accent) !important;
         }
 
         .navbar-custom .navbar-toggler-icon {
-            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23b53987' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
+
         .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
 
-        .contenedor {
-            max-width: 800px;
-            margin: 60px auto;
+        #headerSpacer {
+            height: 130px;
         }
 
-        .card-formulario {
-            background: white;
-            border-radius: 12px;
-            padding: 40px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, .08);
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
         }
 
-        h1 {
-            color: #4a3b68;
-            margin-bottom: 25px;
-        }
-
-        .btn-enviar {
-            background: #4a3b68;
-            color: white;
-            border: none;
-        }
-
-        .btn-enviar:hover {
-            background: #b53987;
-            color: white;
-        }
-/* ========== CABECERA PROVEEDOR ========== */
-        .proveedor-hero {
-            background: linear-gradient(135deg, #35284f 0%, #4a3b68 60%, #5e3d7a 100%);
-            padding: 4px 0 24px;
-            border-bottom: 4px solid #b53987;
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 80px 0 70px;
             position: relative;
             overflow: hidden;
         }
 
-        .proveedor-hero::after {
+        .page-hero::before {
             content: '';
             position: absolute;
-            right: -80px;
-            top: -80px;
-            width: 320px;
-            height: 320px;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            background: rgba(181, 57, 135, 0.08);
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
         }
 
-        .proveedor-hero .container {
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -80px;
+            left: 5%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 255, 255, .05) 0%, transparent 70%);
+        }
+
+        .hero-inner {
             position: relative;
             z-index: 1;
         }
 
-        .proveedor-breadcrumb {
-            font-size: 0.78rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 20px;
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 28px;
         }
 
-        .proveedor-breadcrumb a {
-            color: rgba(255, 255, 255, 0.5);
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.45);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .proveedor-breadcrumb a:hover {
+        .breadcrumb-custom a:hover {
             color: #f386cc;
         }
 
-        .proveedor-breadcrumb span {
-            margin: 0 6px;
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
         }
 
-        .proveedor-logo-wrap {
-            background: rgba(255, 255, 255, 0.97);
-            border-radius: 12px;
-            padding: 14px 24px;
+        .hero-eyebrow {
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        }
-
-        .proveedor-logo-wrap img {
-            height: 42px;
-            width: auto;
-        }
-
-        .proveedor-hero h1 {
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
+            gap: 8px;
+            font-size: 11px;
             font-weight: 700;
-            color: #ffffff;
-            margin-bottom: 8px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
         }
 
-        .proveedor-hero p {
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 1rem;
             color: rgba(255, 255, 255, 0.65);
-            font-size: 0.95rem;
-            margin: 0;
+            max-width: 500px;
+            line-height: 1.7;
         }
 
-        .titulo-proveedor {
-            color: #b53987;
-            margin-bottom: 30px;
-            margin-top: 30px;
-            font-size: 2rem;
-            /* Bajado un poco para que quepa mejor en móviles */
-            font-weight: bold;
-            border-left: 6px solid #4a3b68;
-            padding-left: 15px;
-
-            /* --- FLEXBOX MEJORADO --- */
-            display: flex;
-            flex-direction: column;
-            /* En móvil: el logo arriba, el texto abajo */
-            align-items: flex-start;
-            gap: 10px;
-            /* Espacio controlado entre logo y texto */
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
         }
 
-        /* Cuando la pantalla sea de tablet o computadora (escritorio) */
-        @media (min-width: 576px) {
-            .titulo-proveedor {
-                flex-direction: row;
-                /* Se ponen en fila horizontal */
-                align-items: center;
-                /* Se centran verticalmente */
-                font-size: 2.3rem;
-                /* Recupera el tamaño grande */
-                gap: 20px;
+        /* FORM LAYOUT */
+        .form-wrap {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width:900px) {
+            .form-wrap {
+                grid-template-columns: 1fr;
             }
         }
-        /* ========== FOOTER ========== */
-        .footer-main {
-            background-color: #4a3b68;
-            color: rgba(255, 255, 255, 0.8);
-            padding: 50px 0 0;
+
+        /* FORM CARD */
+        .form-card {
+            background: #fff;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            box-shadow: 0 4px 24px rgba(74, 59, 104, 0.08);
+            padding: 40px;
         }
 
-        .footer-brand p {
+        .form-card-title {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--purple);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .form-card-title i {
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .form-card-desc {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 28px;
+        }
+
+        .form-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--purple);
+            letter-spacing: .3px;
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        .form-control {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            border: 1.5px solid var(--border);
+            border-radius: 10px;
+            padding: 10px 14px;
+            color: var(--text);
+            background: #faf9fc;
+            transition: border-color .2s, box-shadow .2s;
+            width: 100%;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(181, 57, 135, .1);
+            background: #fff;
+        }
+
+        .form-control::placeholder {
+            color: rgba(74, 59, 104, 0.3);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 140px;
+        }
+
+        .field-group {
+            margin-bottom: 20px;
+        }
+
+        .field-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        @media (max-width:560px) {
+            .field-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            padding: 14px 24px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .2s, transform .15s, box-shadow .2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 8px;
+            box-shadow: 0 4px 16px rgba(181, 57, 135, .3);
+        }
+
+        .btn-submit:hover {
+            background: var(--accent2);
+            transform: translateY(-1px);
+            box-shadow: 0 8px 24px rgba(181, 57, 135, .35);
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .info-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(74, 59, 104, 0.06);
+            padding: 28px;
+        }
+
+        .info-card-title {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 18px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
             font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 12px;
-            line-height: 1.65;
+            color: var(--purple);
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .info-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .info-row i {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-top: 2px;
+            flex-shrink: 0;
+            width: 16px;
+            text-align: center;
+        }
+
+        .info-row a {
+            color: var(--purple);
+            text-decoration: none;
+            transition: color .2s;
+            font-weight: 500;
+        }
+
+        .info-row a:hover {
+            color: var(--accent);
+        }
+
+        .horario-grid {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 6px 16px;
+            font-size: 0.85rem;
+        }
+
+        .horario-dia {
+            color: var(--purple);
+            font-weight: 500;
+        }
+
+        .horario-hora {
+            color: var(--muted);
+            text-align: right;
+        }
+
+        .horario-sep {
+            grid-column: 1/-1;
+            height: 1px;
+            background: var(--border);
+            margin: 6px 0;
+        }
+
+        .why-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: var(--purple);
+            margin-bottom: 14px;
+            line-height: 1.5;
+        }
+
+        .why-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .why-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            background: #f7f0f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .why-icon i {
+            color: var(--accent);
+            font-size: 0.85rem;
+        }
+
+        /* FOOTER */
+        .footer-main {
+            background: var(--purple);
+            padding: 56px 0 0;
+        }
+
+        .footer-logo {
+            height: 68px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            max-width: 280px;
         }
 
         .footer-heading {
-            font-size: 0.78rem;
+            font-size: 10px;
             font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
             color: #e8b0d0;
-            margin-bottom: 16px;
+            margin-bottom: 18px;
         }
 
         .footer-links {
             list-style: none;
             padding: 0;
-        }
-
-        .footer-links li {
-            margin-bottom: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .footer-links a {
-            color: rgba(255, 255, 255, 0.65);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
             text-decoration: none;
-            font-size: 0.88rem;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
         .footer-links a:hover {
             color: #f386cc;
         }
 
-        .footer-contact-item {
+        .footer-contact-row {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
             margin-bottom: 12px;
-            font-size: 0.88rem;
-            color: rgba(255, 255, 255, 0.65);
         }
 
-        .footer-contact-item i {
-            color: #b53987;
-            font-size: 0.9rem;
+        .footer-contact-row i {
+            color: var(--accent);
             margin-top: 2px;
             flex-shrink: 0;
         }
 
-        .footer-contact-item a {
-            color: rgba(255, 255, 255, 0.65);
+        .footer-contact-row a {
+            color: rgba(255, 255, 255, 0.55);
             text-decoration: none;
-            transition: color 0.2s;
+            transition: color .2s;
         }
 
-        .footer-contact-item a:hover {
+        .footer-contact-row a:hover {
             color: #f386cc;
         }
 
         .footer-bottom {
-            background-color: #35284f;
-            padding: 16px 0;
-            margin-top: 40px;
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0;
+            margin-top: 48px;
         }
 
         .footer-bottom p {
-            font-size: 0.82rem;
-            color: rgba(255, 255, 255, 0.45);
-            margin: 0;
+            font-size: 12px;
+            color: rgba(255, 255, 255, .3);
             text-align: center;
+            margin: 0;
         }
     </style>
 </head>
 
 <body>
-    <!-- ===== TOPBAR ===== -->
-    <div class="topbar">
-        <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
-        <div class="topbar-divider"></div>
-        <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
-        <div class="topbar-divider"></div>
-        <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
-    </div>
 
-    <!-- ===== NAVBAR ===== -->
-    <nav class="navbar navbar-expand-lg navbar-custom sticky-top">
-        <div class="container-fluid px-3 px-lg-4">
-            <a class="navbar-brand" href="./index.html">
-                <img src="logonuevo2.png" class="logo-empresa" alt="Logo Almacén Olivilla Tres">
-                <span class="logo-subtitulo">Almacén</span>
-            </a>
-
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
-                    <li class="nav-item">
-                        <a class="nav-link" href="./index.html">
-                            <i class="fa-solid fa-house me-1"></i>Inicio
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            <i class="fa-solid fa-trowel-bricks me-1"></i>Proveedores
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
-                            <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
-                            <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
-                            <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
-                            <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
-                            <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
-                            <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
-                            <li><a class="dropdown-item" href="./pyl.html">PYL</a></li>
-                            <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
-                            <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./ferreteria.html">
-                            <i class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="./poliymeta.html">
-                            <i class="fa-solid fa-cube me-1"></i>Policarbonatos
-                        </a>
-                    </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link" href="./maquinaria.html">
-                            <i class="fa-solid fa-truck-monster me-1"></i>Alquiler de Maquinaria
-                        </a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link btn-nav-contacto" href="./formulario.html">
-                            <i class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- FIXED HEADER -->
+    <header id="siteHeader" class="site-header-fixed">
+        <div class="topbar" id="topbar">
+            <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
+            <div class="topbar-div"></div>
+            <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
+            <div class="topbar-div"></div>
+            <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
         </div>
-    </nav>
-
-     <!-- ===== CABECERA PROVEEDOR ===== -->
-    <div class="proveedor-hero">
-        <div class="container">
-            <div class="proveedor-breadcrumb">
-                <a href="./index.html">Inicio</a>
-                <span>›</span>
-                <a href="#">Proveedores</a>
-                <span>›</span>
-                Formulario
-            </div>
-        </div>
-    </div>
-    <div class="container contenedor">
-
-        <div class="card-formulario">
-
-            <h1>
-                <i class="fa-solid fa-file-invoice me-2"></i>
-                Solicitud de presupuesto
-            </h1>
-
-            <form action="https://formsubmit.co/almacen@olivillatres.com" method="POST">
-
-                <input type="hidden" name="_captcha" value="false">
-
-                <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Web Olivilla Tres">
-
-                <input type="hidden" name="_template" value="table">
-
-                <input type="hidden" name="_next"
-                    value=" https://nataliagm05.github.io/Olivillatresalmacen/gracias.html">
-                <input type="hidden" name="_autoresponse"
-                    value="Hemos recibido su solicitud de presupuesto. Nos pondremos en contacto con usted lo antes posible.">
-                <div class="mb-3">
-                    <label class="form-label">Nombre completo</label>
-                    <input type="text" name="nombre" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Empresa </label>
-                    <input type="text" name="empresa" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Correo electrónico</label>
-                    <input type="email" name="email" class="form-control" required>
-                </div>
-
-                <div class="mb-3">
-                    <label class="form-label">Teléfono</label>
-                    <input type="tel" name="telefono" class="form-control" required>
-                </div>
-
-
-                <div class="mb-3">
-                    <label class="form-label">Observaciones:</label>
-                    <textarea name="mensaje" rows="6" class="form-control" required></textarea>
-                </div>
-
-                <button type="submit" class="btn btn-enviar">
-                    <i class="fa-solid fa-paper-plane me-2"></i>
-                    Enviar solicitud
+        <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
+                    <span class="logo-subtitulo">Almacén</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
+                                <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
+                                <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
+                                <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
+                                <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
+                                <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
+                                <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
+                                <li><a class="dropdown-item" href="./pyl.html">PYL</a></li>
+                                <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
+                                <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta active" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="headerSpacer"></div>
 
-            </form>
-
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>Solicitar Presupuesto
+            </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-file-invoice"></i> Sin compromiso</span>
+            <h1 class="hero-title">Solicita tu <em>presupuesto</em><br>personalizado</h1>
+            <p class="hero-desc">Cuéntanos tu proyecto y nuestro equipo técnico te responderá con la solución más
+                adecuada y el mejor precio.</p>
         </div>
+    </section>
 
-    </div>
- <!-- ===== FOOTER ===== -->
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+            <div class="form-wrap">
+
+                <!-- FORMULARIO -->
+                <div class="form-card">
+                    <div class="form-card-title"><i class="fa-solid fa-pen-to-square"></i> Datos de contacto</div>
+                    <p class="form-card-desc">Todos los campos son obligatorios. Le responderemos en el menor tiempo
+                        posible.</p>
+
+                    <form action="https://formsubmit.co/almacen@olivillatres.com" method="POST">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_subject" value="Nueva solicitud de presupuesto - Web Olivilla Tres">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_next"
+                            value="https://nataliagm05.github.io/Olivillatresalmacen/gracias.html">
+                        <input type="hidden" name="_autoresponse"
+                            value="Hemos recibido su solicitud de presupuesto. Nos pondremos en contacto con usted lo antes posible.">
+
+                        <div class="field-row">
+                            <div class="field-group">
+                                <label class="form-label">Nombre completo</label>
+                                <input type="text" name="nombre" class="form-control" placeholder="Juan García"
+                                    required>
+                            </div>
+                            <div class="field-group">
+                                <label class="form-label">Empresa</label>
+                                <input type="text" name="empresa" class="form-control" placeholder="Constructora S.L."
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field-row">
+                            <div class="field-group">
+                                <label class="form-label">Correo electrónico</label>
+                                <input type="email" name="email" class="form-control" placeholder="correo@empresa.com"
+                                    required>
+                            </div>
+                            <div class="field-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" name="telefono" class="form-control" placeholder="600 000 000"
+                                    required>
+                            </div>
+                        </div>
+
+                        <div class="field-group">
+                            <label class="form-label">Descripción del proyecto u observaciones</label>
+                            <textarea name="mensaje" class="form-control"
+                                placeholder="Indique los materiales que necesita, cantidades aproximadas, tipo de obra..."
+                                required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">
+                            <i class="fa-solid fa-paper-plane"></i> Enviar solicitud
+                        </button>
+                    </form>
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="sidebar">
+
+                    <div class="info-card">
+                        <div class="info-card-title">Contacto directo</div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-phone"></i>
+                            <div><a href="tel:925233454">925 23 34 54</a></div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-envelope"></i>
+                            <div><a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                        </div>
+                        <div class="info-row">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <div>Calle Rio Valdecelada, 7<br>45007 — Toledo</div>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">Horario de atención</div>
+                        <div class="horario-grid">
+                            <span class="horario-dia">Lunes – Viernes</span>
+                            <span class="horario-hora">9:00 – 14:00 y 16:00 - 19:00</span>
+                            <div class="horario-sep"></div>
+                            <span class="horario-dia">Sábado</span>
+                            <span class="horario-hora">Cerrado</span>
+                            <div class="horario-sep"></div>
+                            <span class="horario-dia">Domingo</span>
+                            <span class="horario-hora">Cerrado</span>
+                        </div>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">Por qué elegirnos</div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fa-solid fa-user-gear"></i></div>
+                            <div><strong>Asesoramiento técnico</strong><br>Le ayudamos a elegir la mejor solución para
+                                su proyecto.</div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fa-solid fa-award"></i></div>
+                            <div><strong>Primeras marcas</strong><br>Sika, Bostik, Grupo Puma, Ursa, Soprema y más.
+                            </div>
+                        </div>
+                        <div class="why-item">
+                            <div class="why-icon"><i class="fa-solid fa-truck-fast"></i></div>
+                            <div><strong>Servicio rápido</strong><br>Atención ágil para profesionales y particulares.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
     <footer class="footer-main">
         <div class="container">
-            <div class="row g-4 pb-4">
-                <div class="col-lg-4 col-md-6 footer-brand">
-                    <img src="logonuevo2.png" alt="Olivilla Tres"
-                        style="height:80px; margin-bottom:10px;">
-                    <p>Suministro de materiales de construcción, aislamiento e impermeabilización en Toledo.
-                        Asesoramiento técnico especializado.</p>
+            <div class="row g-5 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="logonuevo2.png" class="footer-logo" alt="Olivilla Tres">
+                    <p class="footer-desc">Suministro de materiales de construcción, aislamiento e impermeabilización en
+                        Toledo. Asesoramiento técnico especializado.</p>
                 </div>
                 <div class="col-lg-2 col-md-6">
                     <p class="footer-heading">Navegación</p>
@@ -625,7 +877,7 @@
                         <li><a href="./index.html">Inicio</a></li>
                         <li><a href="./ferreteria.html">Ferretería</a></li>
                         <li><a href="./poliymeta.html">Policarbonatos</a></li>
-                        <li><a href="./#proveedores">Todos los proveedores</a></li>
+                        <!-- <li><a href="./#proveedores">Todos los proveedores</a></li> -->
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -644,18 +896,12 @@
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <p class="footer-heading">Contacto</p>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Calle Rio Valdecelada, 7<br>45007 — Toledo</span>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-phone"></i>
-                        <a href="tel:925233454">925 23 34 54</a>
-                    </div>
-                    <div class="footer-contact-item">
-                        <i class="fa-solid fa-envelope"></i>
-                        <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
-                    </div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-location-dot"></i><span>Calle Rio Valdecelada,
+                            7<br>45007 — Toledo</span></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                            54</a></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
                 </div>
             </div>
         </div>
@@ -666,24 +912,32 @@
         </div>
     </footer>
 
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script type="text/javascript">
-        (function (d, t) {
-            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-            v.onload = function () {
-                window.voiceflow.chat.load({
-                    verify: { projectID: '6a26a29ec4acdd8a282fd8bf' },
-                    url: 'https://general-runtime.voiceflow.com',
-                    voice: { url: "https://runtime-api.voiceflow.com" }
-                });
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var navbar = document.getElementById('mainNavbar');
+            var topbar = document.getElementById('topbar');
+            var spacer = document.getElementById('headerSpacer');
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    topbar.style.display = 'none';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    topbar.style.display = '';
+                }
+                resize();
             }
-            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs";
-            v.type = "text/javascript";
-            s.parentNode.insertBefore(v, s);
-        })(document, 'script');
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll();
+            requestAnimationFrame(resize);
+        })();
     </script>
+
 </body>
 
 </html>
