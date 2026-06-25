@@ -10,7 +10,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
     <style>
-       :root {
+        :root {
             --bg: #f4f2f8;
             --border: rgba(74, 59, 104, 0.12);
             --accent: #b53987;
@@ -235,7 +235,8 @@
         .navbar-custom .navbar-toggler-icon {
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
-                .navbar-custom .navbar-toggler:focus {
+
+        .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
 
@@ -730,6 +731,234 @@
             color: rgba(255, 255, 255, .3);
             text-align: center;
             margin: 0;
+        }
+
+        @media (max-width:1920px) {
+            .cabecera-catalogo p {
+                font-size: 1.25rem;
+            }
+
+            .cabecera-catalogo h1 {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width:1536px) {}
+
+        @media (max-width:1440px) {}
+
+        @media (max-width:1280px) {
+            main {
+    padding: 100px 0 100px;
+        }
+        .hero-desc {
+    font-size: 1.25rem;}
+
+    }
+
+        @media (max-width:1024px) {
+            .page-hero {
+
+                padding: 80px 0 80px;
+            }
+
+            main {
+                flex: 1;
+                padding: 80px 0 80px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 4vw, 3.4rem);
+            }
+
+            .hero-desc {
+                font-size: 0.9rem;
+            }
+
+            .cabecera-catalogo p {
+                font-size: 1.1rem;
+            }
+
+            .cabecera-catalogo h1 {
+                font-size: 1.8rem;
+            }
+
+            .stat-box h2 {
+                font-size: 1.5rem;
+            }
+
+            .cabecera-catalogo {
+                margin-bottom: 30px;
+            }
+
+        }
+
+        @media (max-width:820px) {
+            .cabecera-catalogo p {
+                font-size: 0.7rem;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+            }
+
+            .page-hero {
+                padding: 50px 0 50px;
+            }
+
+            .cabecera-catalogo h1 {
+                font-size: 1.6rem;
+            }
+
+            .mt-4 {
+                margin-top: 0.5rem !important;
+            }
+
+            .stat-box h2 {
+
+                font-size: 1.25rem;
+            }
+
+            .stat-box p {
+                font-size: .6rem;
+            }
+
+            .cabecera-catalogo {
+                margin-bottom: 10px;
+            }
+
+            .mt-2 {
+                margin-top: .10rem !important;
+            }
+
+            .stat-box {
+
+                padding: 20px 20px;
+            }
+
+            .categoria-card i {
+                font-size: 1.5rem;
+
+            }
+
+            .categoria-card p {
+                font-size: .65rem;
+            }
+
+            .cabecera-catalogo p {
+                font-size: 0.81rem;
+            }
+
+        }
+
+        @media (max-width:768px) {
+            .hero-title {
+                font-size: clamp(1rem, 3vw, 3.4rem);
+            }
+
+            .breadcrumb-custom {
+                font-size: 10px;
+            }
+
+            .stat-box {
+                padding: 15px 15px;
+            }
+
+            .cabecera-catalogo h1 {
+                font-size: 1.6rem;
+            }
+
+            .cabecera-catalogo p {
+                font-size: 0.85rem;
+            }
+
+            .categoria-card h4 {
+
+                font-size: 0.8rem;
+            }
+
+            .categoria-card {
+                padding: 15px 15px;
+            }
+
+            .catalogo-suimco {
+
+                padding: 30px 48px 48px;
+            }
+
+            main {
+                flex: 1;
+                padding: 40px 0 80px;
+            }
+
+        }
+
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
+
+        @media (max-width:700px) {}
+
+        @media (max-width:576px) {}
+
+
+        @media (max-width:440px) {
+            .cabecera-catalogo {
+                margin-bottom: 0px;
+            }
+
+            main {
+                flex: 1;
+                padding: 20px 0 80px;
+            }
+
+            .cabecera-catalogo h1 {
+                font-size: 1.2rem;
+                margin-bottom: 10px;
+            }
+
+            .stat-box h2 {
+                font-size: 1rem;
+            }
+
+            .stat-box {
+                padding: 10px 10px;
+            }
+
+            .hero-eyebrow {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                font-size: 8px;
+            }
+
+            .cabecera-catalogo p {
+                font-size: 0.65rem;
+            }
+
+        }
+
+        @media (max-width:394px) {
+            .page-hero {
+                padding: 20px 0 20px;
+            }
+
+            .hero-eyebrow {
+                display: inline;
+                font-size: 5px;
+            }
+
+            .hero-logo-wrap img {
+                height: 40px;
+            }
+
+            .hero-logo-wrap {
+                padding: 10px 10px;
+            }
+
+
         }
     </style>
 </head>
