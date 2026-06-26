@@ -1606,12 +1606,31 @@
         }
         async function sendMsg() {
             const input = document.getElementById('cp-input');
-            const texto = input.value.trim(); if (!texto) return;
-            input.value = ''; addMsg('user', texto);
+            const texto = input.value.trim();
+            if (!texto) return;
+            input.value = '';
+            addMsg('user', texto);
+            addMsg('bot', '⏳ Conectando con el servidor, espera un momento...');
             try {
-                const res = await fetch(API_URL, { method: 'POST', mode: 'cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ mensaje: texto }) });
-                const data = await res.json(); addMsg('bot', data.respuesta);
-            } catch (e) { addMsg('bot', 'Lo siento, no puedo conectar con el servidor ahora mismo.'); }
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 65000); // 65s
+                const res = await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje: texto }),
+                    signal: controller.signal
+                });
+                clearTimeout(timeout);
+                const msgs = document.getElementById('cp-messages');
+                msgs.removeChild(msgs.lastChild); // quita el ⏳
+                const data = await res.json();
+                addMsg('bot', data.respuesta);
+            } catch (e) {
+                const msgs = document.getElementById('cp-messages');
+                if (msgs.lastChild) msgs.removeChild(msgs.lastChild);
+                addMsg('bot', 'No he podido conectar. Inténtalo de nuevo en unos segundos.');
+            }
         }
         function sendChip(el) { document.getElementById('cp-input').value = el.textContent; sendMsg(); }
     </script>

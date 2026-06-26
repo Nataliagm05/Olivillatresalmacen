@@ -665,6 +665,7 @@
             text-align: center;
             margin: 0;
         }
+
         .footer-bottom a {
             color: rgba(255, 255, 255, .4);
             text-decoration: none;
@@ -673,6 +674,7 @@
         .footer-bottom a:hover {
             color: #f386cc;
         }
+
         @media (max-width:1920px) {
             .page-hero {
                 padding: 72px 0 100px;
@@ -831,6 +833,7 @@
                 flex: 1;
                 padding: 75px 0 80px;
             }
+
             .page-hero {
                 margin-bottom: 30px;
                 padding: 10px 0 30px;
@@ -906,10 +909,11 @@
                 font-size: 12px;
                 margin-bottom: 10px;
             }
-                main {
-        flex: 1;
-        padding: 40px 0 80px;
-    }
+
+            main {
+                flex: 1;
+                padding: 40px 0 80px;
+            }
 
         }
 
@@ -967,7 +971,8 @@
         }
 
         @media (max-width:394px) {}
-                                        /* ── CHATBOT ── */
+
+        /* ── CHATBOT ── */
         #chat-btn {
             position: fixed;
             bottom: 28px;
@@ -1117,7 +1122,8 @@
         .chat-input-row button:hover {
             background: var(--accent);
         }
-                /* ── BANNER COOKIES ── */
+
+        /* ── BANNER COOKIES ── */
         #cookie-banner {
             position: fixed;
             bottom: 1.5rem;
@@ -1971,7 +1977,7 @@
             </div>
         </div>
     </footer>
-<!-- ── CHATBOT ── -->
+    <!-- ── CHATBOT ── -->
     <button id="chat-btn" onclick="toggleChat()">💬</button>
     <div id="chat-panel">
         <div class="chat-header">
@@ -2048,21 +2054,26 @@
             if (!texto) return;
             input.value = '';
             addMsg('user', texto);
+            addMsg('bot', '⏳ Conectando con el servidor, espera un momento...');
             try {
-                // Se realiza la petición HTTP POST hacia PythonAnywhere
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 65000); // 65s
                 const res = await fetch(API_URL, {
                     method: 'POST',
-                    mode: 'cors', // Asegura la conexión desde tu archivo HTML local
+                    mode: 'cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ mensaje: texto })
+                    body: JSON.stringify({ mensaje: texto }),
+                    signal: controller.signal
                 });
+                clearTimeout(timeout);
+                const msgs = document.getElementById('cp-messages');
+                msgs.removeChild(msgs.lastChild); // quita el ⏳
                 const data = await res.json();
-
-                // Muestra la respuesta devuelta por el flujo híbrido de tu app.py
                 addMsg('bot', data.respuesta);
             } catch (e) {
-                addMsg('bot', 'Lo siento, no puedo conectar con el servidor ahora mismo.');
-                console.error("Error detallado:", e);
+                const msgs = document.getElementById('cp-messages');
+                if (msgs.lastChild) msgs.removeChild(msgs.lastChild);
+                addMsg('bot', 'No he podido conectar. Inténtalo de nuevo en unos segundos.');
             }
         }
 

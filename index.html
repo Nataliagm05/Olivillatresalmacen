@@ -1042,7 +1042,8 @@
         .chat-input-row button:hover {
             background: var(--accent);
         }
-                /* ── BANNER COOKIES ── */
+
+        /* ── BANNER COOKIES ── */
         #cookie-banner {
             position: fixed;
             bottom: 1.5rem;
@@ -1555,7 +1556,7 @@
             <button onclick="sendMsg()">➤</button>
         </div>
     </div>
-<div id="cookie-banner" class="hidden" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+    <div id="cookie-banner" class="hidden" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
         <div class="cookie-icon">🍪</div>
         <div class="cookie-body">
             <strong>Usamos cookies</strong>
@@ -1636,21 +1637,26 @@
             if (!texto) return;
             input.value = '';
             addMsg('user', texto);
+            addMsg('bot', '⏳ Conectando con el servidor, espera un momento...');
             try {
-                // Se realiza la petición HTTP POST hacia PythonAnywhere
+                const controller = new AbortController();
+                const timeout = setTimeout(() => controller.abort(), 65000); // 65s
                 const res = await fetch(API_URL, {
                     method: 'POST',
-                    mode: 'cors', // Asegura la conexión desde tu archivo HTML local
+                    mode: 'cors',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ mensaje: texto })
+                    body: JSON.stringify({ mensaje: texto }),
+                    signal: controller.signal
                 });
+                clearTimeout(timeout);
+                const msgs = document.getElementById('cp-messages');
+                msgs.removeChild(msgs.lastChild); // quita el ⏳
                 const data = await res.json();
-
-                // Muestra la respuesta devuelta por el flujo híbrido de tu app.py
                 addMsg('bot', data.respuesta);
             } catch (e) {
-                addMsg('bot', 'Lo siento, no puedo conectar con el servidor ahora mismo.');
-                console.error("Error detallado:", e);
+                const msgs = document.getElementById('cp-messages');
+                if (msgs.lastChild) msgs.removeChild(msgs.lastChild);
+                addMsg('bot', 'No he podido conectar. Inténtalo de nuevo en unos segundos.');
             }
         }
 
