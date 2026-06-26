@@ -675,7 +675,122 @@
             text-align: center;
             margin: 0;
         }
-                /* ── CHATBOT ── */
+
+        @media (max-width:1920px) {
+            .page-hero {
+                padding: 72px 0 270px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 20px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 5vw, 4.4rem);
+            }
+
+            .stat-num {
+                font-size: 2.5rem;
+            }
+
+            .hero-desc {
+                font-size: 1.5rem;
+                margin-top: 30px;
+            }
+
+            .stat-label {
+                font-size: 20px;
+            }
+
+            .hero-eyebrow {
+                margin-left: 1rem;
+                font-size: 20px;
+            }
+
+            .hero-stats {
+                margin-top: 30px;
+            }
+        }
+
+        @media (max-width:1280px) {
+            .page-hero {
+                padding: 80px 0 235px;
+            }
+
+            .hero-eyebrow {
+                margin-left: 1rem;
+                font-size: 18px;
+            }
+
+            .breadcrumb-custom {
+                font-size: 17px;
+            }
+
+            .hero-desc {
+                font-size: 0.95rem;
+            }
+
+            .hero-eyebrow {
+                margin-left: 0.5rem;
+                font-size: 20px;
+            }
+
+            .hero-title {
+                font-size: clamp(2rem, 3vw, 4.4rem);
+            }
+
+            .stat-num {
+                font-size: 2rem;
+            }
+
+            .stat-label {
+                font-size: 17px;
+            }
+
+            .section-header {
+
+                margin-bottom: 35px;
+            }
+        }
+
+        @media (max-width:820px) {
+            .breadcrumb-custom {
+                font-size: 12px;
+                margin-bottom: 10px;
+
+            }
+
+            .hero-eyebrow {
+                margin-left: 0.5rem;
+                font-size: 15px;
+            }
+
+            .stat-num {
+                font-size: 1.5rem;
+            }
+
+            .stat-label {
+                font-size: 15px;
+            }
+
+            main {
+                flex: 1;
+                padding: 80px 0 80px;
+            }
+
+            .page-hero {
+                padding: 80px 0 60px;
+            }
+
+
+        }
+        @media (max-width: 440px) {
+    .hero-eyebrow {
+        font-size: 8px;
+    }
+}
+
+        /* ── CHATBOT ── */
         #chat-btn {
             position: fixed;
             bottom: 28px;
@@ -1061,7 +1176,7 @@
             </div>
         </div>
     </footer>
-<!-- ── CHATBOT ── -->
+    <!-- ── CHATBOT ── -->
     <button id="chat-btn" onclick="toggleChat()">💬</button>
     <div id="chat-panel">
         <div class="chat-header">
