@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso Legal — Olivilla Tres</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #f4f2f8;
+            --surface: #ffffff;
+            --border: rgba(74, 59, 104, 0.12);
+            --accent: #b53987;
+            --accent2: #922f6d;
+            --purple: #4a3b68;
+            --dark: #35284f;
+            --text: #2d2040;
+            --muted: rgba(74, 59, 104, 0.55);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* TOPBAR */
+        .topbar {
+            background: var(--dark);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 8px 32px;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 24px;
+            font-size: 0.75rem;
+        }
+
+        .topbar a,
+        .topbar span {
+            color: rgba(201, 184, 232, 0.8);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            transition: color .2s;
+        }
+
+        .topbar a:hover {
+            color: #f386cc;
+        }
+
+        .topbar-div {
+            width: 1px;
+            height: 10px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        @media (max-width:600px) {
+            .topbar {
+                flex-direction: column;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .topbar-div {
+                display: none;
+            }
+        }
+
+        /* NAVBAR */
+        .site-header-fixed {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+        }
+
+        .navbar-custom {
+            background: rgba(74, 59, 104, 0.97) !important;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 3px solid var(--accent);
+            padding: 0 24px;
+            transition: all .3s ease;
+        }
+
+        .navbar-custom.scrolled {
+            background: rgba(53, 40, 79, 0.99) !important;
+            box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 0;
+        }
+
+        .logo-empresa {
+            height: 76px;
+            width: auto;
+            transition: height .3s;
+        }
+
+        .navbar-custom.scrolled .logo-empresa {
+            height: 48px;
+        }
+
+        .logo-subtitulo {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(232, 176, 208, 0.8);
+            border-left: 1px solid var(--border);
+            padding-left: 12px;
+        }
+
+        .navbar-custom .nav-link {
+            color: rgba(255, 255, 255, 0.75) !important;
+            font-size: 13px;
+            font-weight: 500;
+            padding: 20px 14px !important;
+            letter-spacing: .3px;
+            transition: color .2s;
+            position: relative;
+        }
+
+        .navbar-custom.scrolled .nav-link {
+            padding: 14px 14px !important;
+        }
+
+        .navbar-custom .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 14px;
+            right: 14px;
+            height: 2px;
+            background: #f386cc;
+            transform: scaleX(0);
+            transition: transform .25s ease;
+        }
+
+        .navbar-custom .nav-link:hover,
+        .navbar-custom .nav-link.active {
+            color: #ffffff !important;
+        }
+
+        .navbar-custom .nav-link:hover::after,
+        .navbar-custom .nav-link.active::after {
+            transform: scaleX(1);
+        }
+
+        .navbar-custom .dropdown-menu {
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
+            border-top: 2px solid var(--accent);
+            border-radius: 0 0 12px 12px;
+            padding: 6px 0;
+            box-shadow: 0 20px 48px rgba(74, 59, 104, .18);
+            animation: fade-in .15s ease;
+        }
+
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+                transform: translateY(-6px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navbar-custom .dropdown-item {
+            color: var(--purple);
+            font-size: 13px;
+            padding: 9px 18px;
+            transition: all .15s;
+        }
+
+        .navbar-custom .dropdown-item:hover {
+            color: var(--accent);
+            background: #f7f0f5;
+            padding-left: 24px;
+        }
+
+        .btn-cta {
+            background: var(--accent) !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            padding: 8px 18px !important;
+            border: none !important;
+            transition: background .2s, transform .1s;
+        }
+
+        .btn-cta:hover {
+            background: var(--accent2) !important;
+            transform: translateY(-1px);
+        }
+
+        .btn-cta::after {
+            display: none !important;
+        }
+
+        .navbar-custom .navbar-toggler {
+            border-color: var(--accent) !important;
+        }
+
+        .navbar-custom .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+        .navbar-custom .navbar-toggler:focus {
+            box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
+        }
+
+        #headerSpacer {
+            height: 130px;
+        }
+
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
+
+        /* PAGE HERO */
+        .page-hero {
+            background: linear-gradient(160deg, #35284f 0%, #4a3b68 55%, #5e3d7a 100%);
+            border-bottom: 4px solid var(--accent);
+            padding: 80px 0 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -120px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(181, 57, 135, .2) 0%, transparent 70%);
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .breadcrumb-custom {
+            font-size: 12px;
+            letter-spacing: .5px;
+            color: rgba(255, 255, 255, 0.45);
+            margin-bottom: 28px;
+        }
+
+        .breadcrumb-custom a {
+            color: rgba(255, 255, 255, 0.45);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .breadcrumb-custom a:hover {
+            color: #f386cc;
+        }
+
+        .breadcrumb-custom span {
+            margin: 0 8px;
+            opacity: .4;
+        }
+
+        .hero-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #f386cc;
+            background: rgba(255, 255, 255, .1);
+            border: 1px solid rgba(243, 134, 204, .3);
+            padding: 6px 14px;
+            border-radius: 100px;
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            line-height: 1.1;
+            letter-spacing: -1px;
+            color: #fff;
+            margin-bottom: 16px;
+        }
+
+        .hero-title em {
+            font-style: normal;
+            background: linear-gradient(90deg, #f386cc, #e8b0d0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-desc {
+            font-size: 0.95rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        /* MAIN */
+        main {
+            flex: 1;
+            padding: 64px 0 80px;
+        }
+
+        /* LAYOUT */
+        .legal-wrap {
+            display: grid;
+            grid-template-columns: 240px 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        @media (max-width:900px) {
+            .legal-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ÍNDICE LATERAL */
+        .toc-card {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(74, 59, 104, 0.06);
+            padding: 24px;
+            position: sticky;
+            top: 150px;
+        }
+
+        .toc-title {
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .toc-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .toc-list a {
+            font-size: 0.82rem;
+            color: var(--purple);
+            text-decoration: none;
+            padding: 6px 10px;
+            border-radius: 8px;
+            display: block;
+            transition: background .15s, color .15s;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .toc-list a:hover {
+            background: #f7f0f5;
+            color: var(--accent);
+        }
+
+        @media (max-width:900px) {
+            .toc-card {
+                position: static;
+            }
+        }
+
+        /* CONTENIDO LEGAL */
+        .legal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .legal-section {
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            box-shadow: 0 2px 12px rgba(74, 59, 104, 0.06);
+            padding: 36px 40px;
+            scroll-margin-top: 160px;
+        }
+
+        @media (max-width:576px) {
+            .legal-section {
+                padding: 24px 20px;
+            }
+        }
+
+        .legal-section-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 20px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .legal-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            background: var(--accent);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        .legal-section-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--purple);
+            margin: 0;
+        }
+
+        .legal-section p {
+            font-size: 0.9rem;
+            color: #4a3b68;
+            line-height: 1.75;
+            margin-bottom: 14px;
+        }
+
+        .legal-section p:last-child {
+            margin-bottom: 0;
+        }
+
+        .legal-list {
+            list-style: none;
+            padding: 0;
+            margin: 14px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .legal-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.88rem;
+            color: #4a3b68;
+            line-height: 1.65;
+        }
+
+        .legal-list li::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent);
+            flex-shrink: 0;
+            margin-top: 8px;
+        }
+
+        .legal-highlight {
+            background: #f7f0f5;
+            border-left: 3px solid var(--accent);
+            border-radius: 0 8px 8px 0;
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            color: var(--purple);
+            line-height: 1.65;
+            margin: 16px 0;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .contact-item {
+            background: var(--bg);
+            border-radius: 10px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: var(--purple);
+            font-weight: 500;
+            border: 1px solid var(--border);
+        }
+
+        .contact-item i {
+            color: var(--accent);
+            font-size: 0.9rem;
+            width: 16px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--purple);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        /* FOOTER */
+        .footer-main {
+            background: var(--purple);
+            padding: 56px 0 0;
+        }
+
+        .footer-logo {
+            height: 68px;
+            margin-bottom: 16px;
+        }
+
+        .footer-desc {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            line-height: 1.7;
+            max-width: 280px;
+        }
+
+        .footer-heading {
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #e8b0d0;
+            margin-bottom: 18px;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-links a:hover {
+            color: #f386cc;
+        }
+
+        .footer-contact-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 12px;
+        }
+
+        .footer-contact-row i {
+            color: var(--accent);
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .footer-contact-row a {
+            color: rgba(255, 255, 255, 0.55);
+            text-decoration: none;
+            transition: color .2s;
+        }
+
+        .footer-contact-row a:hover {
+            color: #f386cc;
+        }
+
+        .footer-bottom {
+            background: var(--dark);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding: 18px 0;
+            margin-top: 48px;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: rgba(255, 255, 255, .3);
+            text-align: center;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- FIXED HEADER -->
+    <header id="siteHeader" class="site-header-fixed">
+        <div class="topbar" id="topbar">
+            <span><i class="fa-solid fa-location-dot"></i> Calle Rio Valdecelada, 7 — Toledo</span>
+            <div class="topbar-div"></div>
+            <a href="tel:925233454"><i class="fa-solid fa-phone"></i> 925 23 34 54</a>
+            <div class="topbar-div"></div>
+            <a href="mailto:almacen@olivillatres.com"><i class="fa-solid fa-envelope"></i> almacen@olivillatres.com</a>
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-custom" id="mainNavbar">
+            <div class="container-fluid px-3 px-lg-4">
+                <a class="navbar-brand" href="./index.html">
+                    <img src="logonuevo2.png" class="logo-empresa" alt="Olivilla Tres">
+                    <span class="logo-subtitulo">Almacén</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navMenu">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-stretch">
+                        <li class="nav-item"><a class="nav-link" href="./index.html"><i
+                                    class="fa-solid fa-house me-1"></i>Inicio</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"><i
+                                    class="fa-solid fa-trowel-bricks me-1"></i>Proveedores</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="./sika.html">Sika</a></li>
+                                <li><a class="dropdown-item" href="./bostik.html">Bostik</a></li>
+                                <li><a class="dropdown-item" href="./grupopuma.html">Grupo Puma</a></li>
+                                <li><a class="dropdown-item" href="./ursa.html">Ursa</a></li>
+                                <li><a class="dropdown-item" href="./regarsa.html">Regarsa</a></li>
+                                <li><a class="dropdown-item" href="./soprema.html">Soprema</a></li>
+                                <li><a class="dropdown-item" href="./maydisa.html">Maydisa</a></li>
+                                <li><a class="dropdown-item" href="./pyl.html">PYL</a></li>
+                                <li><a class="dropdown-item" href="./suimco.html">Suimco</a></li>
+                                <li><a class="dropdown-item" href="./tripomat.html">Tripomant</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a class="nav-link" href="./ferreteria.html"><i
+                                    class="fa-solid fa-screwdriver-wrench me-1"></i>Ferretería</a></li>
+                        <li class="nav-item"><a class="nav-link" href="./poliymeta.html"><i
+                                    class="fa-solid fa-cube me-1"></i>Policarbonatos</a></li>
+                        <li class="nav-item ms-lg-2">
+                            <a class="nav-link btn-cta" href="./formulario.html"><i
+                                    class="fa-solid fa-phone me-1"></i>Solicitar Presupuesto</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div id="headerSpacer"></div>
+
+    <!-- HERO -->
+    <section class="page-hero">
+        <div class="container hero-inner">
+            <div class="breadcrumb-custom">
+                <a href="./index.html">Inicio</a><span>›</span>Aviso Legal
+            </div>
+            <span class="hero-eyebrow"><i class="fa-solid fa-scale-balanced"></i> Información legal</span>
+            <h1 class="hero-title">Aviso Legal &amp;<br><em>Condiciones Generales</em></h1>
+            <p class="hero-desc">Términos y condiciones generales de uso, contratación e información a clientes y
+                usuarios del portal de Olivilla Tres S.L.U.</p>
+        </div>
+    </section>
+
+    <!-- MAIN -->
+    <main>
+        <div class="container">
+            <div class="legal-wrap">
+
+                <!-- ÍNDICE -->
+                <aside>
+                    <div class="toc-card">
+                        <div class="toc-title">Contenido</div>
+                        <ul class="toc-list">
+                            <li><a href="#s1">1. Condiciones generales</a></li>
+                            <li><a href="#s2">2. Objeto del portal</a></li>
+                            <li><a href="#s3">3. Duración</a></li>
+                            <li><a href="#s4">4. Registro de clientes</a></li>
+                            <li><a href="#s5">5. Reglas de utilización</a></li>
+                            <li><a href="#s6">6. Propiedad intelectual</a></li>
+                            <li><a href="#s7">7. Garantías y responsabilidades</a></li>
+                            <li><a href="#s8">8. Comunicaciones</a></li>
+                            <li><a href="#s9">9. Condiciones de contratación</a></li>
+                            <li><a href="#s10">10. Devolución de productos</a></li>
+                            <li><a href="#s11">11. Responsabilidad técnica</a></li>
+                        </ul>
+                    </div>
+                </aside>
+
+                <!-- CONTENIDO -->
+                <div class="legal-content">
+
+                    <div class="legal-section" id="s1">
+                        <div class="legal-section-header">
+                            <div class="legal-num">1</div>
+                            <h2 class="legal-section-title">Condiciones Generales de Uso e Información</h2>
+                        </div>
+                        <p>El Portal <strong>www.aislamientosolvillatres.com</strong> es titularidad de
+                            <strong>OLIVILLATRES, S.L.U.</strong>, quien lo pone a disposición de los clientes y/o
+                            usuarios, personas físicas y jurídicas, de Internet con el fin de proporcionar y permitir
+                            información, consultas y atención sobre los productos de Aislamientos Olivilla Tres.
+                        </p>
+                        <p>En adelante, este Portal y todos los perfiles de usuarios que accedan, utilicen o naveguen
+                            nuestro Portal se denominaran como «Cliente».</p>
+                        <p>El acceso y utilización en el Portal de Aislamientos Olivilla Tres queda sujeto al
+                            cumplimiento de las presentes "Condiciones Generales de Uso e Información a los Usuarios" (o
+                            “Condiciones Generales”), así
+                            como de las "Condiciones Generales de Contratación".</p>
+                        <div class="legal-highlight">
+                            En consecuencia, toda utilización del Portal supone una aceptación, sin reservas de ninguna
+                            clase, de las
+                            presentes Condiciones Generales de las Condiciones Particulares
+                            establecidas, estando este obligado a leerlas en cada uno de dichos accesos.
+                        </div>
+                        <p>Estas Condiciones Generales se aplicarán tanto a la actividad promocional y de suministro de
+                            información y contenidos, como a la resolución de consultas en Aislamientos Olivilla Tres de
+                            tal manera que las mismas regirán en todo
+                            momento tanto para la simple navegación por aquellos, acceso y uso de servicios del
+                            PORTAL.
+                        </p>
+                        <p>La información y contenidos recogidos en el Portal son propiedad de Aislamientos Olivilla
+                            Tres, con la autorización explícita de sus «Partners» o colaboradores. Su obtención,
+                            reproducción, distribución, cesión, transmisión, transformación, modificación, explotación o
+                            comunicación pública para uso comercial o distinto al propio personal del usuario queda
+                            totalmente prohibida.</p>
+                    </div>
+
+                    <div class="legal-section" id="s2">
+                        <div class="legal-section-header">
+                            <div class="legal-num">2</div>
+                            <h2 class="legal-section-title">Objeto del Portal</h2>
+                        </div>
+                        <p>Aislamientos Olivilla Tres pone a disposición de los clientes su Portal, creado para
+                            proporcionar información sobre los productos que maneja.</p>
+                        <p>Es por ello que las presentes Condiciones Generales tienen por objeto el regular el
+                            acceso y utilización , de forma gratuita, en el Portal por parte de sus Clientes que los
+                            visiten, así como la puesta a disposición a favor de ellos y entre ellos, tanto de la
+                            información suministrada, ya sea general o especializada, como de los diferentes
+                            contenidos.</p>
+                    </div>
+
+                    <div class="legal-section" id="s3">
+                        <div class="legal-section-header">
+                            <div class="legal-num">3</div>
+                            <h2 class="legal-section-title">Duración</h2>
+                        </div>
+                        <p>Las presentes Condiciones Generales tienen una duración indefinida y permanecerán en vigor
+                            mientras el correspondiente Portal continúe activo.</p>
+                        <p>De la misma manera, el acceso, utilización y/o registro en el Portal y de los recursos que el
+                            mismo ofrece tiene, en principio, una duración indefinida. Aislamientos Olivilla Tres se
+                            reserva el derecho de suspender, interrumpir y/o cancelar, de forma unilateral y en
+                            cualquier momento, el acceso al correspondiente Portal, o a alguna de sus partes y/o
+                            recursos, sin necesidad de previo aviso y sin que por ello se genere derecho alguno a
+                            solicitar indemnización por parte del Cliente.</p>
+                    </div>
+
+                    <div class="legal-section" id="s4">
+                        <div class="legal-section-header">
+                            <div class="legal-num">4</div>
+                            <h2 class="legal-section-title">Registro de Clientes</h2>
+                        </div>
+                        <p>El acceso general al Portal no está condicionado al registro previo del Cliente, ya que es un
+                            Portal meramente informativo y publicitario.</p>
+                    </div>
+
+                    <div class="legal-section" id="s5">
+                        <div class="legal-section-header">
+                            <div class="legal-num">5</div>
+                            <h2 class="legal-section-title">Reglas de Utilización del Portal. Limitaciones</h2>
+                        </div>
+                        <p>El Cliente se obliga a utilizar el Portal y su información en el estricto respeto y
+                            observancia de las presentes Condiciones Generales, de las Condiciones Generales de
+                            Contratación, establecidas o que eventualmente puedan establecerse, e, igualmente, de la
+                            ley, la costumbre y el orden público. En consecuencia, el Cliente, a título meramente
+                            enunciativo y no limitativo, viene obligado a:</p>
+                        <ul class="legal-list">
+                            <li>No utilizar el Portal, ni hacer uso de los elementos, informaciones, contenidos y
+                                funcionalidades que lo integran vulnerando las Condiciones Generales establecidas o
+                                infringiendo la ley.</li>
+                            <li>No ejecutar actos que limiten o impidan el acceso y utilización del Portal, en
+                                condiciones adecuadas, por parte del resto de los Clientes.</li>
+                            <li>No acceder ilícitamente al Portal, ni a sistemas informáticos de terceros, ni difundir
+                                programas o virus informáticos susceptibles de causar daños en equipos o sistemas
+                                informáticos, así como en contenidos del Portal, cualesquiera que sean, y con
+                                independencia de la personalidad de sus respectivos propietarios.</li>
+                            <li>No enviar publicidad o comunicaciones comerciales de clase alguna, ni tampoco mensajes
+                                electrónicos no solicitados o consentidos previamente por sus destinatarios, ya se trate
+                                de mensajes individuales o cadenas de mensajes.</li>
+                            <li>No establecer hiperenlaces o links entre cualquier página web, incluida la propia del
+                                Cliente, o cualquier otro sitio o espacio accesible desde Internet, y el Portal de
+                                Aislamientos Olivilla Tres.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-section" id="s6">
+                        <div class="legal-section-header">
+                            <div class="legal-num">6</div>
+                            <h2 class="legal-section-title">Propiedad Intelectual e Industrial. Copyright</h2>
+                        </div>
+                        <p>Todos los derechos de propiedad intelectual e industrial tanto de los elementos de todo tipo
+                            que integran los servicios, entendiendo por tales, a título meramente enunciativo
+                            y no limitativo, diseños interactivos de pantalla, diseños gráficos, dibujos, archivos,
+                            imagen o sonido, fotografías, infografías, interfaz de Usuario etc., como de las
+                            informaciones o consejos generales o especializadas, y, en general de todos los
+                            contenidos ofrecidos en dicho Portal, entre los que se incluyen los denominados “Ideas
+                            y Consejos”, “Preguntas y Respuestas”, el formulario “Contáctanos”, las "Listas de
+                            Productos" e información de producto y tienda, necesarios para su comunicación
+                            pública, son de la exclusiva titularidad de <strong>Aislamientos Olivilla Tres</strong>.
+
+                        </p>
+                        <p>El uso del Portal y de sus servicios no implica ningún tipo de renuncia, transmisión o
+                            cesión, total o parcial, de los derechos otorgados por la legislación española e
+                            internacional sobre propiedad industrial e intelectual, ni confiere ningún derecho de
+                            explotación de ninguna clase a saber reproducción, distribución,
+                            transformación, comunicación pública, ni titularidad a los Clientes sobre los citados
+                            contenidos, salvo para aquello previsto en las presente Condiciones Generales.</p>
+                        <p>El Cliente se obliga a usar los contenidos del Portal de forma diligente, correcta y lícita,
+                            se compromete a no vulnerar, en caso alguno, los derechos referidos en el párrafo
+                            precedente, así como a utilizar el Portal, con sus diferentes elementos, contenidos,
+                            servicios y funcionalidades, para su exclusivo uso privado. En particular, el Cliente no
+                            podrá:</p>
+                        <ul class="legal-list">
+                            <li>Utilizar el Portal y sus servicios y funcionalidades con fines empresariales o
+                                comerciales.</li>
+                            <li>Reutilizar, explotar, ceder, copiar, transformar, modificar, transmitir o distribuir en
+                                forma alguna, total o parcialmente, los elementos, informaciones, y funcionalidades o
+                                contenidos.</li>
+                            <li>Facilitar o permitir el acceso de terceros a dichos elementos,informaciones, servicios y
+                                funcionalidades y contenidos mediante su comunicación
+                                pública en cualquier forma.</li>
+                            <li>Eludir, suprimir, modificar o manipular los dispositivos técnicos de protección o
+                                seguridad de aquellos elementos que la integran.</li>
+                            <li>Transformar o modificar los mismos; ni interferir en el acceso de cualquier Cliente,
+                                servidor o red, a través del envío de virus, producir sobrecarga o uso de scripts que
+                                provoque interferencias o genere una carga indebida en el Portal</li>
+                            <li>Eludir, suprimir, modificar o manipular, por cualquier medio, el Copyright de
+                                Aislamientos Olivilla Tres.</li>
+                        </ul>
+                        <div class="legal-highlight">
+                            <strong>OLIVILLATRES S.L.U.</strong> es un dominio registrado, por lo que no puede ser
+                            utilizado por terceros sin autorización expresa.
+                        </div>
+                        <p>El Cliente se abstendrá de emplear los contenidos y, en particular, la información de
+                            cualquier clase obtenida a través del Portal para remitir publicidad, comunicaciones con
+                            fines comerciales o mensajes no solicitados dirigidos a una pluralidad de personas con
+                            independencias de su finalidad, así como a abstenerse de comercializar o divulgar de
+                            cualquier modo dicha información. Toda referencia en este Portal a productos de
+                            terceros utilizando su marca, nombre comercial o denominación social, que
+                            sean de titularidad de terceros, no constituye por sí patrocinio o recomendación de
+                            ninguna clase por parte de la empresa.</p>
+                    </div>
+
+                    <div class="legal-section" id="s7">
+                        <div class="legal-section-header">
+                            <div class="legal-num">7</div>
+                            <h2 class="legal-section-title">Régimen de Garantías y Responsabilidades</h2>
+                        </div>
+                        <p>Sin perjuicio de lo recogido en el resto de las presentes Condiciones Generales, de las
+                            Condiciones Generales de Contratación, de las Condiciones Particulares establecidas o
+                            de las particulares que, en su caso, se puedan establecer, el acceso, descarga, en su caso,
+                            y utilización de los Entornos Digitales, así como de las informaciones, servicios,
+                            funcionalidades y contenidos que forman parte de los mismos son de la exclusiva y
+                            entera responsabilidad del Usuario, liberando y dejando plenamente indemne a Aislamientos
+                            Olivilla Tres de toda responsabilidad y perjuicio contra Aislamientos Olivilla Tres.</p>
+                        <p>Se le informa al Cliente de que en caso de que se produzcan los siguientes supuestos
+                            ocircunstancias Aislamientos Olivilla Tres quedará exento de responsabilidad, salvo que
+                            exista dolo o mala fe de esta compañía o por imperativo legal, a saber:</p>
+                        <ul class="legal-list">
+                            <li> Los daños y perjuicios que eventualmente pueda sufrir el Cliente como consecuencia
+                                de la aplicación o utilización, por sí mismo y bajo su propia dirección o de terceros
+                                ajenos, de los consejos, recomendaciones, ("preguntas o respuestas", en las "ayudas de
+                                productos”, en las “ideas y consejos”, en “Hazlo tu mismo”), de la información
+                                necesaria para intentar resolver sus necesidades en cuanto a consultas o dudas rápidas
+                                que le puedan surgir a la hora de visitar y navegar por nuestro Portal durante el
+                                proceso
+                                de compra de nuestros productos a través del formulario “Contáctanos”, o de cualquier
+                                otra información, funcionalidad o contenido, incluso cuando dichos consejos o
+                                informaciones no fueran exactos o adolecieran de errores o incorrecciones.</li>
+                            <li> Los daños y perjuicios sufridos por el Cliente como consecuencia de una utilización
+                                por su parte, contraria a las presentes Condiciones Generales, en su conjunto, de las
+                                Condiciones Particulares o de las particulares que eventualmente se puedan establecer, o
+                                con infracción de lo dispuesto en la Política de Privacidad, en la ley, o de forma
+                                contraria a la costumbre y al orden público.</li>
+                            <li> Los daños y perjuicios sufridos por el Cliente que tengan su origen en la falta de
+                                veracidad o exactitud de las informaciones facilitadas o comunicaciones realizadas por
+                                sí mismos y/u otros Usuarios, o que tengan su origen en la indicación de identidades
+                                falsas utilizadas por cualquier Usuario, se correspondan o no con la de terceros reales
+                            </li>
+                        </ul>
+                        <p>Aislamientos Olivilla Tres rechaza la responsabilidad sobre cualquier
+                            información no elaborada por la empresa o por la marca o no publicada de forma
+                            autorizada por ella bajo su nombre, al igual que la responsabilidad que se derive de la
+                            mala utilización de los contenidos y servicios.</p>
+                    </div>
+
+                    <div class="legal-section" id="s8">
+                        <div class="legal-section-header">
+                            <div class="legal-num">8</div>
+                            <h2 class="legal-section-title">Comunicaciones</h2>
+                        </div>
+                        <p>Todas las comunicaciones que el Cliente deba hacer a Aislamientos Olivilla Tres podrán
+                            realizarse a través de los siguientes canales:</p>
+                        <div class="contact-grid">
+                            <div class="contact-item">
+                                <i class="fa-solid fa-globe"></i>
+                                <span>Formulario «Contáctanos» en el Portal</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa-solid fa-phone"></i>
+                                <a href="tel:925233454">925 23 34 54</a>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fa-solid fa-envelope"></i>
+                                <a href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="legal-section" id="s9">
+                        <div class="legal-section-header">
+                            <div class="legal-num">9</div>
+                            <h2 class="legal-section-title">Condiciones Generales de Contratación</h2>
+                        </div>
+                        <p>Las presentes Condiciones Generales de Contratación se amparan, entre otras, en lo previsto
+                            en:</p>
+                        <ul class="legal-list">
+                            <li>Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico.
+                            </li>
+                            <li>Ley 7/1998, sobre Condiciones Generales de Contratación.</li>
+                            <li>Real Decreto Legislativo 1/2007, de 16 de noviembre, por el que se aprueba el texto
+                                refundido de la Ley General para la Defensa de los Consumidores y Usuarios y otras leyes
+                                complementarias.</li>
+                            <li>Ley 3/2014 de 27 de marzo, por la que se modifica el texto refundido de la citada Ley
+                                General para la Defensa de Consumidores y Usuarios.</li>
+                        </ul>
+                        <p>Los productos mostrados en las imágenes, son imágenes fieles y autorizadas por las
+                            marcas o “Partners”, pero en algunas ocasiones, pueden mostrar una apariencia
+                            aproximada respecto a la realidad. Es por ello que se recomienda al Cliente que, de
+                            forma previa a la compra, acceda a la ficha del correspondiente producto y compruebe
+                            las medidas, colores, características, funcionalidades y condiciones técnicas asociadas a
+                            ese producto.</p>
+                        <div class="legal-highlight">
+                            Aislamientos Olivilla Tres informa de que determinados productos cuentan
+                            con una garantía legal, aplicable al territorio español según condiciones particulares y
+                            sujeta a aportación del correspondiente ticket o factura y la correcta aplicación del
+                            producto según instrucciones de la marca. Para obtener información más detallada,
+                            visite la ficha o información del producto.
+                        </div>
+                    </div>
+
+                    <div class="legal-section" id="s10">
+                        <div class="legal-section-header">
+                            <div class="legal-num">10</div>
+                            <h2 class="legal-section-title">Devolución de Productos</h2>
+                        </div>
+                        <p>Los productos adquiridos podrán ser devueltos directamente en nuestra tienda física. Para
+                            tramitar esta devolución es necesario presentar la Factura y Albarán correspondiente en un
+                            plazo máximo de <strong>30 días</strong>.</p>
+                        <p>No se admitirá la devolución en los siguientes casos, entre otros:</p>
+                        <ul class="legal-list">
+                            <li>Algunos productos sobre pedido.</li>
+                            <li>Productos con medidas específicas fabricadas a medida.</li>
+                            <li>Productos abiertos o en mal estado en su envoltura.</li>
+                        </ul>
+                    </div>
+
+                    <div class="legal-section" id="s11">
+                        <div class="legal-section-header">
+                            <div class="legal-num">11</div>
+                            <h2 class="legal-section-title">Responsabilidad Técnica</h2>
+                        </div>
+                        <p>Aislamientos Olivilla Tres no se hace responsable de los perjuicios que se pudieran derivar
+                            de, con carácter meramente enunciativo y no limitativo:</p>
+                        <ul class="legal-list">
+                            <li>Interferencias, omisiones, interrupciones, virus informáticos, averías y/o desconexiones
+                                en el funcionamiento operativo de este sistema electrónico o en los aparatos y equipos
+                                informáticos de los Clientes, motivadas por causas ajenas a la empresa.</li>
+                        </ul>
+                        <p>Aislamientos Olivilla Tres no garantiza bajo ningún extremo que los usuarios utilicen el
+                            servicio de conformidad con la ley, las presentes condiciones, la moral y buenas costumbres
+                            generalmente aceptadas y el orden público, ni tampoco que lo hagan de forma diligente y
+                            prudente.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer-main">
+        <div class="container">
+            <div class="row g-5 pb-4">
+                <div class="col-lg-4 col-md-6">
+                    <img src="logonuevo2.png" class="footer-logo" alt="Olivilla Tres">
+                    <p class="footer-desc">Suministro de materiales de construcción, aislamiento e impermeabilización en
+                        Toledo. Asesoramiento técnico especializado.</p>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <p class="footer-heading">Navegación</p>
+                    <ul class="footer-links">
+                        <li><a href="./index.html">Inicio</a></li>
+                        <li><a href="./ferreteria.html">Ferretería</a></li>
+                        <li><a href="./poliymeta.html">Policarbonatos</a></li>
+                        <li><a href="./#proveedores">Todos los proveedores</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <p class="footer-heading">Proveedores</p>
+                    <ul class="footer-links">
+                        <li><a href="./sika.html">Sika</a></li>
+                        <li><a href="./bostik.html">Bostik</a></li>
+                        <li><a href="./grupopuma.html">Grupo Puma</a></li>
+                        <li><a href="./ursa.html">Ursa</a></li>
+                        <li><a href="./regarsa.html">Regarsa</a></li>
+                        <li><a href="./soprema.html">Soprema</a></li>
+                        <li><a href="./pyl.html">PYL</a></li>
+                        <li><a href="./suimco.html">Suimco</a></li>
+                        <li><a href="./tripomat.html">Tripomant</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <p class="footer-heading">Contacto</p>
+                    <div class="footer-contact-row"><i class="fa-solid fa-location-dot"></i><span>Calle Rio Valdecelada,
+                            7<br>45007 — Toledo</span></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-phone"></i><a href="tel:925233454">925 23 34
+                            54</a></div>
+                    <div class="footer-contact-row"><i class="fa-solid fa-envelope"></i><a
+                            href="mailto:almacen@olivillatres.com">almacen@olivillatres.com</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 <strong>Olivilla Tres S.L.U</strong> — Todos los derechos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        (function () {
+            var header = document.getElementById('siteHeader');
+            var navbar = document.getElementById('mainNavbar');
+            var topbar = document.getElementById('topbar');
+            var spacer = document.getElementById('headerSpacer');
+            function resize() { spacer.style.height = header.offsetHeight + 'px'; }
+            function onScroll() {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                    topbar.style.display = 'none';
+                } else {
+                    navbar.classList.remove('scrolled');
+                    topbar.style.display = '';
+                }
+                resize();
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', resize);
+            window.addEventListener('load', resize);
+            onScroll();
+            requestAnimationFrame(resize);
+        })();
+    </script>
+
+</body>
+
+</html>
