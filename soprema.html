@@ -1593,6 +1593,150 @@
         .chat-input-row button:hover {
             background: var(--accent);
         }
+                /* ── BANNER COOKIES ── */
+        #cookie-banner {
+            position: fixed;
+            bottom: 1.5rem;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(680px, calc(100vw - 2rem));
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 8px 40px rgba(26, 26, 46, .18), 0 0 0 1px rgba(74, 59, 104, .08);
+            padding: 1.4rem 1.6rem;
+            z-index: 9999;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            animation: slideUp .4s ease;
+        }
+
+        #cookie-banner.hidden {
+            display: none;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        .cookie-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: .1rem;
+        }
+
+        .cookie-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .cookie-body strong {
+            display: block;
+            font-size: .95rem;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: .35rem;
+        }
+
+        .cookie-body p {
+            font-size: .83rem;
+            color: #666;
+            margin: 0 0 .9rem;
+            line-height: 1.55;
+        }
+
+        .cookie-body p a {
+            color: #b53987;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .cookie-actions {
+            display: flex;
+            gap: .6rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .cookie-btn {
+            border: none;
+            border-radius: 25px;
+            padding: .48rem 1.15rem;
+            font-size: .83rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all .2s;
+            white-space: nowrap;
+        }
+
+        .cookie-btn-accept {
+            background: #b53987;
+            color: #fff;
+        }
+
+        .cookie-btn-accept:hover {
+            background: #9a2d71;
+        }
+
+        .cookie-btn-reject {
+            background: transparent;
+            color: #555;
+            border: 1.5px solid #ddd;
+        }
+
+        .cookie-btn-reject:hover {
+            border-color: #aaa;
+            color: #333;
+        }
+
+        .cookie-btn-more {
+            background: transparent;
+            color: #b53987;
+            padding-left: .2rem;
+            padding-right: .2rem;
+            text-decoration: underline;
+            font-size: .8rem;
+        }
+
+        .cookie-btn-more:hover {
+            color: #9a2d71;
+        }
+
+        @media (max-width: 480px) {
+            #cookie-banner {
+                padding: 1.1rem 1.2rem;
+                flex-direction: column;
+                gap: .8rem;
+            }
+
+            .cookie-icon {
+                font-size: 1.5rem;
+            }
+
+            .cookie-actions {
+                width: 100%;
+            }
+
+            .cookie-btn {
+                flex: 1;
+                text-align: center;
+            }
+
+            .cookie-btn-more {
+                flex: 0 0 auto;
+            }
+        }
     </style>
 </head>
 
@@ -2114,6 +2258,24 @@
             <button onclick="sendMsg()">➤</button>
         </div>
     </div>
+    <!-- ── COOKIES ── -->
+    <div id="cookie-banner" class="hidden" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+        <div class="cookie-icon">🍪</div>
+        <div class="cookie-body">
+            <strong>Usamos cookies</strong>
+            <p>
+                Utilizamos cookies propias y de terceros para analizar el uso del portal y mejorar tu experiencia.
+                Puedes aceptar todas las cookies, rechazar las no esenciales o consultar más información en nuestra
+                <a href="politicacookies.html">Política de Cookies</a>.
+            </p>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookie-reject">Solo esenciales</button>
+                <button class="cookie-btn cookie-btn-more" onclick="window.location.href='politicacookies.html'">Más
+                    información</button>
+            </div>
+        </div>
+    </div>
     <script>
         const API_URL = 'https://chatbot-ahtc.onrender.com/chat';
         let isOpen = false;
@@ -2241,6 +2403,49 @@
             document.getElementById('crPrev').addEventListener('click', () => go(cur - 1));
             document.getElementById('crNext').addEventListener('click', () => go(cur + 1));
             updateInfo(0); requestAnimationFrame(animBar);
+        })();
+    </script>
+    <script>
+        (function () {
+            var COOKIE_KEY = 'olivilla_cookies';
+            var EXPIRY_DAYS = 365;
+
+            function setCookie(name, value, days) {
+                var d = new Date();
+                d.setTime(d.getTime() + days * 864e5);
+                document.cookie = name + '=' + value + ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+            }
+
+            function getCookie(name) {
+                var match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+                return match ? match[2] : null;
+            }
+
+            function hideBanner() {
+                document.getElementById('cookie-banner').classList.add('hidden');
+            }
+
+            function showBanner() {
+                document.getElementById('cookie-banner').classList.remove('hidden');
+            }
+
+            // Si ya eligió, no mostrar
+            var saved = getCookie(COOKIE_KEY);
+            if (!saved) {
+                // Pequeño delay para que no tape el navbar al cargar
+                setTimeout(showBanner, 800);
+            }
+
+            document.getElementById('cookie-accept').addEventListener('click', function () {
+                setCookie(COOKIE_KEY, 'all', EXPIRY_DAYS);
+                hideBanner();
+                // Aquí puedes activar Google Analytics u otros scripts si los cargas de forma condicional
+            });
+
+            document.getElementById('cookie-reject').addEventListener('click', function () {
+                setCookie(COOKIE_KEY, 'essential', EXPIRY_DAYS);
+                hideBanner();
+            });
         })();
     </script>
 </body>
