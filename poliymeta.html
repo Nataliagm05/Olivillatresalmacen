@@ -1576,6 +1576,24 @@
             <button onclick="sendMsg()">➤</button>
         </div>
     </div>
+    <!-- ── COOKIES ── -->
+    <div id="cookie-banner" class="hidden" role="dialog" aria-label="Aviso de cookies" aria-live="polite">
+        <div class="cookie-icon">🍪</div>
+        <div class="cookie-body">
+            <strong>Usamos cookies</strong>
+            <p>
+                Utilizamos cookies propias y de terceros para analizar el uso del portal y mejorar tu experiencia.
+                Puedes aceptar todas las cookies, rechazar las no esenciales o consultar más información en nuestra
+                <a href="politicacookies.html">Política de Cookies</a>.
+            </p>
+            <div class="cookie-actions">
+                <button class="cookie-btn cookie-btn-accept" id="cookie-accept">Aceptar todas</button>
+                <button class="cookie-btn cookie-btn-reject" id="cookie-reject">Solo esenciales</button>
+                <button class="cookie-btn cookie-btn-more" onclick="window.location.href='politicacookies.html'">Más
+                    información</button>
+            </div>
+        </div>
+    </div>
     <script>
         const API_URL = 'https://chatbot-ahtc.onrender.com/chat';
         let isOpen = false;
