@@ -1591,8 +1591,14 @@
             panel.style.opacity = isOpen ? '1' : '0';
             panel.style.pointerEvents = isOpen ? 'all' : 'none';
             btn.textContent = isOpen ? '✕' : '💬';
-            if (isOpen && document.getElementById('cp-messages').children.length === 0)
+            if (isOpen && document.getElementById('cp-messages').children.length === 0) {
                 addMsg('bot', '¡Hola! ¿En qué puedo ayudarte hoy?');
+                fetch(API_URL, {
+                    method: 'POST', mode: 'cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ mensaje: 'ping' })
+                }).catch(() => { }); // wake-up silencioso
+            }
         }
         function addMsg(tipo, texto) {
             const cont = document.getElementById('cp-messages');
