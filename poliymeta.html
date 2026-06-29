@@ -438,7 +438,7 @@
         /* PRODUCT CARDS */
         .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(315px, 1fr));
             gap: 16px;
             margin-bottom: 64px;
         }
@@ -504,11 +504,19 @@
             display: block;
         }
 
-        .pcard-desc {
-            font-size: 0.78rem;
-            color: rgba(74, 59, 104, 0.6);
-            line-height: 1.55;
-            margin-bottom: 16px;
+        .section-desc {
+            font-size: 0.92rem;
+            color: #4a3b68;
+            line-height: 1.65;
+            margin-bottom: 32px;
+            max-width: 760px;
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+            padding: 14px 20px;
+            box-shadow: 0 2px 12px rgba(74, 59, 104, 0.08);
         }
 
         .dims-list {
@@ -549,7 +557,6 @@
         .dim-single {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
             font-size: 0.82rem;
             font-weight: 600;
             color: #4a3b68;
@@ -557,17 +564,18 @@
             border: 1px solid rgba(181, 57, 135, .18);
             border-radius: 8px;
             padding: 7px 14px;
+            margin-top: 7px;
         }
 
         .dim-single i {
             color: var(--accent);
             font-size: 11px;
+            padding-right: 5px;
         }
 
         /* CTA BANNER */
         .cta-banner {
             background: linear-gradient(135deg, #4a3b68, #6b4f8f);
-            border: none;
             border-radius: 18px;
             padding: 40px 48px;
             display: flex;
@@ -812,7 +820,8 @@
                 height: 90px;
                 border-radius: 5px;
             }
-            .footer-logo{
+
+            .footer-logo {
                 border-radius: 5px;
             }
         }
@@ -923,6 +932,7 @@
             main {
                 padding-top: 200px;
             }
+
             .navbar-custom .nav-link {
                 font-size: 15px;
             }
@@ -1517,6 +1527,11 @@
                     <h2 class="section-title">Policarbonato</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-desc">Planchas alveolares de alta resistencia al impacto, ligeras y con excelente
+                    transmisión de luz natural. Perfectas para cubiertas de terrazas, pérgolas, lucernarios y
+                    cerramientos. Ofrecen protección UV y una larga vida útil en exteriores. Color: Transparente y
+                    Blanco. Medida: 6 x 2,1 m.
+                </p>
                 <div class="products-grid">
                     <div class="pcard">
                         <img class="pcard-img"
@@ -1524,10 +1539,18 @@
                             alt="Policarbonato Transparente">
                         <div class="pcard-material">Policarbonato</div>
                         <h3 class="pcard-name">Policarbonato Transparente</h3>
-                        <p class="pcard-desc">Plancha alveolar de alta resistencia al impacto. Ideal para cubiertas de
-                            terrazas, pérgolas y lucernarios. Excelente transmisión lumínica y protección UV.</p>
-                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 ×
-                                2,1 m</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>4
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>8
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>10
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>12
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>16
+                                mm</span></div>
                     </div>
                     <div class="pcard">
                         <img class="pcard-img"
@@ -1535,10 +1558,18 @@
                             alt="Policarbonato Blanco">
                         <div class="pcard-material">Policarbonato</div>
                         <h3 class="pcard-name">Policarbonato Blanco</h3>
-                        <p class="pcard-desc">Mismas prestaciones estructurales que el transparente, con acabado blanco
-                            opal que difumina la luz. Muy utilizado en cerramientos industriales y marquesinas.</p>
-                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6 ×
-                                2,1 m</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>4
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>8
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>10
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>12
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>16
+                                mm</span></div>
                     </div>
                 </div>
 
@@ -1548,6 +1579,10 @@
                     <h2 class="section-title">Poliéster</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-desc">Láminas onduladas y trapezoidales económicas y versátiles, ampliamente usadas en
+                    cubiertas de naves, almacenes, porches y construcciones agrícolas. Disponibles en varios perfiles
+                    para adaptarse a distintas estructuras portantes. Color: Transparente y Blanco.
+                </p>
                 <div class="products-grid">
                     <div class="pcard">
                         <img class="pcard-img"
@@ -1555,9 +1590,6 @@
                             alt="Poliéster Onda Pequeña">
                         <div class="pcard-material">Poliéster</div>
                         <h3 class="pcard-name">Onda Pequeña</h3>
-                        <p class="pcard-desc">Lámina ondulada ligera y flexible, perfecta para cubrir tejados de
-                            almacenes, porches y naves agrícolas. Compatible con perfilería estándar de onda pequeña.
-                        </p>
                         <div class="dims-list">
                             <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,15 m</span></div>
                             <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2,5 × 1,15 m</span>
@@ -1571,9 +1603,6 @@
                             alt="Poliéster Onda Grande">
                         <div class="pcard-material">Poliéster</div>
                         <h3 class="pcard-name">Onda Grande</h3>
-                        <p class="pcard-desc">Mayor rigidez que la onda pequeña, indicada para cubiertas de mayor luz
-                            libre. Se instala sobre estructuras metálicas y de madera en proyectos industriales y
-                            agropecuarios.</p>
                         <div class="dims-list">
                             <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,10 m</span></div>
                             <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2,5 × 1,10 m</span>
@@ -1587,13 +1616,8 @@
                             alt="Poliéster Trapezoidal">
                         <div class="pcard-material">Poliéster</div>
                         <h3 class="pcard-name">Trapezoidal</h3>
-                        <p class="pcard-desc">Perfil trapezoidal de gran rigidez estructural, diseñado para cubiertas
-                            industriales de grandes vanos. Disponible en acabado transparente y blanco.</p>
                         <div class="dims-list">
                             <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>6 × 1,11 m</span></div>
-                            <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>Transparente</span>
-                            </div>
-                            <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>Blanco</span></div>
                         </div>
                     </div>
                 </div>
@@ -1604,6 +1628,12 @@
                     <h2 class="section-title">Metacrilato</h2>
                     <div class="section-line"></div>
                 </div>
+                <p class="section-desc">Planchas acrílicas de alta claridad óptica y excelente resistencia a la
+                    intemperie. Una alternativa ligera al vidrio ideal para mamparas, escaparates, señalización y
+                    elementos decorativos tanto en interior como en exterior. Color: Transparente y Blanco. Medida: 2 x
+                    1.5 m.
+                </p>
+
                 <div class="products-grid">
                     <div class="pcard">
                         <img class="pcard-img"
@@ -1611,10 +1641,13 @@
                             alt="Metacrilato Transparente">
                         <div class="pcard-material">Metacrilato</div>
                         <h3 class="pcard-name">Metacrilato Transparente</h3>
-                        <p class="pcard-desc">Plancha acrílica de alta claridad óptica y resistencia a la intemperie.
-                            Alternativa al vidrio en escaparates, mamparas, señalización y elementos decorativos.</p>
-                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>2 ×
-                                1,5 m</span></div>
+
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>3
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>3
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6
+                                mm</span></div>
                     </div>
                     <div class="pcard">
                         <img class="pcard-img"
@@ -1622,15 +1655,16 @@
                             alt="Metacrilato Blanco">
                         <div class="pcard-material">Metacrilato</div>
                         <h3 class="pcard-name">Metacrilato Blanco</h3>
-                        <p class="pcard-desc">Acabado opaco uniforme, muy empleado en rotulación, mobiliario comercial y
-                            paneles de revestimiento interior. Fácil mecanizado y corte a medida.</p>
-                        <div class="dims-list">
-                            <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>2 × 1,5 m</span></div>
-                            <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>3 × 1,5 m</span></div>
-                            <div class="dim-row"><i class="fa-solid fa-ruler-combined"></i><span>5 × 1,5 m</span></div>
-                        </div>
+
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>3
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>3
+                                mm</span></div>
+                        <div class="dim-single"><i class="fa-solid fa-up-right-and-down-left-from-center"></i><span>6
+                                mm</span></div>
                     </div>
                 </div>
+
 
                 <!-- CTA -->
                 <div class="cta-banner">
@@ -1648,7 +1682,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </main>
     </section>
