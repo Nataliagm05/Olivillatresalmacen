@@ -1113,12 +1113,18 @@
                 font-family: 'Inter', sans-serif;
                 margin-bottom: 90px;
             }
-                        .navbar-custom .nav-link {
+
+            .navbar-custom .nav-link {
                 font-size: 17px;
             }
 
             .logo-empresa {
                 height: 90px;
+                border-radius: 5px;
+            }
+
+            .footer-logo {
+                border-radius: 5px;
             }
         }
 
@@ -1303,6 +1309,9 @@
             .stat-num {
                 font-size: 2rem;
                 padding-bottom: 10px;
+            }
+            .navbar-custom .nav-link {
+                font-size: 15px;
             }
         }
 
@@ -2234,7 +2243,7 @@
             panel.style.opacity = isOpen ? '1' : '0';
             panel.style.pointerEvents = isOpen ? 'all' : 'none';
             btn.textContent = isOpen ? '✕' : '💬';
-            if(isOpen && document.getElementById('cp-messages').children.length === 0) {
+            if (isOpen && document.getElementById('cp-messages').children.length === 0) {
                 addMsg('bot', '¡Hola! ¿En qué puedo ayudarte hoy?');
                 fetch(API_URL, {
                     method: 'POST', mode: 'cors',
