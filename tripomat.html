@@ -146,13 +146,15 @@
             letter-spacing: .3px;
             transition: color .2s;
             position: relative;
+            overflow: visible;
         }
 
         .navbar-custom.scrolled .nav-link {
             padding: 14px 14px !important;
         }
 
-        .navbar-custom .nav-link::after {
+        /* Rayita rosa en ::before para no chocar con Bootstrap ::after */
+        .navbar-custom .nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -164,14 +166,47 @@
             transition: transform .25s ease;
         }
 
+        .navbar-custom .nav-link:hover::before,
+        .navbar-custom .nav-link.active::before {
+            transform: scaleX(1);
+        }
+
+        /* Liberar ::after para Bootstrap */
+        .navbar-custom .nav-link::after {
+            content: none;
+        }
+
+        /* Restaurar ::after de Bootstrap solo en dropdown-toggle */
+        .navbar-custom .dropdown-toggle::after {
+            content: '' !important;
+            display: inline-block !important;
+            position: static !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin-left: 0.255em !important;
+            vertical-align: 0.255em !important;
+            border-top: 0.3em solid !important;
+            border-right: 0.3em solid transparent !important;
+            border-bottom: 0 !important;
+            border-left: 0.3em solid transparent !important;
+            background: none !important;
+            transform: none !important;
+            transition: none !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+
+        .navbar-custom .dropdown-toggle:hover::after,
+        .navbar-custom .dropdown-toggle.active::after {
+            transform: none !important;
+            background: none !important;
+        }
+
         .navbar-custom .nav-link:hover,
         .navbar-custom .nav-link.active {
             color: #ffffff !important;
-        }
-
-        .navbar-custom .nav-link:hover::after,
-        .navbar-custom .nav-link.active::after {
-            transform: scaleX(1);
         }
 
         .navbar-custom .dropdown-menu {

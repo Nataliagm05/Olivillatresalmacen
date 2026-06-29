@@ -97,7 +97,7 @@
         }
 
         .navbar-custom {
-            background: rgba(74, 59, 104, .97) !important;
+            background: rgba(74, 59, 104, 0.97) !important;
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             border-bottom: 3px solid var(--accent);
@@ -106,7 +106,7 @@
         }
 
         .navbar-custom.scrolled {
-            background: rgba(53, 40, 79, .99) !important;
+            background: rgba(53, 40, 79, 0.99) !important;
             box-shadow: 0 4px 32px rgba(74, 59, 104, .35);
         }
 
@@ -132,26 +132,28 @@
             font-weight: 600;
             letter-spacing: 2px;
             text-transform: uppercase;
-            color: rgba(232, 176, 208, .8);
+            color: rgba(232, 176, 208, 0.8);
             border-left: 1px solid var(--border);
             padding-left: 12px;
         }
 
         .navbar-custom .nav-link {
-            color: rgba(255, 255, 255, .75) !important;
+            color: rgba(255, 255, 255, 0.75) !important;
             font-size: 13px;
             font-weight: 500;
             padding: 20px 14px !important;
             letter-spacing: .3px;
             transition: color .2s;
             position: relative;
+            overflow: visible;
         }
 
         .navbar-custom.scrolled .nav-link {
             padding: 14px 14px !important;
         }
 
-        .navbar-custom .nav-link::after {
+        /* Rayita rosa en ::before para no chocar con Bootstrap ::after */
+        .navbar-custom .nav-link::before {
             content: '';
             position: absolute;
             bottom: 0;
@@ -161,22 +163,54 @@
             background: #f386cc;
             transform: scaleX(0);
             transition: transform .25s ease;
-            border-bottom-color: #b53987;
+        }
+
+        .navbar-custom .nav-link:hover::before,
+        .navbar-custom .nav-link.active::before {
+            transform: scaleX(1);
+        }
+
+        /* Liberar ::after para Bootstrap */
+        .navbar-custom .nav-link::after {
+            content: none;
+        }
+
+        /* Restaurar ::after de Bootstrap solo en dropdown-toggle */
+        .navbar-custom .dropdown-toggle::after {
+            content: '' !important;
+            display: inline-block !important;
+            position: static !important;
+            width: 0 !important;
+            height: 0 !important;
+            margin-left: 0.255em !important;
+            vertical-align: 0.255em !important;
+            border-top: 0.3em solid !important;
+            border-right: 0.3em solid transparent !important;
+            border-bottom: 0 !important;
+            border-left: 0.3em solid transparent !important;
+            background: none !important;
+            transform: none !important;
+            transition: none !important;
+            top: auto !important;
+            left: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+        }
+
+        .navbar-custom .dropdown-toggle:hover::after,
+        .navbar-custom .dropdown-toggle.active::after {
+            transform: none !important;
+            background: none !important;
         }
 
         .navbar-custom .nav-link:hover,
         .navbar-custom .nav-link.active {
-            border-bottom-color: #b53987;
-        }
-
-        .navbar-custom .nav-link:hover::after,
-        .navbar-custom .nav-link.active::after {
-            transform: scaleX(1);
+            color: #ffffff !important;
         }
 
         .navbar-custom .dropdown-menu {
-            background: #fff;
-            border: 1px solid rgba(74, 59, 104, .1);
+            background: #ffffff;
+            border: 1px solid rgba(74, 59, 104, 0.1);
             border-top: 2px solid var(--accent);
             border-radius: 0 0 12px 12px;
             padding: 6px 0;
@@ -238,9 +272,21 @@
             background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%23c0398c' stroke-linecap='round' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
         }
 
+        #headerSpacer {
+            height: 130px;
+        }
+
+        @media (max-width:768px) {
+            #headerSpacer {
+                height: 170px;
+            }
+        }
+
         .navbar-custom .navbar-toggler:focus {
             box-shadow: 0 0 0 0.2rem rgba(181, 57, 135, 0.4) !important;
         }
+
+        /* ========== FIN NAVBAR ========== */
 
         #headerSpacer {
             height: 130px;
