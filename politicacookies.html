@@ -581,6 +581,18 @@
             background: var(--bg);
         }
 
+        .cookie-table-wrap {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            margin: 1.2rem 0;
+        }
+
+        .cookie-table {
+            margin: 0;
+            min-width: 600px;
+        }
+
         .badge-tipo {
             display: inline-block;
             padding: .18rem .5rem;
@@ -873,16 +885,13 @@
             }
 
             .content-card {
-                padding: 24px;
-                width: 407px;
+                padding: 16px;
             }
-
         }
 
         @media(max-width:390px) {
             .content-card {
-                padding: 24px;
-                width: 368px;
+                padding: 16px;
             }
         }
 
@@ -1269,10 +1278,11 @@
             .page-hero {
                 margin-bottom: 0px;
             }
-                main {
-        flex: 1;
-        padding: 40px 0 80px;
-    }
+
+            main {
+                flex: 1;
+                padding: 40px 0 80px;
+            }
         }
 
         @media (max-width: 820px) {
@@ -1290,10 +1300,11 @@
                 margin-left: 0.5rem;
                 font-size: 15px;
             }
-                main {
-        flex: 1;
-        padding: 55px 0 80px;
-    }
+
+            main {
+                flex: 1;
+                padding: 55px 0 80px;
+            }
         }
 
         @media (max-width: 768px) {
@@ -1458,39 +1469,46 @@
                         <h2>Cookies que utiliza este portal</h2>
                         <p>El portal <strong>www.olivillatres.es</strong>, titularidad de <strong>Almacén Olivilla Tres
                                 S.L.U.</strong>, puede utilizar los siguientes tipos de cookies:</p>
-                        <table class="cookie-table">
-                            <thead>
-                                <tr>
-                                    <th>Nombre</th>
-                                    <th>Tipo</th>
-                                    <th>Finalidad</th>
-                                    <th>Duración</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>olivilla_cookies</code></td>
-                                    <td><span class="badge-tipo badge-tecnica">Técnica</span></td>
-                                    <td>Guarda la preferencia del usuario sobre el banner de cookies para no mostrarlo
-                                        de nuevo.</td>
-                                    <td>1 año</td>
-                                </tr>
-                                <tr>
-                                    <td><code>_ga</code></td>
-                                    <td><span class="badge-tipo badge-analitica">Analítica</span></td>
-                                    <td>Cookie de Google Analytics. Distingue usuarios únicos y genera estadísticas de
-                                        visitas. Los datos son anonimizados.</td>
-                                    <td>2 años</td>
-                                </tr>
-                                <tr>
-                                    <td><code>_ga_*</code></td>
-                                    <td><span class="badge-tipo badge-analitica">Analítica</span></td>
-                                    <td>Cookie de Google Analytics 4 (GA4). Almacena el estado de sesión para métricas
-                                        de uso del portal.</td>
-                                    <td>2 años</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div class="cookie-table-wrap">
+
+                            <table class="cookie-table">
+                                <thead>
+                                    <tr>
+                                        <th>Nombre</th>
+                                        <th>Tipo</th>
+                                        <th>Finalidad</th>
+                                        <th>Duración</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><code>olivilla_cookies</code></td>
+                                        <td><span class="badge-tipo badge-tecnica">Técnica</span></td>
+                                        <td>Guarda la preferencia del usuario sobre el banner de cookies para no
+                                            mostrarlo
+                                            de nuevo.</td>
+                                        <td>1 año</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>_ga</code></td>
+                                        <td><span class="badge-tipo badge-analitica">Analítica</span></td>
+                                        <td>Cookie de Google Analytics. Distingue usuarios únicos y genera
+                                            estadísticas de
+                                            visitas. Los datos son anonimizados.</td>
+                                        <td>2 años</td>
+                                    </tr>
+                                    <tr>
+                                        <td><code>_ga_*</code></td>
+                                        <td><span class="badge-tipo badge-analitica">Analítica</span></td>
+                                        <td>Cookie de Google Analytics 4 (GA4). Almacena el estado de sesión para
+                                            métricas
+                                            de uso del portal.</td>
+                                        <td>2 años</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                        </div>
                         <div class="info-highlight">
                             <i class="fa-solid fa-circle-info"></i>
                             Las <strong>cookies técnicas o estrictamente necesarias</strong> no requieren consentimiento
