@@ -410,6 +410,7 @@
             grid-template-columns: 1fr 320px;
             gap: 32px;
             align-items: start;
+            min-width: 0;
         }
 
         @media(max-width:900px) {
@@ -425,6 +426,9 @@
             border: 1px solid var(--border);
             box-shadow: 0 4px 24px rgba(74, 59, 104, 0.08);
             padding: 40px;
+            min-width: 0;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         /* TOC */
